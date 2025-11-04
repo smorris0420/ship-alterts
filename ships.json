@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "disney-wish",
+    "name": "Disney Wish",
+    "url": "https://www.vesselfinder.com/vessels/details/9834739",
+    "imo": "9834739",
+    "mmsi": "311001098"
+  },
+  {
+    "slug": "disney-treasure",
+    "name": "Disney Treasure",
+    "url": "https://www.vesselfinder.com/vessels/details/9834753",
+    "imo": "9834753",
+    "mmsi": "311001221"
+  },
+  {
+    "slug": "disney-fantasy",
+    "name": "Disney Fantasy",
+    "url": "https://www.vesselfinder.com/vessels/details/9445590",
+    "imo": "9445590",
+    "mmsi": "311058700"
+  },
+  {
+    "slug": "disney-magic",
+    "name": "Disney Magic",
+    "url": "https://www.vesselfinder.com/vessels/details/9126807",
+    "imo": "9126807",
+    "mmsi": "308516000"
+  },
+  {
+    "slug": "disney-dream",
+    "name": "Disney Dream",
+    "url": "https://www.vesselfinder.com/vessels/details/9434254",
+    "imo": "9434254",
+    "mmsi": "311042900"
+  },
+  {
+    "slug": "disney-wonder",
+    "name": "Disney Wonder",
+    "url": "https://www.vesselfinder.com/vessels/details/9126819",
+    "imo": "9126819",
+    "mmsi": "308457000"
+  },
+  {
+    "slug": "disney-adventure",
+    "name": "Disney Adventure",
+    "url": "https://www.vesselfinder.com/vessels/details/9808986",
+    "imo": "9808986",
+    "mmsi": "311000934"
+  },
+  {
+    "slug": "disney-destiny",
+    "name": "Disney Destiny",
+    "url": "https://www.vesselfinder.com/vessels/details/9834741",
+    "imo": "9834741",
+    "mmsi": "311001540"
+  }
+]
