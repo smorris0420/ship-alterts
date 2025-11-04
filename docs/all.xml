@@ -4,21 +4,21 @@
   <title>DCL Ships - Arrivals &amp; Departures (All)</title>
   <link>https://github.com/</link>
   <description>DCL Ships - Arrivals &amp; Departures (All) - Auto-generated</description>
-  <lastBuildDate>Tue, 04 Nov 2025 20:48:44 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 04 Nov 2025 20:59:24 GMT</lastBuildDate>
   
   <item>
-    <title>Disney Treasure — Departure — Georgetown, Grand Cayman Anch., Cayman Islands</title>
-    <link>https://www.vesselfinder.com/ports/KYGEC001</link>
-    <guid isPermaLink="false">8b92cb3d70b557f7a453737816a8d52136613009</guid>
-    <pubDate>Tue, 04 Nov 2025 20:48:36 GMT</pubDate>
-    <description>Georgetown, Grand Cayman Anch., Cayman Islands Departure (UTC) Nov 3, 22:05</description>
+    <title>Disney Adventure — Departure — Bremerhaven, Germany</title>
+    <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+    <guid isPermaLink="false">bdfcc177e9cd1a26739ba399c0cc7f2bb7134375</guid>
+    <pubDate>Tue, 04 Nov 2025 20:59:23 GMT</pubDate>
+    <description>Bremerhaven, Germany Departure (UTC) Sep 10, 23:10</description>
   </item>
   <item>
-    <title>Disney Treasure — Arrival — Georgetown, Grand Cayman Anch., Cayman Islands</title>
-    <link>https://www.vesselfinder.com/ports/KYGEC001</link>
-    <guid isPermaLink="false">1d36d9104ae5e99a6d20a8c12f700ca0071823e2</guid>
-    <pubDate>Tue, 04 Nov 2025 20:48:36 GMT</pubDate>
-    <description>Georgetown, Grand Cayman Anch., Cayman Islands Arrival (UTC) Nov 3, 12:31</description>
+    <title>Disney Adventure — Arrival — Bremerhaven, Germany</title>
+    <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+    <guid isPermaLink="false">5fa4136a3fd5ad5eba49e58897b463cf0f0620d8</guid>
+    <pubDate>Tue, 04 Nov 2025 20:59:23 GMT</pubDate>
+    <description>Bremerhaven, Germany Arrival (UTC) Sep 9, 10:00</description>
   </item>
 </channel>
 </rss>
