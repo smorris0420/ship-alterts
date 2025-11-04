@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# Free, JS-rendered scrape of VesselFinder "Recent Port Calls" using Playwright (Chromium)
-# Requires: pip install playwright beautifulsoup4 && python -m playwright install chromium
+# JS-rendered scrape of VesselFinder "Recent Port Calls" using Playwright (Chromium)
+# pip install playwright beautifulsoup4 && python -m playwright install chromium
 
 import os, json, hashlib, sys, traceback
 from datetime import datetime, timezone
@@ -8,10 +8,15 @@ from urllib.parse import urljoin, urlparse, urlunparse
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 from bs4 import BeautifulSoup, Tag, NavigableString
 
-REPO_ROOT = os.path.dirname(__file__)
-DOCS_DIR  = os.path.join(REPO_ROOT, "docs")
-STATE_PATH= os.path.join(REPO_ROOT, "state.json")
-SHIPS_PATH= os.path.join(REPO_ROOT, "ships.json")
+REPO_ROOT  = os.path.dirname(__file__)
+DOCS_DIR   = os.path.join(REPO_ROOT, "docs")
+STATE_PATH = os.path.join(REPO_ROOT, "state.json")
+SHIPS_PATH = os.path.join(REPO_ROOT, "ships.json")
+
+# NEW: history settings
+HIST_DIR      = os.path.join(REPO_ROOT, "history")
+PER_SHIP_CAP  = 50   # items to keep per ship
+ALL_CAP       = 100  # items to keep for combined feed
 
 def load_json(path, default):
     if os.path.exists(path):
@@ -20,8 +25,29 @@ def load_json(path, default):
     return default
 
 def save_json(path, data):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
+
+def load_history(slug: str):
+    os.makedirs(HIST_DIR, exist_ok=True)
+    path = os.path.join(HIST_DIR, f"{slug}.json")
+    if os.path.exists(path):
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return []
+
+def save_history(slug: str, items: list):
+    os.makedirs(HIST_DIR, exist_ok=True)
+    path = os.path.join(HIST_DIR, f"{slug}.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(items, f, indent=2, ensure_ascii=False)
+
+def merge_items(existing: list, new_items: list, cap: int):
+    # new_items are newest-first in a run; dedupe by GUID, keep newest-first overall
+    seen = {it["guid"] for it in existing}
+    merged = list(new_items) + [it for it in existing if it["guid"] not in seen]
+    return merged[:cap]
 
 def rss_escape(s: str) -> str:
     return (s or "").replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
@@ -55,9 +81,9 @@ def build_rss(channel_title: str, channel_link: str, items: list) -> str:
 </rss>
 """
 
-# ---- Parse VesselFinder "Recent Port Calls" (div-based card list) ----
-def find_recent_port_calls_root(soup: BeautifulSoup):
-    # 1) look for a header containing "Recent Port Calls"
+# ---- parse “Recent Port Calls” (div-card layout) ----
+def _find_root(soup: BeautifulSoup):
+    # Prefer a header that literally says “Recent Port Calls”
     for tag in soup.find_all(lambda t: isinstance(t, Tag) and t.name in ("h1","h2","h3","h4","div")):
         txt = (tag.get_text(strip=True) or "").lower()
         if "recent port calls" in txt:
@@ -67,7 +93,7 @@ def find_recent_port_calls_root(soup: BeautifulSoup):
                 nxt = nxt.next_sibling; hops += 1
             if isinstance(nxt, Tag):
                 return nxt
-    # 2) fallback: search any element that contains label "Arrival (UTC)"
+    # Fallback: find any area with multiple “Arrival (UTC)” labels
     lab = soup.find(string=lambda s: isinstance(s, str) and "arrival (utc)" in s.lower())
     if lab:
         node = lab
@@ -79,9 +105,9 @@ def find_recent_port_calls_root(soup: BeautifulSoup):
                 return node
     return None
 
-def parse_recent_port_calls(html: str):
+def _parse(html: str):
     soup = BeautifulSoup(html, "html.parser")
-    root = find_recent_port_calls_root(soup)
+    root = _find_root(soup)
     results = []
     if not root:
         return results
@@ -92,7 +118,7 @@ def parse_recent_port_calls(html: str):
 
     blocks = [c for c in root.find_all(recursive=False) if isinstance(c, Tag)]
     for block in blocks:
-        # entries may be nested one level
+        # entries may be nested one level deeper
         candidates = [block] + [c for c in block.find_all(recursive=False) if isinstance(c, Tag)]
         matched = next((c for c in candidates if block_has_labels(c)), None)
         if not matched:
@@ -130,7 +156,7 @@ def parse_recent_port_calls(html: str):
                             "detail":f"{port_name} Departure (UTC) {dep}"})
     return results
 
-def rendered_html_for(url: str, p, mobile: bool):
+def _rendered_html(url: str, p, mobile: bool):
     ua = ("Mozilla/5.0 (Linux; Android 12; Pixel 5) AppleWebKit/537.36 "
           "(KHTML, like Gecko) Chrome/120 Mobile Safari/537.36") if mobile else \
          ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -140,38 +166,32 @@ def rendered_html_for(url: str, p, mobile: bool):
     page = ctx.new_page()
     try:
         page.goto(url, timeout=45000, wait_until="domcontentloaded")
-        # Scroll a bit to trigger lazy sections
         page.evaluate("window.scrollTo(0, document.body.scrollHeight * 0.6);")
-        # Try to wait for the Recent Port Calls labels; don't fail hard if missing
         try:
             page.wait_for_selector("text=Recent Port Calls", timeout=8000)
         except PWTimeout:
             pass
-        html = page.content()
-        return html
+        return page.content()
     finally:
-        ctx.close()
-        browser.close()
+        ctx.close(); browser.close()
 
-def fetch_events_for_ship(p, ship):
+def _events_for_ship(p, ship):
     base_url = ship["url"]
-    # Try desktop first
+    # Desktop first
     try:
-        html = rendered_html_for(base_url, p, mobile=False)
-        rows = parse_recent_port_calls(html)
-        if rows:
-            return rows, base_url
+        html = _rendered_html(base_url, p, mobile=False)
+        rows = _parse(html)
+        if rows: return rows, base_url
     except Exception as e:
         print(f"[warn] desktop render failed for {ship['name']}: {e}", file=sys.stderr)
 
-    # Try mobile hostname
+    # Mobile hostname fallback
     try:
         parsed = urlparse(base_url)
         mobile_url = urlunparse(parsed._replace(netloc="m.vesselfinder.com"))
-        html = rendered_html_for(mobile_url, p, mobile=True)
-        rows = parse_recent_port_calls(html)
-        if rows:
-            return rows, mobile_url
+        html = _rendered_html(mobile_url, p, mobile=True)
+        rows = _parse(html)
+        if rows: return rows, mobile_url
     except Exception as e:
         print(f"[warn] mobile render failed for {ship['name']}: {e}", file=sys.stderr)
 
@@ -181,27 +201,28 @@ def main():
     os.makedirs(DOCS_DIR, exist_ok=True)
     ships = load_json(SHIPS_PATH, [])
     state = load_json(STATE_PATH, {"seen": {}})
-    all_items = []
+    all_items_new = []  # items discovered this run
 
     with sync_playwright() as p:
         for s in ships:
             name = s["name"]; slug = s["slug"]; url = s["url"]
             print(f"[info] Fetching {name}: {url}")
             try:
-                rows, used = fetch_events_for_ship(p, s)
+                rows, used = _events_for_ship(p, s)
                 print(f"[info] Parsed {name}: {len(rows)} events (source: {used})")
             except Exception as e:
                 print(f"[error] parse failed for {name}: {e}\n{traceback.format_exc()}", file=sys.stderr)
                 rows = []
 
-            ship_items = []
+            # Build new items (this run) & dedupe by state.json (avoid re-alerting same row)
+            ship_items_new = []
             for r in rows:
                 guid_src = f"{slug}|{r['event']}|{r['detail']}"
                 guid = make_id(guid_src)
                 if state["seen"].get(guid):
                     continue
                 title = f"{name} — {r['event']} — {r['port'] or 'Unknown Port'}"
-                desc  = r["detail"]
+                desc  = r["detail"].replace(" (UTC) -", " (UTC) (time not yet posted)")
                 link  = urljoin(url, r["link"]) if r["link"] else url
                 item = {
                     "title": title,
@@ -210,17 +231,44 @@ def main():
                     "guid": guid,
                     "pubDate": to_rfc2822(datetime.utcnow())
                 }
-                ship_items.append(item)
-                all_items.append(item)
+                ship_items_new.append(item)
+                all_items_new.append(item)
                 state["seen"][guid] = True
 
-            xml = build_rss(f"{name} - Arrivals & Departures", url, ship_items[:50])
-            with open(os.path.join(DOCS_DIR, f"{slug}.xml"), "w", encoding="utf-8") as f:
-                f.write(xml)
+            # ---- PERSISTED HISTORY: per-ship feed ----
+            ship_hist = load_history(slug)
+            ship_hist = merge_items(ship_hist, ship_items_new, PER_SHIP_CAP)
+            save_history(slug, ship_hist)
 
-    all_xml = build_rss("DCL Ships - Arrivals & Departures (All)", "https://github.com/", all_items[::-1][:100])
+            # Write per-ship full history RSS
+            ship_xml = build_rss(f"{name} - Arrivals & Departures", url, ship_hist)
+            with open(os.path.join(DOCS_DIR, f"{slug}.xml"), "w", encoding="utf-8") as f:
+                f.write(ship_xml)
+
+            # Also write a 1-item latest per ship
+            latest_xml = build_rss(f"{name} - Latest Arrival/Departure", url, ship_hist[:1])
+            with open(os.path.join(DOCS_DIR, f"{slug}-latest.xml"), "w", encoding="utf-8") as f:
+                f.write(latest_xml)
+
+    # ---- PERSISTED HISTORY: combined feed ----
+    all_hist = load_history("all")
+    all_hist = merge_items(all_hist, all_items_new, ALL_CAP)
+    save_history("all", all_hist)
+
+    all_xml = build_rss("DCL Ships - Arrivals & Departures (All)", "https://github.com/", all_hist)
     with open(os.path.join(DOCS_DIR, "all.xml"), "w", encoding="utf-8") as f:
         f.write(all_xml)
+
+    # One newest per ship (for “only latest” alerts)
+    latest_by_ship = {}
+    for it in all_hist:
+        ship_name = it["title"].split(" — ", 1)[0]
+        if ship_name not in latest_by_ship:
+            latest_by_ship[ship_name] = it
+    latest_all = list(latest_by_ship.values())
+    latest_all_xml = build_rss("DCL Ships - Latest (One per Ship)", "https://github.com/", latest_all)
+    with open(os.path.join(DOCS_DIR, "latest-all.xml"), "w", encoding="utf-8") as f:
+        f.write(latest_all_xml)
 
     save_json(STATE_PATH, state)
 
