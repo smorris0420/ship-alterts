@@ -3,12 +3,16 @@
 # - VesselFinder "Recent Port Calls" (JS-rendered via Playwright)
 # - PLUS geofencing for private islands using live coordinates parsed from CruiseMapper
 #
-# pip install playwright beautifulsoup4
-# python -m playwright install --with-deps chromium
+# Requirements:
+#   pip install playwright beautifulsoup4
+#   python -m playwright install --with-deps chromium
 
 import os, json, hashlib, sys, math, traceback, re
 from datetime import datetime, timezone
-from zoneinfo import ZoneInfo
+try:
+    from zoneinfo import ZoneInfo
+except Exception:
+    ZoneInfo = None  # we handle gracefully below
 from urllib.parse import urljoin, urlparse, urlunparse
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 from bs4 import BeautifulSoup, Tag, NavigableString
@@ -148,7 +152,7 @@ TZ_BY_PORT_PREFIX = {
     "GB": "Europe/London",
     "IE": "Europe/Dublin",
     "ES": "Europe/Madrid",
-    "PT": "Europe/Lisbon",   # use Atlantic/Madeira if you want precise Madeira
+    "PT": "Europe/Lisbon",
     "FR": "Europe/Paris",
     "IT": "Europe/Rome",
     "MT": "Europe/Malta",
@@ -173,33 +177,58 @@ TZ_BY_PORT_PREFIX = {
     "CO": "America/Bogota",
 }
 
-# ========== IO helpers ==========
+# ---------- Utilities ----------
+
+def zinfo(tz_name: str):
+    """Safe ZoneInfo constructor with fallback to America/New_York."""
+    try:
+        if ZoneInfo:
+            return ZoneInfo(tz_name)
+    except Exception:
+        pass
+    # fallback
+    return ZoneInfo("America/New_York") if ZoneInfo else None
+
+def zinfo_eastern():
+    return zinfo("America/New_York")
+
 def load_json(path, default):
-    if os.path.exists(path):
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+    try:
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                return json.load(f)
+    except Exception as e:
+        print(f"[warn] Failed to load {path}: {e}", file=sys.stderr)
     return default
 
 def save_json(path, data):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    try:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        print(f"[error] Failed to save {path}: {e}", file=sys.stderr)
 
 def load_history(slug: str):
     os.makedirs(HIST_DIR, exist_ok=True)
     path = os.path.join(HIST_DIR, f"{slug}.json")
-    if os.path.exists(path):
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+    try:
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                return json.load(f)
+    except Exception as e:
+        print(f"[warn] Failed to read history {path}: {e}", file=sys.stderr)
     return []
 
 def save_history(slug: str, items: list):
     os.makedirs(HIST_DIR, exist_ok=True)
     path = os.path.join(HIST_DIR, f"{slug}.json")
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(items, f, indent=2, ensure_ascii=False)
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(items, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        print(f"[error] Failed to write history {path}: {e}", file=sys.stderr)
 
-# ---- Sorted merge (by eventUtc DESC)
 def _event_key(it):
     try:
         return datetime.fromisoformat(it.get("eventUtc","")).timestamp()
@@ -209,9 +238,9 @@ def _event_key(it):
 def merge_items(existing: list, new_items: list, cap: int):
     by_guid = {}
     for it in existing:
-        by_guid[it["guid"]] = it
+        by_guid[it.get("guid","")] = it
     for it in new_items:
-        by_guid[it["guid"]] = it
+        by_guid[it.get("guid","")] = it
     merged = sorted(by_guid.values(), key=_event_key, reverse=True)
     return merged[:cap]
 
@@ -229,10 +258,10 @@ def build_rss(channel_title: str, channel_link: str, items: list) -> str:
     for it in items:
         xml_items.append(f"""
   <item>
-    <title>{rss_escape(it["title"])}</title>
+    <title>{rss_escape(it.get("title",""))}</title>
     <link>{rss_escape(it.get("link",""))}</link>
-    <guid isPermaLink="false">{rss_escape(it["guid"])}</guid>
-    <pubDate>{rss_escape(it["pubDate"])}</pubDate>
+    <guid isPermaLink="false">{rss_escape(it.get("guid",""))}</guid>
+    <pubDate>{rss_escape(it.get("pubDate",""))}</pubDate>
     <description>{rss_escape(it.get("description",""))}</description>
   </item>""")
     return f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -247,58 +276,58 @@ def build_rss(channel_title: str, channel_link: str, items: list) -> str:
 </rss>
 """
 
-# ========== Time handling ==========
+# ---------- Time handling ----------
+
 def _parse_vf_time_utc(raw_time: str):
-    if not raw_time: return None
+    if not raw_time:
+        return None
     raw = raw_time.strip()
     fmts = ["%b %d, %H:%M", "%b %d, %I:%M %p", "%b %d, %H:%M:%S"]
     for fmt in fmts:
         try:
             dt = datetime.strptime(raw, fmt)
-            dt = dt.replace(year=datetime.utcnow().year, tzinfo=timezone.utc)
-            return dt
+            return dt.replace(year=datetime.utcnow().year, tzinfo=timezone.utc)
         except Exception:
             continue
     return None
 
 def _port_zoneinfo_from_link(port_link: str):
     try:
+        # supports absolute or relative e.g. https://.../ports/BSNAS001 or /ports/BSNAS001
         m = re.search(r"/ports/([A-Z]{2})", port_link or "")
         if not m: return None
         cc = m.group(1)
         tz = TZ_BY_PORT_PREFIX.get(cc)
-        return ZoneInfo(tz) if tz else None
+        return zinfo(tz) if tz else None
     except Exception:
         return None
 
 def _port_zoneinfo_from_name(port_name: str):
     if not port_name:
-        return ZoneInfo("America/New_York")
+        return zinfo_eastern()
     name = port_name.lower()
     for needle, tz in PORT_TZ_MAP:
         if needle in name:
-            try:
-                return ZoneInfo(tz)
-            except Exception:
-                break
-    return ZoneInfo("America/New_York")
+            return zinfo(tz)
+    return zinfo_eastern()
 
 def format_times_for_notification(port_name: str, port_link: str, when_raw: str):
     dt_utc = _parse_vf_time_utc(when_raw)
     if not dt_utc:
-        return None, None, None  # (est_str, local_str, eventUtc_iso)
+        return None, None, None
 
-    eastern = ZoneInfo("America/New_York")
-    est_dt = dt_utc.astimezone(eastern)
-    est_str = est_dt.strftime("%b %d, %I:%M %p %Z")   # DST-aware EST/EDT
+    eastern = zinfo_eastern()
+    est_dt = dt_utc.astimezone(eastern) if eastern else dt_utc
+    est_str = est_dt.strftime("%b %d, %I:%M %p %Z")
 
     tz_local = _port_zoneinfo_from_link(port_link) or _port_zoneinfo_from_name(port_name)
-    local_dt = dt_utc.astimezone(tz_local)
+    local_dt = dt_utc.astimezone(tz_local) if tz_local else dt_utc
     local_str = local_dt.strftime("%b %d, %I:%M %p %Z")
 
     return est_str, local_str, dt_utc.isoformat()
 
-# ========== VesselFinder scraping (Recent Port Calls) ==========
+# ---------- VesselFinder scraping ----------
+
 def _find_root(soup: BeautifulSoup):
     for tag in soup.find_all(lambda t: isinstance(t, Tag) and t.name in ("h1","h2","h3","h4","div")):
         txt = (tag.get_text(strip=True) or "").lower()
@@ -386,23 +415,26 @@ def _rendered_html(url: str, p, mobile: bool):
 
 def _vf_events_for_ship(p, ship):
     base_url = ship["url"]
+    # Desktop
     try:
         html = _rendered_html(base_url, p, mobile=False)
         rows = _parse_vf(html)
         if rows: return rows, base_url
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"[warn] desktop VF render failed for {ship['name']}: {e}", file=sys.stderr)
+    # Mobile
     try:
         parsed = urlparse(base_url)
         mobile_url = urlunparse(parsed._replace(netloc="m.vesselfinder.com"))
         html = _rendered_html(mobile_url, p, mobile=True)
         rows = _parse_vf(html)
         if rows: return rows, mobile_url
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"[warn] mobile VF render failed for {ship['name']}: {e}", file=sys.stderr)
     return [], base_url
 
-# ========== CruiseMapper coordinate scrape ==========
+# ---------- CruiseMapper coordinate scrape ----------
+
 COORD_RE = re.compile(
     r'([+-]?\d+(?:\.\d+)?)\s*[°]?\s*([NS])?\s*[,/ ]\s*([+-]?\d+(?:\.\d+)?)\s*[°]?\s*([EW])?',
     re.IGNORECASE
@@ -465,3 +497,211 @@ def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
             continue
 
         if inside and not prev:
+            when_raw = now_utc.strftime("%b %d, %H:%M")
+            est_str, local_str, event_iso = format_times_for_notification(fence_name, "", when_raw)
+            title = f"{ship_name} Arrived at {fence_name} at {est_str or 'time TBD ET'}"
+            if local_str:
+                title += f". The local time to the port is {local_str}"
+            desc = f"{fence_name} Arrival (UTC) {now_utc.strftime('%b %d, %H:%M')} — Geofence"
+            guid = make_id(f"geo|{slug}|arr|{fence_name}|{now_utc.isoformat()}")
+            items.append({
+                "title": title,
+                "description": desc,
+                "link": "",
+                "guid": guid,
+                "pubDate": to_rfc2822(now_utc),
+                "eventUtc": event_iso or now_utc.isoformat(),
+                "shipSlug": slug,
+                "shipName": ship_name,
+            })
+
+        elif (not inside) and prev:
+            when_raw = now_utc.strftime("%b %d, %H:%M")
+            est_str, local_str, event_iso = format_times_for_notification(fence_name, "", when_raw)
+            title = f"{ship_name} Departed from {fence_name} at {est_str or 'time TBD ET'}"
+            if local_str:
+                title += f". The local time to the port is {local_str}"
+            desc = f"{fence_name} Departure (UTC) {now_utc.strftime('%b %d, %H:%M')} — Geofence"
+            guid = make_id(f"geo|{slug}|dep|{fence_name}|{now_utc.isoformat()}")
+            items.append({
+                "title": title,
+                "description": desc,
+                "link": "",
+                "guid": guid,
+                "pubDate": to_rfc2822(now_utc),
+                "eventUtc": event_iso or now_utc.isoformat(),
+                "shipSlug": slug,
+                "shipName": ship_name,
+            })
+
+        geo_state[key] = inside
+
+    return items
+
+# ---------- Main ----------
+
+def main():
+    os.makedirs(DOCS_DIR, exist_ok=True)
+
+    ships = load_json(SHIPS_PATH, [])
+    if not ships:
+        print(f"[error] ships.json not found or empty at {SHIPS_PATH}", file=sys.stderr)
+        return  # nothing to do
+
+    # name -> slug lookup (for latest-all fallback)
+    slug_by_name = {s["name"]: s["slug"] for s in ships}
+
+    state = load_json(STATE_PATH, {"seen": {}, "geo": {}})
+    if "seen" not in state: state["seen"] = {}
+    if "geo" not in state: state["geo"] = {}
+
+    all_items_new = []
+
+    with sync_playwright() as p:
+        for s in ships:
+            name = s.get("name"); slug = s.get("slug"); vf_url = s.get("url")
+            if not (name and slug and vf_url):
+                print(f"[warn] skipping malformed ship entry: {s}", file=sys.stderr)
+                continue
+
+            print(f"[info] Fetching VF for {name}: {vf_url}")
+
+            # 1) VesselFinder port-calls
+            try:
+                rows, used = _vf_events_for_ship(p, s)
+                print(f"[info] Parsed VF {name}: {len(rows)} events")
+            except Exception as e:
+                print(f"[error] VF parse failed for {name}: {e}\n{traceback.format_exc()}", file=sys.stderr)
+                rows = []
+                used = vf_url
+
+            ship_items_new = []
+            for r in rows:
+                try:
+                    guid_src = f"vf|{slug}|{r['event']}|{r['detail']}"
+                    guid = make_id(guid_src)
+                    if state["seen"].get(guid):
+                        continue
+
+                    est_str, local_str, event_iso = format_times_for_notification(
+                        r.get("port",""), r.get("link",""), r.get("when_raw","")
+                    )
+                    verb = "Arrived at" if r.get("event") == "Arrived" else "Departed from"
+
+                    if est_str and local_str:
+                        title = f"{name} {verb} {r['port']} at {est_str}. The local time to the port is {local_str}"
+                    elif est_str:
+                        title = f"{name} {verb} {r['port']} at {est_str}"
+                    else:
+                        title = f"{name} {verb} {r['port']} (time TBA)"
+
+                    base_desc = r.get("detail","").replace(" (UTC) -", " (UTC) (time not yet posted)")
+                    if est_str and local_str:
+                        desc = f"{base_desc} — ET: {est_str} | Local: {local_str}"
+                    elif est_str:
+                        desc = f"{base_desc} — ET: {est_str}"
+                    else:
+                        desc = base_desc
+
+                    link = urljoin(vf_url, r.get("link","")) if r.get("link") else vf_url
+
+                    item = {
+                        "title": title,
+                        "description": desc,
+                        "link": link,
+                        "guid": guid,
+                        "pubDate": to_rfc2822(datetime.utcnow()),
+                        "eventUtc": event_iso or datetime.utcnow().replace(tzinfo=timezone.utc).isoformat(),
+                        "shipSlug": slug,
+                        "shipName": name,
+                    }
+                    ship_items_new.append(item)
+                    all_items_new.append(item)
+                    state["seen"][guid] = True
+                except Exception as e:
+                    print(f"[warn] VF item build failed for {name}: {e}", file=sys.stderr)
+
+            # 2) Geofence (CruiseMapper coords)
+            cm_url = s.get("cm_url") or f"https://www.cruisemapper.com/ships/{_cm_slug(name)}"
+            try:
+                coords = _cm_fetch_coords(p, cm_url)
+                if coords:
+                    geo_items = geofence_events_from_coords(name, slug, coords, state)
+                    for it in geo_items:
+                        if state["seen"].get(it["guid"]):
+                            continue
+                        ship_items_new.append(it)
+                        all_items_new.append(it)
+                        state["seen"][it["guid"]] = True
+                else:
+                    print(f"[warn] No coords from CruiseMapper for {name} ({cm_url})")
+            except Exception as e:
+                print(f"[warn] Geofence failed for {name}: {e}", file=sys.stderr)
+
+            # ---- PER SHIP HISTORY (sorted by event time) ----
+            ship_hist = load_history(slug)
+            ship_hist = merge_items(ship_hist, ship_items_new, PER_SHIP_CAP)
+            save_history(slug, ship_hist)
+
+            # Write per-ship feeds
+            try:
+                ship_xml = build_rss(f"{name} - Arrivals & Departures", vf_url, ship_hist)
+                with open(os.path.join(DOCS_DIR, f"{slug}.xml"), "w", encoding="utf-8") as f:
+                    f.write(ship_xml)
+
+                latest_xml = build_rss(f"{name} - Latest Arrival/Departure", vf_url, ship_hist[:1])
+                with open(os.path.join(DOCS_DIR, f"{slug}-latest.xml"), "w", encoding="utf-8") as f:
+                    f.write(latest_xml)
+            except Exception as e:
+                print(f"[error] Writing ship feeds failed for {name}: {e}", file=sys.stderr)
+
+    # ---- COMBINED HISTORY (sorted by event time) ----
+    all_hist = load_history("all")
+    all_hist = merge_items(all_hist, all_items_new, ALL_CAP)
+    save_history("all", all_hist)
+
+    try:
+        all_xml = build_rss("DCL Ships - Arrivals & Departures (All)", "https://github.com/", all_hist)
+        with open(os.path.join(DOCS_DIR, "all.xml"), "w", encoding="utf-8") as f:
+            f.write(all_xml)
+    except Exception as e:
+        print(f"[error] Writing all.xml failed: {e}", file=sys.stderr)
+
+    # ---- Latest one per ship (use shipSlug) ----
+    def _infer_slug_from_title(title: str) -> str:
+        for nm, sl in slug_by_name.items():
+            if title.startswith(nm):
+                return sl
+        cut = title.find(" Arrived")
+        if cut == -1:
+            cut = title.find(" Departed")
+        base = title[:cut] if cut != -1 else title
+        for nm, sl in slug_by_name.items():
+            if base.strip() == nm:
+                return sl
+        return base.strip()
+
+    latest_by_slug = {}
+    for it in all_hist:  # already sorted DESC by eventUtc
+        key = it.get("shipSlug")
+        if not key:
+            key = _infer_slug_from_title(it.get("title",""))
+        if key and key not in latest_by_slug:
+            latest_by_slug[key] = it
+
+    latest_all = list(latest_by_slug.values())
+    try:
+        latest_all_xml = build_rss("DCL Ships - Latest (One per Ship)", "https://github.com/", latest_all)
+        with open(os.path.join(DOCS_DIR, "latest-all.xml"), "w", encoding="utf-8") as f:
+            f.write(latest_all_xml)
+    except Exception as e:
+        print(f"[error] Writing latest-all.xml failed: {e}", file=sys.stderr)
+
+    save_json(STATE_PATH, state)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print(f"[fatal] {e}\n{traceback.format_exc()}", file=sys.stderr)
+        sys.exit(1)
