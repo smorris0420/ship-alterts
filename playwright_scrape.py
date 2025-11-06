@@ -9,7 +9,7 @@
 import os, json, hashlib, sys, math, traceback, re
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
-from urllib.parse import urljoin, urlparse, urlunparse, quote
+from urllib.parse import urljoin, urlparse, urlunparse
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 from bs4 import BeautifulSoup, Tag, NavigableString
 
@@ -24,7 +24,6 @@ PER_SHIP_CAP  = 50
 ALL_CAP       = 100
 
 # ---- Special geofences (center lat/lon + radius_km)
-# Coordinates are approximate and generous to catch anchorage/berth.
 SPECIAL_GEOFENCES = {
     "Disney's Castaway Cay": {
         "aliases": ["gorda cay", "castaway cay"],
@@ -38,7 +37,7 @@ SPECIAL_GEOFENCES = {
     }
 }
 
-# ---- Port timezone mapping (substring match, case-insensitive)
+# ---- Port timezone mapping (substring match, case-insensitive) - fallback
 PORT_TZ_MAP = [
     ("canaveral", "America/New_York"),
     ("everglades", "America/New_York"),
@@ -132,6 +131,48 @@ PORT_TZ_MAP = [
     ("victoria", "America/Vancouver"),
 ]
 
+# ---- VF port link country prefix → IANA tz (primary)
+TZ_BY_PORT_PREFIX = {
+    # Americas
+    "US": "America/New_York",
+    "CA": "America/Vancouver",
+    "MX": "America/Cancun",
+    "PR": "America/Puerto_Rico",
+    "JM": "America/Jamaica",
+    "BS": "America/Nassau",
+    "KY": "America/Cayman",
+    "AW": "America/Aruba",
+    "CW": "America/Curacao",
+    "VG": "America/Tortola",
+    # Europe
+    "GB": "Europe/London",
+    "IE": "Europe/Dublin",
+    "ES": "Europe/Madrid",
+    "PT": "Europe/Lisbon",   # use Atlantic/Madeira if you want precise Madeira
+    "FR": "Europe/Paris",
+    "IT": "Europe/Rome",
+    "MT": "Europe/Malta",
+    "GR": "Europe/Athens",
+    "HR": "Europe/Zagreb",
+    "NL": "Europe/Amsterdam",
+    "BE": "Europe/Brussels",
+    "DE": "Europe/Berlin",
+    "NO": "Europe/Oslo",
+    "DK": "Europe/Copenhagen",
+    "SE": "Europe/Stockholm",
+    "FI": "Europe/Helsinki",
+    "IS": "Atlantic/Reykjavik",
+    # Pacific / Oceania
+    "AU": "Australia/Sydney",
+    "NZ": "Pacific/Auckland",
+    "NC": "Pacific/Noumea",
+    "FJ": "Pacific/Fiji",
+    "AS": "Pacific/Pago_Pago",
+    # Latin America
+    "PA": "America/Panama",
+    "CO": "America/Bogota",
+}
+
 # ========== IO helpers ==========
 def load_json(path, default):
     if os.path.exists(path):
@@ -158,10 +199,20 @@ def save_history(slug: str, items: list):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(items, f, indent=2, ensure_ascii=False)
 
-# ✅ preserves history even when no new items
+# ---- Sorted merge (by eventUtc DESC)
+def _event_key(it):
+    try:
+        return datetime.fromisoformat(it.get("eventUtc","")).timestamp()
+    except Exception:
+        return 0.0
+
 def merge_items(existing: list, new_items: list, cap: int):
-    seen = {it["guid"] for it in new_items}
-    merged = list(new_items) + [it for it in existing if it["guid"] not in seen]
+    by_guid = {}
+    for it in existing:
+        by_guid[it["guid"]] = it
+    for it in new_items:
+        by_guid[it["guid"]] = it
+    merged = sorted(by_guid.values(), key=_event_key, reverse=True)
     return merged[:cap]
 
 def rss_escape(s: str) -> str:
@@ -200,17 +251,27 @@ def build_rss(channel_title: str, channel_link: str, items: list) -> str:
 def _parse_vf_time_utc(raw_time: str):
     if not raw_time: return None
     raw = raw_time.strip()
-    fmts = ["%b %d, %H:%M", "%b %d, %H:%M:%S"]
+    fmts = ["%b %d, %H:%M", "%b %d, %I:%M %p", "%b %d, %H:%M:%S"]
     for fmt in fmts:
         try:
             dt = datetime.strptime(raw, fmt)
             dt = dt.replace(year=datetime.utcnow().year, tzinfo=timezone.utc)
             return dt
-        except:
+        except Exception:
             continue
     return None
 
-def _port_zoneinfo(port_name: str):
+def _port_zoneinfo_from_link(port_link: str):
+    try:
+        m = re.search(r"/ports/([A-Z]{2})", port_link or "")
+        if not m: return None
+        cc = m.group(1)
+        tz = TZ_BY_PORT_PREFIX.get(cc)
+        return ZoneInfo(tz) if tz else None
+    except Exception:
+        return None
+
+def _port_zoneinfo_from_name(port_name: str):
     if not port_name:
         return ZoneInfo("America/New_York")
     name = port_name.lower()
@@ -218,21 +279,24 @@ def _port_zoneinfo(port_name: str):
         if needle in name:
             try:
                 return ZoneInfo(tz)
-            except:
+            except Exception:
                 break
     return ZoneInfo("America/New_York")
 
-def format_times_for_notification(port_name: str, when_raw: str):
+def format_times_for_notification(port_name: str, port_link: str, when_raw: str):
     dt_utc = _parse_vf_time_utc(when_raw)
     if not dt_utc:
-        return None, None
-    est = dt_utc.astimezone(ZoneInfo("America/New_York"))
-    est_str = est.strftime("%b %d, %I:%M %p EST")
-    local_tz = _port_zoneinfo(port_name)
-    local_dt = dt_utc.astimezone(local_tz)
-    tz_abbr = local_dt.tzname() or str(local_tz)
-    local_str = local_dt.strftime(f"%b %d, %I:%M %p {tz_abbr}")
-    return est_str, local_str
+        return None, None, None  # (est_str, local_str, eventUtc_iso)
+
+    eastern = ZoneInfo("America/New_York")
+    est_dt = dt_utc.astimezone(eastern)
+    est_str = est_dt.strftime("%b %d, %I:%M %p %Z")   # DST-aware EST/EDT
+
+    tz_local = _port_zoneinfo_from_link(port_link) or _port_zoneinfo_from_name(port_name)
+    local_dt = dt_utc.astimezone(tz_local)
+    local_str = local_dt.strftime("%b %d, %I:%M %p %Z")
+
+    return est_str, local_str, dt_utc.isoformat()
 
 # ========== VesselFinder scraping (Recent Port Calls) ==========
 def _find_root(soup: BeautifulSoup):
@@ -294,10 +358,10 @@ def _parse_vf(html: str):
         arr = value_after("arrival (utc)")
         dep = value_after("departure (utc)")
         if arr:
-            results.append({"event":"Arrival","port":port_name,"when_raw":arr,"link":port_link,
+            results.append({"event":"Arrived","port":port_name,"when_raw":arr,"link":port_link,
                             "detail":f"{port_name} Arrival (UTC) {arr}"})
         if dep:
-            results.append({"event":"Departure","port":port_name,"when_raw":dep,"link":port_link,
+            results.append({"event":"Departed","port":port_name,"when_raw":dep,"link":port_link,
                             "detail":f"{port_name} Departure (UTC) {dep}"})
     return results
 
@@ -339,20 +403,15 @@ def _vf_events_for_ship(p, ship):
     return [], base_url
 
 # ========== CruiseMapper coordinate scrape ==========
-# We’ll parse coordinates from the ship page (no login), e.g.
-# https://www.cruisemapper.com/ships/Disney-Destiny
 COORD_RE = re.compile(
     r'([+-]?\d+(?:\.\d+)?)\s*[°]?\s*([NS])?\s*[,/ ]\s*([+-]?\d+(?:\.\d+)?)\s*[°]?\s*([EW])?',
     re.IGNORECASE
 )
 
 def _cm_slug(name: str) -> str:
-    # Build a reasonable slug if "cm_url" not provided in ships.json
-    # "Disney Destiny" -> "Disney-Destiny"
     return "-".join(part for part in name.split())
 
 def _parse_coords(text: str):
-    # Accepts "26.08 N, 77.54 W" or "26.08,-77.54" etc.
     m = COORD_RE.search(text or "")
     if not m: return None
     lat, ns, lon, ew = m.groups()
@@ -373,14 +432,11 @@ def _cm_fetch_coords(p, cm_url: str):
     finally:
         ctx.close(); browser.close()
     soup = BeautifulSoup(html, "html.parser")
-
-    # Look for "Current position" or a coordinate-like string anywhere
     txt = soup.get_text(" ", strip=True)
     coords = _parse_coords(txt)
     return coords  # (lat, lon) or None
 
 def haversine_km(a, b):
-    # distance between two (lat, lon) pairs
     R = 6371.0
     lat1, lon1 = math.radians(a[0]), math.radians(a[1])
     lat2, lon2 = math.radians(b[0]), math.radians(b[1])
@@ -389,17 +445,12 @@ def haversine_km(a, b):
     return 2*R*math.asin(math.sqrt(h))
 
 def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
-    """
-    Given (lat,lon) and our geofences, produce arrival/departure events by
-    detecting transitions (outside->inside = Arrived, inside->outside = Departed).
-    We keep per-ship per-fence "inside" state in state_seen['geo'][slug][fence_key].
-    """
     items = []
     if coords is None:
         return items
 
     geo_state = state_seen.setdefault("geo", {}).setdefault(slug, {})
-    now_utc = datetime.utcnow()
+    now_utc = datetime.utcnow().replace(tzinfo=timezone.utc)
 
     for fence_name, info in SPECIAL_GEOFENCES.items():
         center = info["center"]
@@ -408,45 +459,47 @@ def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
         inside = dist <= radius
         key = fence_name
         prev = geo_state.get(key)
-        # Transition detection
+
         if prev is None:
-            # initialize but don't emit an event the very first time
             geo_state[key] = inside
             continue
+
         if inside and not prev:
             # Arrived
-            when_raw = now_utc.strftime("%b %d, %H:%M")  # as UTC string
-            title_port = fence_name
-            est_str, local_str = format_times_for_notification(title_port, when_raw)
-            title = f"{ship_name} Arrived at {title_port} at {est_str or 'time TBD EST'}"
-            if local_str:
-                title += f". The local time to the port is {local_str}"
-            desc = f"{title_port} Arrival (UTC) {now_utc.strftime('%b %d, %H:%M')} — Geofence"
-            guid = make_id(f"geo|{slug}|arr|{title_port}|{now_utc.isoformat()}")
-            items.append({
-                "title": title,
-                "description": desc,
-                "link": "",  # no specific link
-                "guid": guid,
-                "pubDate": to_rfc2822(now_utc)
-            })
-        elif (not inside) and prev:
-            # Departed
             when_raw = now_utc.strftime("%b %d, %H:%M")
-            title_port = fence_name
-            est_str, local_str = format_times_for_notification(title_port, when_raw)
-            title = f"{ship_name} Departed from {title_port} at {est_str or 'time TBD EST'}"
+            est_str, local_str, event_iso = format_times_for_notification(fence_name, "", when_raw)
+            title = f"{ship_name} Arrived at {fence_name} at {est_str or 'time TBD ET'}"
             if local_str:
                 title += f". The local time to the port is {local_str}"
-            desc = f"{title_port} Departure (UTC) {now_utc.strftime('%b %d, %H:%M')} — Geofence"
-            guid = make_id(f"geo|{slug}|dep|{title_port}|{now_utc.isoformat()}")
+            desc = f"{fence_name} Arrival (UTC) {now_utc.strftime('%b %d, %H:%M')} — Geofence"
+            guid = make_id(f"geo|{slug}|arr|{fence_name}|{now_utc.isoformat()}")
             items.append({
                 "title": title,
                 "description": desc,
                 "link": "",
                 "guid": guid,
-                "pubDate": to_rfc2822(now_utc)
+                "pubDate": to_rfc2822(now_utc),
+                "eventUtc": event_iso or now_utc.isoformat()
             })
+
+        elif (not inside) and prev:
+            # Departed
+            when_raw = now_utc.strftime("%b %d, %H:%M")
+            est_str, local_str, event_iso = format_times_for_notification(fence_name, "", when_raw)
+            title = f"{ship_name} Departed from {fence_name} at {est_str or 'time TBD ET'}"
+            if local_str:
+                title += f". The local time to the port is {local_str}"
+            desc = f"{fence_name} Departure (UTC) {now_utc.strftime('%b %d, %H:%M')} — Geofence"
+            guid = make_id(f"geo|{slug}|dep|{fence_name}|{now_utc.isoformat()}")
+            items.append({
+                "title": title,
+                "description": desc,
+                "link": "",
+                "guid": guid,
+                "pubDate": to_rfc2822(now_utc),
+                "eventUtc": event_iso or now_utc.isoformat()
+            })
+
         geo_state[key] = inside
 
     return items
@@ -462,6 +515,7 @@ def main():
         for s in ships:
             name = s["name"]; slug = s["slug"]; vf_url = s["url"]
             print(f"[info] Fetching VF for {name}: {vf_url}")
+
             # 1) VesselFinder port-calls
             try:
                 rows, used = _vf_events_for_ship(p, s)
@@ -469,6 +523,7 @@ def main():
             except Exception as e:
                 print(f"[error] VF parse failed for {name}: {e}\n{traceback.format_exc()}", file=sys.stderr)
                 rows = []
+                used = vf_url
 
             ship_items_new = []
             for r in rows:
@@ -477,44 +532,44 @@ def main():
                 if state["seen"].get(guid):
                     continue
 
-                est_str, local_str = format_times_for_notification(r["port"], r["when_raw"])
-                verb = "Arrived at" if r["event"] == "Arrival" else "Departed from"
+                est_str, local_str, event_iso = format_times_for_notification(r["port"], r.get("link",""), r["when_raw"])
+                verb = "Arrived at" if r["event"] == "Arrived" else "Departed from"
 
                 if est_str and local_str:
                     title = f"{name} {verb} {r['port']} at {est_str}. The local time to the port is {local_str}"
                 elif est_str:
                     title = f"{name} {verb} {r['port']} at {est_str}"
                 else:
-                    title = f"{name} — {r['event']} — {r['port']}"
+                    title = f"{name} {verb} {r['port']} (time TBA)"
 
                 base_desc = r["detail"].replace(" (UTC) -", " (UTC) (time not yet posted)")
                 if est_str and local_str:
-                    desc = f"{base_desc} — Local: {local_str}"
+                    desc = f"{base_desc} — ET: {est_str} | Local: {local_str}"
                 elif est_str:
-                    desc = f"{base_desc} — Local (EST): {est_str}"
+                    desc = f"{base_desc} — ET: {est_str}"
                 else:
                     desc = base_desc
 
-                link = urljoin(vf_url, r["link"]) if r["link"] else vf_url
+                link = urljoin(vf_url, r.get("link","")) if r.get("link") else vf_url
 
                 item = {
                     "title": title,
                     "description": desc,
                     "link": link,
                     "guid": guid,
-                    "pubDate": to_rfc2822(datetime.utcnow())
+                    "pubDate": to_rfc2822(datetime.utcnow()),
+                    "eventUtc": event_iso or datetime.utcnow().replace(tzinfo=timezone.utc).isoformat()
                 }
                 ship_items_new.append(item)
                 all_items_new.append(item)
                 state["seen"][guid] = True
 
             # 2) Geofence (CruiseMapper coords)
-            cm_url = s.get("cm_url") or f"https://www.cruisemapper.com/ships/{_cm_slug(name)}"
+            cm_url = s.get("cm_url") or f"https://www.cruisemapper.com/ships/{'-'.join(name.split())}"
             try:
                 coords = _cm_fetch_coords(p, cm_url)
                 if coords:
                     geo_items = geofence_events_from_coords(name, slug, coords, state)
-                    # Deduplicate vs state['seen'] so we don't double alert same geo guid
                     for it in geo_items:
                         if state["seen"].get(it["guid"]):
                             continue
@@ -526,12 +581,12 @@ def main():
             except Exception as e:
                 print(f"[warn] Geofence failed for {name}: {e}")
 
-            # ---- PER SHIP HISTORY ----
+            # ---- PER SHIP HISTORY (sorted by event time) ----
             ship_hist = load_history(slug)
             ship_hist = merge_items(ship_hist, ship_items_new, PER_SHIP_CAP)
             save_history(slug, ship_hist)
 
-            # Write per ship feeds
+            # Write per-ship feeds
             ship_xml = build_rss(f"{name} - Arrivals & Departures", vf_url, ship_hist)
             with open(os.path.join(DOCS_DIR, f"{slug}.xml"), "w", encoding="utf-8") as f:
                 f.write(ship_xml)
@@ -540,7 +595,7 @@ def main():
             with open(os.path.join(DOCS_DIR, f"{slug}-latest.xml"), "w", encoding="utf-8") as f:
                 f.write(latest_xml)
 
-    # ---- COMBINED HISTORY ----
+    # ---- COMBINED HISTORY (sorted by event time) ----
     all_hist = load_history("all")
     all_hist = merge_items(all_hist, all_items_new, ALL_CAP)
     save_history("all", all_hist)
@@ -549,15 +604,14 @@ def main():
     with open(os.path.join(DOCS_DIR, "all.xml"), "w", encoding="utf-8") as f:
         f.write(all_xml)
 
+    # Latest one per ship (all_hist already sorted DESC; first seen wins)
     latest_by_ship = {}
     for it in all_hist:
         t = it["title"]
-        for sep in [" Arrived", " Departed", " — "]:
-            if sep in t:
-                ship_name = t.split(sep, 1)[0]
-                break
-        else:
-            ship_name = t
+        cut = t.find(" Arrived")
+        if cut == -1:
+            cut = t.find(" Departed")
+        ship_name = t[:cut] if cut != -1 else t
         if ship_name not in latest_by_ship:
             latest_by_ship[ship_name] = it
 
