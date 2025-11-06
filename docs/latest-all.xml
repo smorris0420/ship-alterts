@@ -4,7 +4,7 @@
   <title>DCL Ships - Latest (One per Ship)</title>
   <link>https://github.com/</link>
   <description>DCL Ships - Latest (One per Ship) - Auto-generated</description>
-  <lastBuildDate>Thu, 06 Nov 2025 22:27:26 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 06 Nov 2025 22:28:42 GMT</lastBuildDate>
   
   <item>
     <title>Disney Dream Departed from Gorda Cay, Bahamas at Nov 06, 05:06 PM EST. The local time to the port is Nov 06, 05:06 PM EST</title>
@@ -42,6 +42,13 @@
     <description>St Johns, Antigua &amp; Barbuda Departure (UTC) Nov 5, 22:12 — ET: Nov 05, 05:12 PM EST | Local: Nov 05, 06:12 PM AST</description>
   </item>
   <item>
+    <title>Disney Wish Departed from Nassau, Bahamas at Nov 04, 05:55 PM EST. The local time to the port is Nov 04, 05:55 PM EST</title>
+    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+    <guid isPermaLink="false">fb4d3b2ef1f218de7e415a2cedec536428bb2b92</guid>
+    <pubDate>Thu, 06 Nov 2025 22:28:25 GMT</pubDate>
+    <description>Nassau, Bahamas Departure (UTC) Nov 4, 22:55 — ET: Nov 04, 05:55 PM EST | Local: Nov 04, 05:55 PM EST</description>
+  </item>
+  <item>
     <title>Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST</title>
     <link>https://www.vesselfinder.com/ports/KYGEC001</link>
     <guid isPermaLink="false">d578ecaa7f61da0def66269db3b09b1e32d816c8</guid>
@@ -54,13 +61,6 @@
     <guid isPermaLink="false">ea6f90adfaacef92a053a7ab02c61e67362f9edf</guid>
     <pubDate>Thu, 06 Nov 2025 22:00:28 GMT</pubDate>
     <description>Bremerhaven, Germany Departure (UTC) Sep 10, 23:10 — ET: Sep 10, 07:10 PM EDT | Local: Sep 11, 01:10 AM CEST</description>
-  </item>
-  <item>
-    <title>Disney Wish Arrived at Nassau, Bahamas at Nov 04, 08:38 AM EST. The local time to the port is Nov 04, 08:38 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">f8a1f99aa55415cfdb8e84487368a16da022ccd5</guid>
-    <pubDate>Wed, 05 Nov 2025 14:24:26 GMT</pubDate>
-    <description>Nassau, Bahamas Arrival (UTC) Nov 4, 13:38 — Local: Nov 04, 08:38 AM EST</description>
   </item>
 </channel>
 </rss>

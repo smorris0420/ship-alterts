@@ -84,6 +84,26 @@
     "eventUtc": "2025-11-05T05:00:00+00:00"
   },
   {
+    "title": "Disney Wish Departed from Nassau, Bahamas at Nov 04, 05:55 PM EST. The local time to the port is Nov 04, 05:55 PM EST",
+    "description": "Nassau, Bahamas Departure (UTC) Nov 4, 22:55 — ET: Nov 04, 05:55 PM EST | Local: Nov 04, 05:55 PM EST",
+    "link": "https://www.vesselfinder.com/ports/BSNAS001",
+    "guid": "fb4d3b2ef1f218de7e415a2cedec536428bb2b92",
+    "pubDate": "Thu, 06 Nov 2025 22:28:25 GMT",
+    "eventUtc": "2025-11-04T22:55:00+00:00",
+    "shipSlug": "disney-wish",
+    "shipName": "Disney Wish"
+  },
+  {
+    "title": "Disney Wish Arrived at Nassau, Bahamas at Nov 04, 08:38 AM EST. The local time to the port is Nov 04, 08:38 AM EST",
+    "description": "Nassau, Bahamas Arrival (UTC) Nov 4, 13:38 — ET: Nov 04, 08:38 AM EST | Local: Nov 04, 08:38 AM EST",
+    "link": "https://www.vesselfinder.com/ports/BSNAS001",
+    "guid": "d7e0c0704231fe905c5548b91fcfd1e7e7e434f5",
+    "pubDate": "Thu, 06 Nov 2025 22:28:25 GMT",
+    "eventUtc": "2025-11-04T13:38:00+00:00",
+    "shipSlug": "disney-wish",
+    "shipName": "Disney Wish"
+  },
+  {
     "title": "Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST",
     "description": "Georgetown, Grand Cayman Anch., Cayman Islands Departure (UTC) Nov 3, 22:05 — ET: Nov 03, 05:05 PM EST | Local: Nov 03, 05:05 PM EST",
     "link": "https://www.vesselfinder.com/ports/KYGEC001",
