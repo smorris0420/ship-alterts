@@ -1,5 +1,15 @@
 [
   {
+    "title": "Disney Dream Departed from Gorda Cay, Bahamas at Nov 06, 05:06 PM EST. The local time to the port is Nov 06, 05:06 PM EST",
+    "description": "Gorda Cay, Bahamas Departure (UTC) Nov 6, 22:06 — ET: Nov 06, 05:06 PM EST | Local: Nov 06, 05:06 PM EST",
+    "link": "https://www.vesselfinder.com/ports/BSGOC001",
+    "guid": "d6381e5cf3321ffc172b064e9e1ce7d116ea927c",
+    "pubDate": "Thu, 06 Nov 2025 22:21:20 GMT",
+    "eventUtc": "2025-11-06T22:06:00+00:00",
+    "shipSlug": "disney-dream",
+    "shipName": "Disney Dream"
+  },
+  {
     "title": "Disney Destiny Departed from Nassau, Bahamas at Nov 06, 04:10 PM EST. The local time to the port is Nov 06, 04:10 PM EST",
     "description": "Nassau, Bahamas Departure (UTC) Nov 6, 21:10 — ET: Nov 06, 04:10 PM EST | Local: Nov 06, 04:10 PM EST",
     "link": "https://www.vesselfinder.com/ports/BSNAS001",
@@ -32,6 +42,16 @@
     "eventUtc": "2025-11-06T15:42:00+00:00"
   },
   {
+    "title": "Disney Dream Arrived at Gorda Cay, Bahamas at Nov 06, 07:31 AM EST. The local time to the port is Nov 06, 07:31 AM EST",
+    "description": "Gorda Cay, Bahamas Arrival (UTC) Nov 6, 12:31 — ET: Nov 06, 07:31 AM EST | Local: Nov 06, 07:31 AM EST",
+    "link": "https://www.vesselfinder.com/ports/BSGOC001",
+    "guid": "d6f8aaaeb57e1e312675c4524f58f65cc53d54f7",
+    "pubDate": "Thu, 06 Nov 2025 22:21:20 GMT",
+    "eventUtc": "2025-11-06T12:31:00+00:00",
+    "shipSlug": "disney-dream",
+    "shipName": "Disney Dream"
+  },
+  {
     "title": "Disney Magic Departed from St Johns, Antigua & Barbuda at Nov 05, 05:12 PM EST. The local time to the port is Nov 05, 06:12 PM AST",
     "description": "St Johns, Antigua & Barbuda Departure (UTC) Nov 5, 22:12 — ET: Nov 05, 05:12 PM EST | Local: Nov 05, 06:12 PM AST",
     "link": "https://www.vesselfinder.com/ports/AGSJO001",
@@ -62,6 +82,26 @@
     "guid": "843679d9d6a27157e97d152e059920e99c91b37e",
     "pubDate": "Thu, 06 Nov 2025 22:00:17 GMT",
     "eventUtc": "2025-11-05T05:00:00+00:00"
+  },
+  {
+    "title": "Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST",
+    "description": "Georgetown, Grand Cayman Anch., Cayman Islands Departure (UTC) Nov 3, 22:05 — ET: Nov 03, 05:05 PM EST | Local: Nov 03, 05:05 PM EST",
+    "link": "https://www.vesselfinder.com/ports/KYGEC001",
+    "guid": "d578ecaa7f61da0def66269db3b09b1e32d816c8",
+    "pubDate": "Thu, 06 Nov 2025 22:21:14 GMT",
+    "eventUtc": "2025-11-03T22:05:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure"
+  },
+  {
+    "title": "Disney Treasure Arrived at Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 07:31 AM EST. The local time to the port is Nov 03, 07:31 AM EST",
+    "description": "Georgetown, Grand Cayman Anch., Cayman Islands Arrival (UTC) Nov 3, 12:31 — ET: Nov 03, 07:31 AM EST | Local: Nov 03, 07:31 AM EST",
+    "link": "https://www.vesselfinder.com/ports/KYGEC001",
+    "guid": "1a2d14cb365b1e0923e8caad890d05a9cc658b38",
+    "pubDate": "Thu, 06 Nov 2025 22:21:14 GMT",
+    "eventUtc": "2025-11-03T12:31:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure"
   },
   {
     "title": "Disney Adventure Departed from Bremerhaven, Germany at Sep 10, 07:10 PM EDT. The local time to the port is Sep 11, 01:10 AM CEST",
