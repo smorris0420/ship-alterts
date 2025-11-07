@@ -284,7 +284,7 @@ def _ensure_stylesheet_dcl():
         xsl_path = os.path.join(DOCS_DIR, STYLESHEET_NAME)
         if os.path.exists(xsl_path):
             return
-        xsl = """<?xml version="1.0" encoding="UTF-8"?>
+                xsl = """<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:template match="/">
@@ -295,47 +295,100 @@ def _ensure_stylesheet_dcl():
         <title><xsl:value-of select="rss/channel/title"/></title>
         <style>
           :root{
-            --dcl-navy:#16578A;
-            --dcl-gold:#C9A227;
-            --ink:#1b1b1b;
+            --dcl-navy:#16578A;     /* page background + brand color */
+            --dcl-gold:#C9A227;     /* trim accent */
+            --ink:#1b1b1b;          /* body text on white */
             --muted:#6b6f76;
-            --bg:#f5f7fa;
-            --card:#ffffff;
+            --bg: #16578A;          /* page background (blue) */
+            --card:#ffffff;         /* card background (white) */
             --line:#e9edf2;
             --pill:#eef4fb;
           }
           *{box-sizing:border-box}
-          body{margin:0;background:var(--bg);color:var(--ink);
-               font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;}
-          .bar{background:var(--dcl-navy);color:#fff;padding:16px 20px;border-bottom:4px solid var(--dcl-gold);}
-          .brand{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto;}
+          body{
+            margin:0;
+            background:var(--bg);       /* BLUE page behind cards */
+            color:var(--ink);
+            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;
+          }
+
+          /* Header bar is WHITE now */
+          .bar{
+            background:#ffffff;
+            color:var(--dcl-navy);
+            padding:14px 18px;
+            border-bottom:4px solid var(--dcl-gold);
+          }
+
+          /* Stack logo on first line, title on second line */
+          .brand{
+            display:flex;
+            flex-direction:column;      /* key change: stack */
+            align-items:flex-start;
+            gap:6px;
+            max-width:1100px;
+            margin:0 auto;
+          }
           .logo-img{width:48px;height:auto;display:block}
-          .brand h1{margin:0;font-size:18px;font-weight:600}
-          .wrap{max-width:1100px;margin:20px auto;padding:0 16px}
-          .card{background:var(--card);border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.08);border:1px solid var(--line);}
-          .meta{padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px;}
-          .chip{background:var(--pill);color:var(--dcl-navy);border:1px solid #d7e5f6;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:600;}
-          table{width:100%;border-collapse:collapse;font-size:14px}
-          thead th{position:sticky;top:0;background:#fbfdff;z-index:1;text-align:left;padding:12px 14px;border-bottom:2px solid var(--line);color:#133c5e;font-weight:700;}
+          .brand h1{
+            margin:0;
+            font-size:18px;
+            line-height:1.2;
+            font-weight:700;
+            color:var(--dcl-navy);     /* Title in BLUE */
+          }
+
+          .wrap{max-width:1100px;margin:18px auto;padding:0 16px}
+          .card{
+            background:var(--card);
+            border-radius:10px;
+            box-shadow:0 6px 18px rgba(0,0,0,.10);
+            border:1px solid var(--line);
+          }
+          .meta{
+            padding:14px 16px;
+            display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+            border-bottom:1px solid var(--line);
+            color:var(--muted);font-size:12px;
+          }
+          .meta a{color:var(--dcl-navy);text-decoration:underline}
+          .chip{
+            background:var(--pill);color:var(--dcl-navy);
+            border:1px solid #d7e5f6;padding:4px 8px;border-radius:999px;
+            font-size:12px;font-weight:600;
+          }
+
+          table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
+          thead th{
+            position:sticky;top:0;background:#fbfdff;z-index:1;
+            text-align:left;padding:12px 14px;border-bottom:2px solid var(--line);
+            color:#133c5e;font-weight:700;
+          }
           tbody td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
           tbody tr:hover{background:#fbfdff}
-          .title a{color:var(--dcl-navy);text-decoration:none;font-weight:600}
+          .title a{color:var(--dcl-navy);text-decoration:none;font-weight:700}
           .title a:hover{text-decoration:underline}
           .guid{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--muted);font-size:12px}
           .desc{white-space:pre-wrap}
-          .badge{display:inline-block;padding:3px 8px;border-radius:6px;font-weight:700;font-size:12px;border:1px solid transparent;margin-right:8px;}
+
+          .badge{
+            display:inline-block;padding:3px 8px;border-radius:6px;
+            font-weight:700;font-size:12px;border:1px solid transparent;margin-right:8px;
+          }
           .arr{background:#e8f6ee;color:#11643a;border-color:#cfead9}
           .dep{background:#fff0f0;color:#8a1620;border-color:#ffd9de}
+
           @media (max-width:760px){
             thead{display:none}
-            tbody tr{display:block;border-bottom:8px solid var(--bg)}
+            tbody tr{display:block;border-bottom:8px solid #f0f4f8}
             tbody td{display:block;border:0;padding:8px 14px}
             tbody td::before{content:attr(data-label) " ";font-weight:600;color:var(--muted);display:block;margin-bottom:2px}
-            .meta{gap:8px}
+            .brand{gap:8px}
           }
         </style>
       </head>
       <body>
+        <!-- WHITE header bar with logo, then blue title on second line -->
         <div class="bar">
           <div class="brand">
             <img src="DCLDailySummary.png" alt="DCL Logo" class="logo-img"/>
@@ -343,6 +396,7 @@ def _ensure_stylesheet_dcl():
           </div>
         </div>
 
+        <!-- Cards sit on BLUE page background -->
         <div class="wrap">
           <div class="card">
             <div class="meta">
@@ -389,48 +443,6 @@ def _ensure_stylesheet_dcl():
     </html>
   </xsl:template>
 </xsl:stylesheet>
-"""
-        with open(xsl_path, "w", encoding="utf-8") as f:
-            f.write(xsl)
-    except Exception as e:
-        print(f"[warn] Could not write stylesheet: {e}", file=sys.stderr)
-
-def build_rss(channel_title: str, channel_link: str, items: list, stylesheet=None, use_cdata=None) -> str:
-    """Build RSS with optional CDATA and XSL stylesheet reference."""
-    if stylesheet is None:
-        stylesheet = STYLESHEET_NAME
-    if use_cdata is None:
-        use_cdata = USE_CDATA
-
-    xml_items = []
-    for it in items:
-        title = rss_escape(it.get("title",""))
-        link  = rss_escape(it.get("link",""))
-        guid  = rss_escape(it.get("guid",""))
-        pub   = rss_escape(it.get("pubDate",""))
-        desc  = it.get("description","")
-        desc_xml = _cdata(desc) if use_cdata else rss_escape(desc)
-
-        xml_items.append(f"""
-  <item>
-    <title>{title}</title>
-    <link>{link}</link>
-    <guid isPermaLink="false">{guid}</guid>
-    <pubDate>{pub}</pubDate>
-    <description>{desc_xml}</description>
-  </item>""")
-
-    pi = f'\n<?xml-stylesheet type="text/xsl" href="{stylesheet}"?>' if stylesheet else ""
-    xml = f"""<?xml version="1.0" encoding="UTF-8"?>{pi}
-<rss version="2.0">
-<channel>
-  <title>{rss_escape(channel_title)}</title>
-  <link>{rss_escape(channel_link)}</link>
-  <description>{rss_escape(channel_title)} - Auto-generated</description>
-  <lastBuildDate>{to_rfc2822(datetime.utcnow())}</lastBuildDate>
-  {''.join(xml_items)}
-</channel>
-</rss>
 """
     return xml
 
