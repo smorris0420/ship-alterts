@@ -45,7 +45,7 @@
             margin:0 auto;
           }
           .logo-img{
-            width:48px;height:auto;display:block;
+            width:96px;height:auto;display:block;
             margin:0 auto;            /* center the image */
           }
           .brand h1{
