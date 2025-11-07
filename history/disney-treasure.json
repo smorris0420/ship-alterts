@@ -1,5 +1,18 @@
 [
   {
+    "title": "Disney Treasure Departed from Gorda Cay, Bahamas (time TBA)",
+    "description": "Gorda Cay, Bahamas Departure (UTC) (time not yet posted)",
+    "link": "https://www.vesselfinder.com/ports/BSGOC001",
+    "guid": "9c738d8f5dc525d0ceef16575a95841ac6b88ad2",
+    "pubDate": "Fri, 07 Nov 2025 21:21:51 GMT",
+    "eventUtc": "2025-11-07T21:21:51.270859+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure",
+    "eventKind": "Departed",
+    "portName": "Gorda Cay, Bahamas",
+    "hasTime": true
+  },
+  {
     "title": "Disney Treasure Arrived at Disney's Castaway Cay at Nov 07, 07:32 AM EST. The local time to the port is Nov 07, 07:32 AM EST",
     "description": "Disney's Castaway Cay Arrival (UTC) Nov 7, 12:32 — ET: Nov 07, 07:32 AM EST | Local: Nov 07, 07:32 AM EST",
     "link": "https://www.vesselfinder.com/ports/BSGOC001",
@@ -8,6 +21,19 @@
     "eventUtc": "2025-11-07T12:32:00+00:00",
     "shipSlug": "disney-treasure",
     "shipName": "Disney Treasure"
+  },
+  {
+    "title": "Disney Treasure Arrived at Gorda Cay, Bahamas at Nov 07, 07:32 AM EST. The local time to the port is Nov 07, 07:32 AM EST",
+    "description": "Gorda Cay, Bahamas Arrival (UTC) Nov 7, 12:32 — ET: Nov 07, 07:32 AM EST | Local: Nov 07, 07:32 AM EST",
+    "link": "https://www.vesselfinder.com/ports/BSGOC001",
+    "guid": "b49d9d64ea0ee859d12087f0810c681279c3ff0f",
+    "pubDate": "Fri, 07 Nov 2025 21:21:51 GMT",
+    "eventUtc": "2025-11-07T12:32:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure",
+    "eventKind": "Arrived",
+    "portName": "Gorda Cay, Bahamas",
+    "hasTime": true
   },
   {
     "title": "Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST",

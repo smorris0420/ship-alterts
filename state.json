@@ -49,7 +49,17 @@
     "f2713946cfea8ea2e1eaa7ac9b2a53a1c4fc599e": true,
     "3ffab636122cf02ae6ff30b155912a87c3a3fcac": true,
     "69e0bf71d5ad3931ca6c191067a5b39d2b1b0d43": true,
-    "e62e65efa131ca4e94f8b6cd69e71eda41493530": true
+    "e62e65efa131ca4e94f8b6cd69e71eda41493530": true,
+    "b49d9d64ea0ee859d12087f0810c681279c3ff0f": true,
+    "9c738d8f5dc525d0ceef16575a95841ac6b88ad2": true,
+    "b248fdb1b3999dd37eb95a3d2898ba5731db0045": true,
+    "220f2d4585f1c592cc0610343972bb806d2cb05c": true
   },
-  "geo": {}
+  "geo": {},
+  "firstPub": {
+    "b49d9d64ea0ee859d12087f0810c681279c3ff0f": "Fri, 07 Nov 2025 21:21:51 GMT",
+    "9c738d8f5dc525d0ceef16575a95841ac6b88ad2": "Fri, 07 Nov 2025 21:21:51 GMT",
+    "b248fdb1b3999dd37eb95a3d2898ba5731db0045": "Fri, 07 Nov 2025 21:22:10 GMT",
+    "220f2d4585f1c592cc0610343972bb806d2cb05c": "Fri, 07 Nov 2025 21:22:10 GMT"
+  }
 }

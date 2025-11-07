@@ -5,13 +5,19 @@
     <title>Disney Magic - Arrivals &amp; Departures</title>
     <link>https://www.vesselfinder.com/vessels/details/9126807</link>
     <description>Disney Magic - Arrivals &amp; Departures - Auto-generated</description>
-    <lastBuildDate>Fri, 07 Nov 2025 21:16:41 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 07 Nov 2025 21:21:58 GMT</lastBuildDate>
     <item>
       <title>Disney Magic Departed from St Johns, Antigua &amp; Barbuda at Nov 05, 05:12 PM EST. The local time to the port is Nov 05, 06:12 PM AST</title>
       <link>https://www.vesselfinder.com/ports/AGSJO001</link>
       <guid isPermaLink="false">3a962657f9a74625be34bc7728b616284d2801d3</guid>
       <pubDate>Fri, 07 Nov 2025 17:13:19 GMT</pubDate>
       <description><![CDATA[St Johns, Antigua & Barbuda Departure (UTC) Nov 5, 22:12 — ET: Nov 05, 05:12 PM EST | Local: Nov 05, 06:12 PM AST]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-05T22:12:00+00:00</eventUtc>
+      <shipSlug>disney-magic</shipSlug>
+      <shipName>Disney Magic</shipName>
     </item>
     <item>
       <title>Disney Magic Departed from St Johns, Antigua &amp; Barbuda at Nov 05, 05:12 PM EST. The local time to the port is Nov 05, 06:12 PM AST</title>
@@ -19,6 +25,12 @@
       <guid isPermaLink="false">24111238c84e83e5436588ab28bbad90edb8a9ec</guid>
       <pubDate>Fri, 07 Nov 2025 18:39:59 GMT</pubDate>
       <description><![CDATA[St Johns, Antigua & Barbuda Departure (UTC) Nov 5, 22:12 — ET: Nov 05, 05:12 PM EST | Local: Nov 05, 06:12 PM AST]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-05T22:12:00+00:00</eventUtc>
+      <shipSlug>disney-magic</shipSlug>
+      <shipName>Disney Magic</shipName>
     </item>
     <item>
       <title>Disney Magic Departed from St Johns, Antigua &amp; Barbuda at Nov 05, 05:12 PM EST. The local time to the port is Nov 05, 06:12 PM AST</title>
@@ -26,6 +38,12 @@
       <guid isPermaLink="false">25c8d25e3bbea5788a369a32dc96393364f492dc</guid>
       <pubDate>Fri, 07 Nov 2025 21:16:40 GMT</pubDate>
       <description><![CDATA[St Johns, Antigua & Barbuda Departure (UTC) Nov 5, 22:12 — ET: Nov 05, 05:12 PM EST | Local: Nov 05, 06:12 PM AST]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-05T22:12:00+00:00</eventUtc>
+      <shipSlug>disney-magic</shipSlug>
+      <shipName>Disney Magic</shipName>
     </item>
     <item>
       <title>Disney Magic Arrived at St Johns, Antigua &amp; Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST</title>
@@ -33,6 +51,12 @@
       <guid isPermaLink="false">1456f1f419c7bfcd00e8f0fa39c412abb0795382</guid>
       <pubDate>Fri, 07 Nov 2025 17:13:19 GMT</pubDate>
       <description><![CDATA[St Johns, Antigua & Barbuda Arrival (UTC) Nov 5, 11:42 — ET: Nov 05, 06:42 AM EST | Local: Nov 05, 07:42 AM AST]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-05T11:42:00+00:00</eventUtc>
+      <shipSlug>disney-magic</shipSlug>
+      <shipName>Disney Magic</shipName>
     </item>
     <item>
       <title>Disney Magic Arrived at St Johns, Antigua &amp; Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST</title>
@@ -40,6 +64,12 @@
       <guid isPermaLink="false">849a1b6c7b27448102dca4d71462bb12cb9a5614</guid>
       <pubDate>Fri, 07 Nov 2025 18:39:59 GMT</pubDate>
       <description><![CDATA[St Johns, Antigua & Barbuda Arrival (UTC) Nov 5, 11:42 — ET: Nov 05, 06:42 AM EST | Local: Nov 05, 07:42 AM AST]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-05T11:42:00+00:00</eventUtc>
+      <shipSlug>disney-magic</shipSlug>
+      <shipName>Disney Magic</shipName>
     </item>
     <item>
       <title>Disney Magic Arrived at St Johns, Antigua &amp; Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST</title>
@@ -47,6 +77,12 @@
       <guid isPermaLink="false">2fb789aa64cc0a2c0491ea03644afbcdfb975e02</guid>
       <pubDate>Fri, 07 Nov 2025 21:16:40 GMT</pubDate>
       <description><![CDATA[St Johns, Antigua & Barbuda Arrival (UTC) Nov 5, 11:42 — ET: Nov 05, 06:42 AM EST | Local: Nov 05, 07:42 AM AST]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-05T11:42:00+00:00</eventUtc>
+      <shipSlug>disney-magic</shipSlug>
+      <shipName>Disney Magic</shipName>
     </item>
   </channel>
 </rss>

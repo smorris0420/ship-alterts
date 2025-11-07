@@ -5,13 +5,19 @@
     <title>Disney Wonder - Arrivals &amp; Departures</title>
     <link>https://www.vesselfinder.com/vessels/details/9126819</link>
     <description>Disney Wonder - Arrivals &amp; Departures - Auto-generated</description>
-    <lastBuildDate>Fri, 07 Nov 2025 21:16:45 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 07 Nov 2025 21:22:05 GMT</lastBuildDate>
     <item>
       <title>Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT</title>
       <link>https://www.vesselfinder.com/ports/AUMEL001</link>
       <guid isPermaLink="false">d0e4ecdd1f20971a98e96d592e2d08541fab4bf4</guid>
       <pubDate>Fri, 07 Nov 2025 17:00:30 GMT</pubDate>
       <description><![CDATA[Melbourne, Australia Departure (UTC) Nov 6, 15:57 — ET: Nov 06, 10:57 AM EST | Local: Nov 07, 02:57 AM AEDT]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-06T15:57:00+00:00</eventUtc>
+      <shipSlug>disney-wonder</shipSlug>
+      <shipName>Disney Wonder</shipName>
     </item>
     <item>
       <title>Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT</title>
@@ -19,6 +25,12 @@
       <guid isPermaLink="false">122dacb2a37fe402f04a5dfa20ddc6d0fdc18589</guid>
       <pubDate>Fri, 07 Nov 2025 18:25:04 GMT</pubDate>
       <description><![CDATA[Melbourne, Australia Departure (UTC) Nov 6, 15:57 — ET: Nov 06, 10:57 AM EST | Local: Nov 07, 02:57 AM AEDT]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-06T15:57:00+00:00</eventUtc>
+      <shipSlug>disney-wonder</shipSlug>
+      <shipName>Disney Wonder</shipName>
     </item>
     <item>
       <title>Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT</title>
@@ -26,6 +38,12 @@
       <guid isPermaLink="false">c2e023065219ca1373a1776d90c19652ad1d215f</guid>
       <pubDate>Fri, 07 Nov 2025 21:16:44 GMT</pubDate>
       <description><![CDATA[Melbourne, Australia Departure (UTC) Nov 6, 15:57 — ET: Nov 06, 10:57 AM EST | Local: Nov 07, 02:57 AM AEDT]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-06T15:57:00+00:00</eventUtc>
+      <shipSlug>disney-wonder</shipSlug>
+      <shipName>Disney Wonder</shipName>
     </item>
     <item>
       <title>Disney Wonder Arrived at Melbourne, Australia at Nov 05, 01:54 PM EST. The local time to the port is Nov 06, 05:54 AM AEDT</title>
@@ -33,6 +51,12 @@
       <guid isPermaLink="false">f7302d9f5b0459e3a5b798f9eb70912461e5a34d</guid>
       <pubDate>Fri, 07 Nov 2025 17:00:30 GMT</pubDate>
       <description><![CDATA[Melbourne, Australia Arrival (UTC) Nov 5, 18:54 — ET: Nov 05, 01:54 PM EST | Local: Nov 06, 05:54 AM AEDT]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-05T18:54:00+00:00</eventUtc>
+      <shipSlug>disney-wonder</shipSlug>
+      <shipName>Disney Wonder</shipName>
     </item>
     <item>
       <title>Disney Wonder Arrived at Melbourne, Australia at Nov 05, 01:54 PM EST. The local time to the port is Nov 06, 05:54 AM AEDT</title>
@@ -40,6 +64,12 @@
       <guid isPermaLink="false">ff28e1a5acc5af253044eeeffdacfcf4349f103c</guid>
       <pubDate>Fri, 07 Nov 2025 18:25:04 GMT</pubDate>
       <description><![CDATA[Melbourne, Australia Arrival (UTC) Nov 5, 18:54 — ET: Nov 05, 01:54 PM EST | Local: Nov 06, 05:54 AM AEDT]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-05T18:54:00+00:00</eventUtc>
+      <shipSlug>disney-wonder</shipSlug>
+      <shipName>Disney Wonder</shipName>
     </item>
     <item>
       <title>Disney Wonder Arrived at Melbourne, Australia at Nov 05, 01:54 PM EST. The local time to the port is Nov 06, 05:54 AM AEDT</title>
@@ -47,6 +77,12 @@
       <guid isPermaLink="false">809ab7996074ede55888e0c6acd12f2377b7c6bc</guid>
       <pubDate>Fri, 07 Nov 2025 21:16:44 GMT</pubDate>
       <description><![CDATA[Melbourne, Australia Arrival (UTC) Nov 5, 18:54 — ET: Nov 05, 01:54 PM EST | Local: Nov 06, 05:54 AM AEDT]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-05T18:54:00+00:00</eventUtc>
+      <shipSlug>disney-wonder</shipSlug>
+      <shipName>Disney Wonder</shipName>
     </item>
   </channel>
 </rss>
