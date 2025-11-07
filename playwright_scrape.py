@@ -2,6 +2,7 @@
 # Hybrid scraper:
 # - VesselFinder "Recent Port Calls" (JS-rendered via Playwright)
 # - PLUS geofencing for private islands using live coordinates parsed from CruiseMapper
+# - NEW: Port-page fallback (prevents missed arrivals/departures and dedupes later ship-page updates)
 #
 # Requirements:
 #   pip install playwright beautifulsoup4
@@ -39,7 +40,7 @@ SPECIAL_GEOFENCES = {
         "center": (24.8350, -76.2800),
         "radius_km": 5.0
     },
-    # NEW: Port Canaveral geofence (covers CT8/CT10 berths and channel approach)
+    # Port Canaveral geofence (covers CT8/CT10 berths and channel approach)
     "Port Canaveral, Florida": {
         "aliases": ["port canaveral", "cape canaveral", "canaveral"],
         "center": (28.4105, -80.6190),
@@ -258,6 +259,10 @@ def to_rfc2822(dt: datetime) -> str:
 def make_id(s: str) -> str:
     return hashlib.sha1((s or "").encode("utf-8")).hexdigest()
 
+# ---- Canonical GUID (prevents duplicates across sources) ----
+def canonical_guid(ship_slug: str, event_kind: str, event_iso_utc: str) -> str:
+    return make_id(f"{ship_slug}|{event_kind}|{event_iso_utc}")
+
 # ---- XML output formatting knobs + helpers ----
 PRETTY_XML = True
 USE_CDATA  = True
@@ -310,86 +315,39 @@ def _ensure_stylesheet_dcl():
           *{box-sizing:border-box}
           body{
             margin:0;
-            background:var(--bg);       /* BLUE page behind cards */
+            background:var(--bg);
             color:var(--ink);
             font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;
           }
-
-          /* White header bar */
-          .bar{
-            background:#ffffff;
-            color:var(--dcl-navy);
-            padding:14px 18px;
-            border-bottom:4px solid var(--dcl-gold);
-          }
-
-          /* Center logo + title (stacked) */
-          .brand{
-            display:flex;
-            flex-direction:column;
-            align-items:center;       /* centered */
-            text-align:center;        /* centered text */
-            gap:6px;
-            max-width:1100px;
-            margin:0 auto;
-          }
-          .logo-img{
-            width:325px;height:auto;display:block;
-            margin:0 auto;            /* center the image */
-          }
-          .brand h1{
-            margin:0;
-            font-size:18px;
-            line-height:1.2;
-            font-weight:700;
-            color:var(--dcl-navy);    /* title in blue */
-          }
+          .bar{ background:#ffffff; color:var(--dcl-navy); padding:14px 18px; border-bottom:4px solid var(--dcl-gold); }
+          .brand{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; max-width:1100px; margin:0 auto; }
+          .logo-img{ width:325px; height:auto; display:block; margin:0 auto; }
+          .brand h1{ margin:0; font-size:18px; line-height:1.2; font-weight:700; color:var(--dcl-navy); }
 
           .wrap{max-width:1100px;margin:18px auto;padding:0 16px}
-          .card{
-            background:var(--card);
-            border-radius:10px;
-            box-shadow:0 6px 18px rgba(0,0,0,.10);
-            border:1px solid var(--line);
-          }
-          .meta{
-            padding:14px 16px;
-            display:flex;flex-wrap:wrap;gap:12px;align-items:center;
-            border-bottom:1px solid var(--line);
-            color:var(--muted);font-size:12px;
-          }
-          .meta a{color:var(--dcl-navy);text-decoration:underline}
-          .chip{
-            background:var(--pill);color:var(--dcl-navy);
-            border:1px solid #d7e5f6;padding:4px 8px;border-radius:999px;
-            font-size:12px;font-weight:600;
-          }
+          .card{ background:#fff; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,.10); border:1px solid #e9edf2; }
+          .meta{ padding:14px 16px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; border-bottom:1px solid #e9edf2; color:#6b6f76; font-size:12px; }
+          .meta a{ color:var(--dcl-navy); text-decoration:underline }
+          .chip{ background:#eef4fb; color:var(--dcl-navy); border:1px solid #d7e5f6; padding:4px 8px; border-radius:999px; font-size:12px; font-weight:600; }
 
-          table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
-          thead th{
-            position:sticky;top:0;background:#fbfdff;z-index:1;
-            text-align:left;padding:12px 14px;border-bottom:2px solid var(--line);
-            color:#133c5e;font-weight:700;
-          }
-          tbody td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
-          tbody tr:hover{background:#fbfdff}
-          .title a{color:var(--dcl-navy);text-decoration:none;font-weight:700}
-          .title a:hover{text-decoration:underline}
-          .guid{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--muted);font-size:12px}
-          .desc{white-space:pre-wrap}
+          table{ width:100%; border-collapse:collapse; font-size:14px; background:#fff }
+          thead th{ position:sticky; top:0; background:#fbfdff; z-index:1; text-align:left; padding:12px 14px; border-bottom:2px solid #e9edf2; color:#133c5e; font-weight:700; }
+          tbody td{ padding:12px 14px; border-bottom:1px solid #e9edf2; vertical-align:top; }
+          tbody tr:hover{ background:#fbfdff }
+          .title a{ color:var(--dcl-navy); text-decoration:none; font-weight:700 }
+          .title a:hover{ text-decoration:underline }
+          .guid{ font-family:ui-monospace,Menlo,Consolas,monospace; color:#6b6f76; font-size:12px }
+          .desc{ white-space:pre-wrap }
 
-          .badge{
-            display:inline-block;padding:3px 8px;border-radius:6px;
-            font-weight:700;font-size:12px;border:1px solid transparent;margin-right:8px;
-          }
-          .arr{background:#e8f6ee;color:#11643a;border-color:#cfead9}
-          .dep{background:#fff0f0;color:#8a1620;border-color:#ffd9de}
+          .badge{ display:inline-block; padding:3px 8px; border-radius:6px; font-weight:700; font-size:12px; border:1px solid transparent; margin-right:8px; }
+          .arr{ background:#e8f6ee; color:#11643a; border-color:#cfead9 }
+          .dep{ background:#fff0f0; color:#8a1620; border-color:#ffd9de }
 
           @media (max-width:760px){
             thead{display:none}
             tbody tr{display:block;border-bottom:8px solid #f0f4f8}
             tbody td{display:block;border:0;padding:8px 14px}
-            tbody td::before{content:attr(data-label) " ";font-weight:600;color:var(--muted);display:block;margin-bottom:2px}
+            tbody td::before{content:attr(data-label) " ";font-weight:600;color:#6b6f76;display:block;margin-bottom:2px}
             .brand{gap:8px}
           }
         </style>
@@ -542,7 +500,7 @@ def format_times_for_notification(port_name: str, port_link: str, when_raw: str)
 
     return est_str, local_str, dt_utc.isoformat()
 
-# ---------- VesselFinder scraping ----------
+# ---------- VesselFinder scraping (ship page) ----------
 
 def _find_root(soup: BeautifulSoup):
     for tag in soup.find_all(lambda t: isinstance(t, Tag) and t.name in ("h1","h2","h3","h4","div")):
@@ -565,7 +523,7 @@ def _find_root(soup: BeautifulSoup):
                 return node
     return None
 
-# UPDATED: emit "pending" items when label is present but time cell blank
+# Ship-page parser (emits "pending" when label exists but time cell blank)
 def _parse_vf(html: str):
     soup = BeautifulSoup(html, "html.parser")
     root = _find_root(soup)
@@ -578,12 +536,6 @@ def _parse_vf(html: str):
         return ("arrival (utc)" in txt) or ("departure (utc)" in txt)
 
     def value_after(matched: Tag, label_substr: str):
-        """
-        Returns:
-          None -> label not present
-          ""   -> label present but time blank
-          "..."-> the time value string
-        """
         lab = matched.find(string=lambda s: isinstance(s, str) and label_substr in s.lower())
         if not lab:
             return None
@@ -599,7 +551,7 @@ def _parse_vf(html: str):
                     return val if val else ""
         except Exception:
             pass
-        return ""  # label exists but we couldn't extract a value (treat as blank)
+        return ""
 
     blocks = [c for c in root.find_all(recursive=False) if isinstance(c, Tag)]
     for block in blocks:
@@ -616,20 +568,24 @@ def _parse_vf(html: str):
         dep_val = value_after(matched, "departure (utc)")
 
         if arr_val is not None:
-            if arr_val:
-                results.append({"event":"Arrived","port":port_name,"when_raw":arr_val,"link":port_link,
-                                "detail":f"{port_name} Arrival (UTC) {arr_val}"})
-            else:
-                results.append({"event":"Arrived","port":port_name,"when_raw":"","link":port_link,
-                                "detail":f"{port_name} Arrival (UTC) (time not yet posted)"})
+            results.append({
+                "event":"Arrived",
+                "port":port_name,
+                "when_raw":arr_val or "",
+                "link":port_link,
+                "detail": f"{port_name} Arrival (UTC) {arr_val}" if arr_val else f"{port_name} Arrival (UTC) (time not yet posted)",
+                "source":"vf-ship"
+            })
 
         if dep_val is not None:
-            if dep_val:
-                results.append({"event":"Departed","port":port_name,"when_raw":dep_val,"link":port_link,
-                                "detail":f"{port_name} Departure (UTC) {dep_val}"})
-            else:
-                results.append({"event":"Departed","port":port_name,"when_raw":"","link":port_link,
-                                "detail":f"{port_name} Departure (UTC) (time not yet posted)"})
+            results.append({
+                "event":"Departed",
+                "port":port_name,
+                "when_raw":dep_val or "",
+                "link":port_link,
+                "detail": f"{port_name} Departure (UTC) {dep_val}" if dep_val else f"{port_name} Departure (UTC) (time not yet posted)",
+                "source":"vf-ship"
+            })
 
     return results
 
@@ -671,6 +627,105 @@ def _vf_events_for_ship(p, ship):
     except Exception as e:
         print(f"[warn] mobile VF render failed for {ship['name']}: {e}", file=sys.stderr)
     return [], base_url
+
+# ---------- Port page fallback (Recent Port Calls table) ----------
+
+def _parse_port_recent_for_ship(html: str, ship_name: str):
+    """Return [{'event','when_raw','port','link','source'}] for rows where the ship matches."""
+    soup = BeautifulSoup(html, "html.parser")
+    results = []
+    # Find a section/table that has Recent Port Calls
+    root = None
+    for h in soup.find_all(["h1","h2","h3","div","section","table"]):
+        if (h.get_text(strip=True) or "").lower().find("recent port calls") != -1:
+            root = h if h.name == "table" else h.find("table")
+            if root: break
+    if not root:
+        return results
+
+    # Iterate rows; look for ship name link + arrival/departure columns
+    for tr in root.find_all("tr"):
+        tds = tr.find_all("td")
+        if not tds or len(tds) < 3:  # defensive
+            continue
+
+        # Heuristic: first td contains a link to the ship; others contain ports/times
+        link = tr.find("a", href=True)
+        if not link: 
+            continue
+        name = (link.get_text(strip=True) or "")
+        if name.lower() != (ship_name or "").lower():
+            continue  # only rows for our ship
+
+        # Try to find port name cell and child link
+        port_a = None
+        for a in tr.find_all("a", href=True):
+            if "/ports/" in a["href"]:
+                port_a = a
+                break
+
+        port_name = port_a.get_text(strip=True) if port_a else "Unknown Port"
+        port_link = port_a["href"] if port_a else ""
+
+        # Scrape text of the row for Arrival (UTC) and Departure (UTC)
+        row_txt = tr.get_text(" ", strip=True).lower()
+        # Simpler/robust: search by labels in the row
+        def extract_after(label):
+            # Look for next sibling td after a cell that contains label
+            lab_td = None
+            for td in tds:
+                if label in (td.get_text(" ", strip=True) or "").lower():
+                    lab_td = td
+                    break
+            if not lab_td:
+                return None
+            # Next meaningful sibling td
+            nxt = lab_td.find_next_sibling("td")
+            hops = 0
+            while nxt and hops < 6 and (nxt.get_text(strip=True) == ""):
+                nxt = nxt.find_next_sibling("td"); hops += 1
+            if not nxt:
+                return ""
+            return nxt.get_text(strip=True)
+
+        arr_raw = extract_after("arrival (utc)")
+        dep_raw = extract_after("departure (utc)")
+
+        if arr_raw is not None:
+            results.append({
+                "event":"Arrived",
+                "when_raw": arr_raw or "",
+                "port": port_name,
+                "link": port_link,
+                "detail": f"{port_name} Arrival (UTC) {arr_raw}" if arr_raw else f"{port_name} Arrival (UTC) (time not yet posted)",
+                "source":"vf-port"
+            })
+        if dep_raw is not None:
+            results.append({
+                "event":"Departed",
+                "when_raw": dep_raw or "",
+                "port": port_name,
+                "link": port_link,
+                "detail": f"{port_name} Departure (UTC) {dep_raw}" if dep_raw else f"{port_name} Departure (UTC) (time not yet posted)",
+                "source":"vf-port"
+            })
+    return results
+
+def _fetch_port_page_and_parse(p, port_link: str, ship_name: str):
+    if not port_link:
+        return []
+    # Normalize to same host as ship page
+    parsed = urlparse(port_link)
+    if not parsed.netloc:
+        port_link = urljoin("https://www.vesselfinder.com/", port_link.lstrip("/"))
+    try:
+        html = _rendered_html(port_link, p, mobile=False)
+    except Exception:
+        try:
+            html = _rendered_html(port_link.replace("www.","m."), p, mobile=True)
+        except Exception:
+            return []
+    return _parse_port_recent_for_ship(html, ship_name)
 
 # ---------- CruiseMapper coordinate scrape ----------
 
@@ -742,7 +797,7 @@ def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
             if local_str:
                 title += f". The local time to the port is {local_str}"
             desc = f"{fence_name} Arrival (UTC) {now_utc.strftime('%b %d, %H:%M')} — Geofence"
-            guid = make_id(f"geo|{slug}|arr|{fence_name}|{now_utc.isoformat()}")
+            guid = canonical_guid(slug, "Arrived", event_iso or now_utc.isoformat())
             items.append({
                 "title": title,
                 "description": desc,
@@ -761,7 +816,7 @@ def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
             if local_str:
                 title += f". The local time to the port is {local_str}"
             desc = f"{fence_name} Departure (UTC) {now_utc.strftime('%b %d, %H:%M')} — Geofence"
-            guid = make_id(f"geo|{slug}|dep|{fence_name}|{now_utc.isoformat()}")
+            guid = canonical_guid(slug, "Departed", event_iso or now_utc.isoformat())
             items.append({
                 "title": title,
                 "description": desc,
@@ -808,7 +863,7 @@ def main():
 
             print(f"[info] Fetching VF for {name}: {vf_url}")
 
-            # 1) VesselFinder port-calls
+            # 1) VesselFinder (ship page)
             try:
                 rows, used = _vf_events_for_ship(p, s)
                 print(f"[info] Parsed VF {name}: {len(rows)} events")
@@ -817,18 +872,34 @@ def main():
                 rows = []
                 used = vf_url
 
+            # 1B) For any row that lacks a time, try the Port-page fallback for THIS ship at THAT port.
+            enriched_rows = []
+            for r in rows:
+                enriched_rows.append(r)
+                if (r.get("when_raw","") == "") and r.get("link"):
+                    # attempt to read the port page and find this ship's timestamp
+                    try:
+                        port_rows = _fetch_port_page_and_parse(p, r["link"], name)
+                        # Keep only same event-kind; prefer a row with a real time
+                        for pr in port_rows:
+                            if pr["event"] == r["event"] and pr.get("when_raw"):
+                                # replace the pending with a timed entry from port
+                                enriched_rows[-1] = pr  # overwrite last appended (r)
+                                break
+                    except Exception as e:
+                        print(f"[warn] Port fallback failed for {name} at {r.get('port')}: {e}", file=sys.stderr)
+
+            rows = enriched_rows
+
+            # 2) Build items from ship/port rows (with canonical GUIDs when we have an ISO time)
             ship_items_new = []
             for r in rows:
                 try:
-                    guid_src = f"vf|{slug}|{r['event']}|{r['detail']}"
-                    guid = make_id(guid_src)
-                    if state["seen"].get(guid):
-                        continue
-
                     est_str, local_str, event_iso = format_times_for_notification(
                         r.get("port",""), r.get("link",""), r.get("when_raw","")
                     )
-                    verb = "Arrived at" if r.get("event") == "Arrived" else "Departed from"
+                    event_kind = "Arrived" if r.get("event") == "Arrived" else "Departed"
+                    verb = "Arrived at" if event_kind == "Arrived" else "Departed from"
 
                     if est_str and local_str:
                         title = f"{name} {verb} {r['port']} at {est_str}. The local time to the port is {local_str}"
@@ -847,6 +918,16 @@ def main():
 
                     link = urljoin(vf_url, r.get("link","")) if r.get("link") else vf_url
 
+                    # GUID + seen logic:
+                    if event_iso:
+                        guid = canonical_guid(slug, event_kind, event_iso)
+                    else:
+                        # keep "pending" items separate so a later timed event still publishes once
+                        guid = make_id(f"pending|{slug}|{event_kind}|{r.get('port','')}|{r.get('source','vf-ship')}")
+
+                    if state["seen"].get(guid):
+                        continue  # dedupe across sources
+
                     item = {
                         "title": title,
                         "description": desc,
@@ -861,9 +942,9 @@ def main():
                     all_items_new.append(item)
                     state["seen"][guid] = True
                 except Exception as e:
-                    print(f"[warn] VF item build failed for {name}: {e}", file=sys.stderr)
+                    print(f"[warn] VF/PORT item build failed for {name}: {e}", file=sys.stderr)
 
-            # 2) Geofence (CruiseMapper coords)
+            # 3) Geofence (CruiseMapper coords)
             cm_url = s.get("cm_url") or f"https://www.cruisemapper.com/ships/{_cm_slug(name)}"
             try:
                 coords = _cm_fetch_coords(p, cm_url)
