@@ -24,8 +24,8 @@ SHIPS_PATH = os.path.join(REPO_ROOT, "ships.json")
 
 # ---- History settings ----
 HIST_DIR      = os.path.join(REPO_ROOT, "history")
-PER_SHIP_CAP  = 50
-ALL_CAP       = 100
+PER_SHIP_CAP  = 250
+ALL_CAP       = 500
 
 # ---- Special geofences (center lat/lon + radius_km)
 SPECIAL_GEOFENCES = {
