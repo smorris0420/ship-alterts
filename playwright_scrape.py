@@ -186,7 +186,6 @@ def zinfo(tz_name: str):
             return ZoneInfo(tz_name)
     except Exception:
         pass
-    # fallback
     return ZoneInfo("America/New_York") if ZoneInfo else None
 
 def zinfo_eastern():
@@ -256,7 +255,7 @@ def make_id(s: str) -> str:
 # ---- XML output formatting knobs + helpers ----
 PRETTY_XML = True
 USE_CDATA  = True
-STYLESHEET_NAME = "rss-dcl.xsl"   # will be written to docs/
+STYLESHEET_NAME = "rss-dcl.xsl"   # written to docs/
 
 def _pretty_xml(xml_str: str) -> str:
     """Indent XML nicely; fall back to raw if anything fails."""
@@ -277,14 +276,14 @@ def _cdata(s: str) -> str:
 def _ensure_stylesheet_dcl():
     """
     Write a DCL-styled XSL to docs/ if missing.
-    Uses your PNG logo: docs/DCLDailySummary.png
+    Uses your PNG logo at docs/DCLDailySummary.png
     """
     try:
         os.makedirs(DOCS_DIR, exist_ok=True)
         xsl_path = os.path.join(DOCS_DIR, STYLESHEET_NAME)
         if os.path.exists(xsl_path):
             return
-                xsl = """<?xml version="1.0" encoding="UTF-8"?>
+        xsl = """<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:template match="/">
@@ -299,7 +298,7 @@ def _ensure_stylesheet_dcl():
             --dcl-gold:#C9A227;     /* trim accent */
             --ink:#1b1b1b;          /* body text on white */
             --muted:#6b6f76;
-            --bg: #16578A;          /* page background (blue) */
+            --bg:#16578A;           /* page background (blue) */
             --card:#ffffff;         /* card background (white) */
             --line:#e9edf2;
             --pill:#eef4fb;
@@ -323,7 +322,7 @@ def _ensure_stylesheet_dcl():
           /* Stack logo on first line, title on second line */
           .brand{
             display:flex;
-            flex-direction:column;      /* key change: stack */
+            flex-direction:column;      /* stack */
             align-items:flex-start;
             gap:6px;
             max-width:1100px;
@@ -444,6 +443,48 @@ def _ensure_stylesheet_dcl():
   </xsl:template>
 </xsl:stylesheet>
 """
+        with open(xsl_path, "w", encoding="utf-8") as f:
+            f.write(xsl)
+    except Exception as e:
+        print(f"[warn] Could not write stylesheet: {e}", file=sys.stderr)
+
+def build_rss(channel_title: str, channel_link: str, items: list, stylesheet=None, use_cdata=None) -> str:
+    """Build RSS with optional CDATA and XSL stylesheet reference."""
+    if stylesheet is None:
+        stylesheet = STYLESHEET_NAME
+    if use_cdata is None:
+        use_cdata = USE_CDATA
+
+    xml_items = []
+    for it in items:
+        title = rss_escape(it.get("title",""))
+        link  = rss_escape(it.get("link",""))
+        guid  = rss_escape(it.get("guid",""))
+        pub   = rss_escape(it.get("pubDate",""))
+        desc  = it.get("description","")
+        desc_xml = _cdata(desc) if use_cdata else rss_escape(desc)
+
+        xml_items.append(f"""
+  <item>
+    <title>{title}</title>
+    <link>{link}</link>
+    <guid isPermaLink="false">{guid}</guid>
+    <pubDate>{pub}</pubDate>
+    <description>{desc_xml}</description>
+  </item>""")
+
+    pi = f'\n<?xml-stylesheet type="text/xsl" href="{stylesheet}"?>' if stylesheet else ""
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>{pi}
+<rss version="2.0">
+<channel>
+  <title>{rss_escape(channel_title)}</title>
+  <link>{rss_escape(channel_link)}</link>
+  <description>{rss_escape(channel_title)} - Auto-generated</description>
+  <lastBuildDate>{to_rfc2822(datetime.utcnow())}</lastBuildDate>
+  {''.join(xml_items)}
+</channel>
+</rss>
+"""
     return xml
 
 # ---------- Time handling ----------
@@ -463,7 +504,6 @@ def _parse_vf_time_utc(raw_time: str):
 
 def _port_zoneinfo_from_link(port_link: str):
     try:
-        # supports absolute or relative e.g. https://.../ports/BSNAS001 or /ports/BSNAS001
         m = re.search(r"/ports/([A-Z]{2})", port_link or "")
         if not m: return None
         cc = m.group(1)
@@ -872,7 +912,7 @@ def main():
         with open(os.path.join(DOCS_DIR, "latest-all.xml"), "w", encoding="utf-8") as f:
             f.write(latest_all_xml)
     except Exception as e:
-        print(f"[error] Writing latest-all.xml failed: {e}", file=sys.stderr)
+        print(f="[error] Writing latest-all.xml failed: {e}", file=sys.stderr)
 
     save_json(STATE_PATH, state)
 
