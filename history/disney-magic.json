@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "title": "Disney Magic Departed from St Johns, Antigua & Barbuda at Nov 05, 05:12 PM EST. The local time to the port is Nov 05, 06:12 PM AST",
+    "description": "St Johns, Antigua & Barbuda Departure (UTC) Nov 5, 22:12 — ET: Nov 05, 05:12 PM EST | Local: Nov 05, 06:12 PM AST",
+    "link": "https://www.vesselfinder.com/ports/AGSJO001",
+    "guid": "3a962657f9a74625be34bc7728b616284d2801d3",
+    "pubDate": "Fri, 07 Nov 2025 17:13:19 GMT",
+    "eventUtc": "2025-11-05T22:12:00+00:00",
+    "shipSlug": "disney-magic",
+    "shipName": "Disney Magic"
+  },
+  {
+    "title": "Disney Magic Arrived at St Johns, Antigua & Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST",
+    "description": "St Johns, Antigua & Barbuda Arrival (UTC) Nov 5, 11:42 — ET: Nov 05, 06:42 AM EST | Local: Nov 05, 07:42 AM AST",
+    "link": "https://www.vesselfinder.com/ports/AGSJO001",
+    "guid": "1456f1f419c7bfcd00e8f0fa39c412abb0795382",
+    "pubDate": "Fri, 07 Nov 2025 17:13:19 GMT",
+    "eventUtc": "2025-11-05T11:42:00+00:00",
+    "shipSlug": "disney-magic",
+    "shipName": "Disney Magic"
+  }
+]
