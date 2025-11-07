@@ -1,145 +1,287 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-  <xsl:output method="html" indent="yes"/>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DCL Ships – Arrivals & Departures</title>
+  <meta name="color-scheme" content="light" />
+  <style>
+    :root{
+      --dcl-navy:#16578A;     /* page background + brand color */
+      --dcl-gold:#C9A227;     /* trim accent */
+      --ink:#1b1b1b;          /* body text on white */
+      --muted:#6b6f76;
+      --bg:#16578A;           /* page background (blue) */
+      --card:#ffffff;         /* card background (white) */
+      --line:#e9edf2;
+      --pill:#eef4fb;
+      --link:#16578A;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);   /* BLUE page behind cards */
+      color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
 
-  <!-- Helpers to extract values across different index shapes -->
-  <xsl:variable name="rootName" select="name(/*)"/>
+    /* White header bar w/ centered logo + title (stacked) */
+    .bar{
+      background:#ffffff;
+      color:var(--dcl-navy);
+      padding:14px 18px;
+      border-bottom:4px solid var(--dcl-gold);
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      align-items:center;       /* centered */
+      text-align:center;        /* centered text */
+      gap:6px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .logo-img{
+      width:56px; height:auto; display:block;
+      margin:0 auto;            /* center the image */
+    }
+    .brand h1{
+      margin:0;
+      font-size:20px;
+      line-height:1.2;
+      font-weight:800;
+      color:var(--dcl-navy);    /* title in blue */
+      letter-spacing:.2px;
+    }
 
-  <!-- Row iteration: supports feeds/feed, index/item, urlset/url -->
-  <xsl:template name="rows">
-    <xsl:choose>
-      <xsl:when test="/feeds/feed"><xsl:for-each select="/feeds/feed"><xsl:call-template name="row"/></xsl:for-each></xsl:when>
-      <xsl:when test="/index/item"><xsl:for-each select="/index/item"><xsl:call-template name="row"/></xsl:for-each></xsl:when>
-      <xsl:when test="/urlset/url"><xsl:for-each select="/urlset/url"><xsl:call-template name="row"/></xsl:for-each></xsl:when>
-      <!-- Generic fallback: any element with a link-ish child -->
-      <xsl:otherwise>
-        <xsl:for-each select="//*[loc or link or @href]"><xsl:call-template name="row"/></xsl:for-each>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
+    .wrap{max-width:1100px;margin:18px auto;padding:0 16px}
+    .grid{
+      display:grid;gap:16px;
+      grid-template-columns:repeat(12,minmax(0,1fr));
+    }
+    .col-12{grid-column:span 12}
+    .col-6{grid-column:span 6}
+    @media (max-width:900px){
+      .col-md-12{grid-column:span 12}
+      .col-md-6{grid-column:span 12}
+    }
 
-  <!-- Per-row renderer -->
-  <xsl:template name="row">
-    <tr>
-      <td class="title" data-label="Link">
-        <a>
-          <xsl:attribute name="href">
-            <xsl:choose>
-              <xsl:when test="string(@href)"><xsl:value-of select="@href"/></xsl:when>
-              <xsl:when test="string(link)"><xsl:value-of select="link"/></xsl:when>
-              <xsl:when test="string(loc)"><xsl:value-of select="loc"/></xsl:when>
-              <xsl:otherwise>#</xsl:otherwise>
-            </xsl:choose>
-          </xsl:attribute>
-          <xsl:choose>
-            <xsl:when test="string(@title)"><xsl:value-of select="@title"/></xsl:when>
-            <xsl:when test="string(title)"><xsl:value-of select="title"/></xsl:when>
-            <xsl:otherwise>
-              <xsl:choose>
-                <xsl:when test="string(@href)"><xsl:value-of select="@href"/></xsl:when>
-                <xsl:when test="string(link)"><xsl:value-of select="link"/></xsl:when>
-                <xsl:when test="string(loc)"><xsl:value-of select="loc"/></xsl:when>
-                <xsl:otherwise>Feed</xsl:otherwise>
-              </xsl:choose>
-            </xsl:otherwise>
-          </xsl:choose>
-        </a>
-      </td>
-      <td class="muted" data-label="Updated">
-        <xsl:choose>
-          <xsl:when test="string(@updated)"><xsl:value-of select="@updated"/></xsl:when>
-          <xsl:when test="string(updated)"><xsl:value-of select="updated"/></xsl:when>
-          <xsl:when test="string(lastmod)"><xsl:value-of select="lastmod"/></xsl:when>
-          <xsl:otherwise>—</xsl:otherwise>
-        </xsl:choose>
-      </td>
-      <td class="muted" data-label="Notes">
-        <xsl:choose>
-          <xsl:when test="string(@note)"><xsl:value-of select="@note"/></xsl:when>
-          <xsl:when test="string(description)"><xsl:value-of select="description"/></xsl:when>
-          <xsl:otherwise/>
-        </xsl:choose>
-      </td>
-    </tr>
-  </xsl:template>
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,.12);
+      border:1px solid var(--line);
+      overflow:hidden;
+    }
+    .card-h{
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;
+    }
+    .card-h h2{
+      margin:0;font-size:16px;font-weight:800;color:#133c5e;
+    }
+    .card-c{padding:14px 16px}
 
-  <!-- PAGE TEMPLATE -->
-  <xsl:template match="/">
-    <html>
-      <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>
-          <xsl:choose>
-            <xsl:when test="string(/index/title)"><xsl:value-of select="/index/title"/></xsl:when>
-            <xsl:otherwise>DCL Ship Feeds Index</xsl:otherwise>
-          </xsl:choose>
-        </title>
-        <style>
-          :root{
-            --dcl-navy:#16578A;
-            --dcl-gold:#C9A227;
-            --ink:#1b1b1b;
-            --muted:#6b6f76;
-            --bg:#16578A;   /* blue page */
-            --card:#ffffff; /* white cards */
-            --line:#e9edf2;
-          }
-          *{box-sizing:border-box}
-          body{margin:0;background:var(--bg);color:var(--ink);
-               font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;}
+    a{color:var(--link)}
+    a:hover{text-decoration:underline}
 
-          /* White header bar */
-          .bar{background:#fff;color:var(--dcl-navy);padding:14px 18px;border-bottom:4px solid var(--dcl-gold);}
-          .brand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;max-width:1100px;margin:0 auto;}
-          .logo-img{width:325px;height:auto;display:block;margin:0 auto;}
-          .brand h1{margin:0;font-size:18px;line-height:1.2;font-weight:700;color:var(--dcl-navy);}
+    .list{display:grid;gap:10px}
+    .item{
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+      justify-content:space-between;
+      padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;
+    }
+    .item .title{
+      font-weight:700;color:#133c5e;margin-right:8px;
+    }
+    .row{
+      display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    }
+    .pill{
+      background:var(--pill);color:var(--dcl-navy);
+      border:1px solid #d7e5f6;padding:2px 8px;border-radius:999px;
+      font-size:12px;font-weight:700;display:inline-block;
+    }
 
-          .wrap{max-width:1100px;margin:18px auto;padding:0 16px}
-          .card{background:var(--card);border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.10);border:1px solid var(--line)}
-          .meta{padding:14px 16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px}
+    .quick{
+      display:flex;flex-wrap:wrap;gap:10px;
+    }
+    .btn{
+      display:inline-block;text-decoration:none;
+      background:#ffffff;border:1px solid var(--line);color:var(--dcl-navy);
+      padding:10px 14px;border-radius:10px;font-weight:800;
+      box-shadow:0 4px 12px rgba(0,0,0,.06);
+    }
+    .btn:hover{background:#fbfdff}
 
-          table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
-          thead th{position:sticky;top:0;background:#fbfdff;z-index:1;text-align:left;padding:12px 14px;border-bottom:2px solid var(--line);color:#133c5e;font-weight:700}
-          tbody td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-          tbody tr:hover{background:#fbfdff}
-          .title a{color:var(--dcl-navy);text-decoration:none;font-weight:700}
-          .title a:hover{text-decoration:underline}
-          .muted{color:var(--muted)}
-          @media (max-width:760px){
-            thead{display:none}
-            tbody tr{display:block;border-bottom:8px solid #f0f4f8}
-            tbody td{display:block;border:0;padding:8px 14px}
-            tbody td::before{content:attr(data-label) " ";font-weight:600;color:var(--muted);display:block;margin-bottom:2px}
-            .brand{gap:8px}
-          }
-        </style>
-      </head>
-      <body>
-        <div class="bar">
-          <div class="brand">
-            <img src="DCLDailySummary.png" alt="DCL Logo" class="logo-img"/>
-            <h1>
-              <xsl:choose>
-                <xsl:when test="string(/index/title)"><xsl:value-of select="/index/title"/></xsl:when>
-                <xsl:otherwise>Disney Cruise Line — Ship Feeds</xsl:otherwise>
-              </xsl:choose>
-            </h1>
-          </div>
+    .tools{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+    }
+    .search{
+      flex:1 1 260px;min-width:220px;
+      display:flex;gap:8px;align-items:center;
+      background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 10px;
+    }
+    .search input{
+      flex:1;border:0;outline:none;font-size:14px;
+    }
+    .hint{color:var(--muted);font-size:12px;margin-top:8px}
+
+    footer{
+      color:#e8eef6;text-align:center;font-size:12px;padding:18px 12px;
+    }
+    footer a{color:#e8eef6}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="bar">
+    <div class="brand">
+      <!-- Use the same image path as your XML/XSL: -->
+      <img src="docs/DCLDailySummary.png" alt="DCL Logo" class="logo-img" />
+      <h1>DCL Ships – Arrivals &amp; Departures</h1>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="grid">
+      <!-- Quick Links -->
+      <section class="card col-12 col-md-12" aria-labelledby="quick-links">
+        <div class="card-h">
+          <h2 id="quick-links">Quick Links</h2>
         </div>
+        <div class="card-c">
+          <div class="quick">
+            <a class="btn" href="docs/all.xml">All Events (RSS)</a>
+            <a class="btn" href="docs/latest-all.xml">Latest – One Per Ship (RSS)</a>
+            <a class="btn" href="ships.json">ships.json</a>
+          </div>
+          <p class="hint">Feeds are styled when viewed in a web browser (via XSL). RSS apps may ignore styling.</p>
+        </div>
+      </section>
 
-        <div class="wrap">
-          <div class="card">
-            <div class="meta">
-              <strong>Index Type:</strong>&#160;<xsl:value-of select="$rootName"/>
+      <!-- Per-Ship Feeds -->
+      <section class="card col-12 col-md-12" aria-labelledby="per-ship">
+        <div class="card-h">
+          <h2 id="per-ship">Per-Ship Feeds</h2>
+          <div class="tools">
+            <div class="search" role="search">
+              <input id="q" type="search" placeholder="Filter ships… (e.g., Wish, Treasure, Magic)" aria-label="Filter ships" />
             </div>
-            <table role="table" aria-label="Index">
-              <thead><tr><th>Link</th><th>Updated</th><th>Notes</th></tr></thead>
-              <tbody><xsl:call-template name="rows"/></tbody>
-            </table>
           </div>
         </div>
-      </body>
-    </html>
-  </xsl:template>
-</xsl:stylesheet>
+        <div class="card-c">
+          <div id="shipList" class="list" aria-live="polite" aria-busy="true">
+            <!-- JS populates this from ships.json -->
+          </div>
+          <p id="fallback" class="hint" hidden>
+            Couldn’t load <code>ships.json</code>. You can still link manually:
+            <code>docs/&lt;slug&gt;.xml</code> and <code>docs/&lt;slug&gt;-latest.xml</code>.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    DCL • Airport &amp; Resort Reporting • Styled Index • <a href="docs/all.xml">Feeds</a>
+  </footer>
+
+  <script>
+    (function(){
+      const listEl = document.getElementById('shipList');
+      const fallbackEl = document.getElementById('fallback');
+      const q = document.getElementById('q');
+
+      /** Build a single ship row */
+      function row(ship){
+        const wrap = document.createElement('div');
+        wrap.className = 'item';
+        wrap.dataset.ship = (ship.name || '').toLowerCase();
+        wrap.dataset.slug = (ship.slug || '').toLowerCase();
+
+        const left = document.createElement('div');
+        left.className = 'row';
+        const title = document.createElement('span');
+        title.className = 'title';
+        title.textContent = ship.name || ship.slug || 'Unknown Ship';
+        left.appendChild(title);
+
+        if (ship.homeport){
+          const pill = document.createElement('span');
+          pill.className = 'pill';
+          pill.textContent = ship.homeport;
+          left.appendChild(pill);
+        }
+
+        const right = document.createElement('div');
+        right.className = 'row';
+        const a1 = document.createElement('a');
+        a1.href = `docs/${ship.slug}.xml`;
+        a1.textContent = 'Feed';
+        const a2 = document.createElement('a');
+        a2.href = `docs/${ship.slug}-latest.xml`;
+        a2.textContent = 'Latest';
+        right.appendChild(a1);
+        right.appendChild(document.createTextNode(' • '));
+        right.appendChild(a2);
+
+        wrap.appendChild(left);
+        wrap.appendChild(right);
+        return wrap;
+      }
+
+      function render(ships){
+        listEl.innerHTML = '';
+        ships.forEach(s => listEl.appendChild(row(s)));
+        listEl.setAttribute('aria-busy','false');
+      }
+
+      function filter(){
+        const term = (q.value || '').trim().toLowerCase();
+        const items = listEl.querySelectorAll('.item');
+        let shown = 0;
+        items.forEach(it=>{
+          const hay = (it.dataset.ship + ' ' + it.dataset.slug);
+          const ok = !term || hay.includes(term);
+          it.style.display = ok ? '' : 'none';
+          if (ok) shown++;
+        });
+        listEl.setAttribute('aria-busy','false');
+        if (shown === 0){
+          listEl.innerHTML = '<div class="item"><span class="title">No matches.</span><span class="pill">Try another search</span></div>';
+        }
+      }
+
+      q.addEventListener('input', filter);
+
+      // Fetch ships.json and build list
+      fetch('ships.json', {cache:'no-store'})
+        .then(r => r.ok ? r.json() : Promise.reject(r.status))
+        .then(data => {
+          // Expect array like: [{ name, slug, url, cm_url, homeport? }]
+          const ships = Array.isArray(data) ? data.slice() : [];
+          ships.sort((a,b) => (a.name||'').localeCompare(b.name||''));
+          render(ships);
+          filter();
+        })
+        .catch(() => {
+          listEl.setAttribute('aria-busy','false');
+          fallbackEl.hidden = false;
+
+          // Minimal manual list to keep the page useful:
+          const basic = [
+            {name:'All Ships (All Events)', slug:'all'},
+            {name:'Latest (One Per Ship)', slug:'latest-all'}
+          ];
+          render(basic);
+        });
+    })();
+  </script>
+</body>
+</html>
