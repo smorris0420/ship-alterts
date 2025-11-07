@@ -275,14 +275,12 @@ def _cdata(s: str) -> str:
 
 def _ensure_stylesheet_dcl():
     """
-    Write a DCL-styled XSL to docs/ if missing.
+    Write/overwrite the DCL-styled XSL to docs/ every run.
     Uses your PNG logo at docs/DCLDailySummary.png
     """
     try:
         os.makedirs(DOCS_DIR, exist_ok=True)
         xsl_path = os.path.join(DOCS_DIR, STYLESHEET_NAME)
-        if os.path.exists(xsl_path):
-            return
         xsl = """<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
