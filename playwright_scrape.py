@@ -421,8 +421,8 @@ def _ensure_stylesheet_dcl():
                           </xsl:choose>
                         </xsl:attribute>
                         <xsl:choose>
-                          <xsl:when test="contains(title,'Arrived')">ARR</xsl:when>
-                          <xsl:otherwise>DEP</xsl:otherwise>
+                          <xsl:when test="contains(title,'Arrived')">ARRIVED</xsl:when>
+                          <xsl:otherwise>DEPARTED</xsl:otherwise>
                         </xsl:choose>
                       </span>
                       <a href="{link}"><xsl:value-of select="title"/></a><br/>
