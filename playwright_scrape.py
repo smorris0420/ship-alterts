@@ -294,49 +294,50 @@ def _ensure_stylesheet_dcl():
         <title><xsl:value-of select="rss/channel/title"/></title>
         <style>
           :root{
-            --dcl-navy:#16578A;     /* page background + brand color */
-            --dcl-gold:#C9A227;     /* trim accent */
-            --ink:#1b1b1b;          /* body text on white */
+            --dcl-navy:#16578A;
+            --dcl-gold:#C9A227;
+            --ink:#1b1b1b;
             --muted:#6b6f76;
-            --bg:#16578A;           /* page background (blue) */
-            --card:#ffffff;         /* card background (white) */
+            --bg:#16578A;   /* page background (blue) */
+            --card:#ffffff; /* card background (white) */
             --line:#e9edf2;
             --pill:#eef4fb;
           }
           *{box-sizing:border-box}
           body{
             margin:0;
-            background:var(--bg);       /* BLUE page behind cards */
+            background:var(--bg);
             color:var(--ink);
             font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;
           }
-
-          /* Header bar is WHITE now */
+          /* White header bar */
           .bar{
             background:#ffffff;
             color:var(--dcl-navy);
             padding:14px 18px;
             border-bottom:4px solid var(--dcl-gold);
           }
-
-          /* Stack logo on first line, title on second line */
+          /* Center logo + title (stacked) */
           .brand{
             display:flex;
-            flex-direction:column;      /* stack */
-            align-items:flex-start;
+            flex-direction:column;
+            align-items:center;       /* centered */
+            text-align:center;        /* centered text */
             gap:6px;
             max-width:1100px;
             margin:0 auto;
           }
-          .logo-img{width:48px;height:auto;display:block}
+          .logo-img{
+            width:48px;height:auto;display:block;
+            margin:0 auto;            /* center the image */
+          }
           .brand h1{
             margin:0;
             font-size:18px;
             line-height:1.2;
             font-weight:700;
-            color:var(--dcl-navy);     /* Title in BLUE */
+            color:var(--dcl-navy);    /* title in blue */
           }
-
           .wrap{max-width:1100px;margin:18px auto;padding:0 16px}
           .card{
             background:var(--card);
@@ -356,7 +357,6 @@ def _ensure_stylesheet_dcl():
             border:1px solid #d7e5f6;padding:4px 8px;border-radius:999px;
             font-size:12px;font-weight:600;
           }
-
           table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
           thead th{
             position:sticky;top:0;background:#fbfdff;z-index:1;
@@ -369,14 +369,12 @@ def _ensure_stylesheet_dcl():
           .title a:hover{text-decoration:underline}
           .guid{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--muted);font-size:12px}
           .desc{white-space:pre-wrap}
-
           .badge{
             display:inline-block;padding:3px 8px;border-radius:6px;
             font-weight:700;font-size:12px;border:1px solid transparent;margin-right:8px;
           }
           .arr{background:#e8f6ee;color:#11643a;border-color:#cfead9}
           .dep{background:#fff0f0;color:#8a1620;border-color:#ffd9de}
-
           @media (max-width:760px){
             thead{display:none}
             tbody tr{display:block;border-bottom:8px solid #f0f4f8}
@@ -387,7 +385,6 @@ def _ensure_stylesheet_dcl():
         </style>
       </head>
       <body>
-        <!-- WHITE header bar with logo, then blue title on second line -->
         <div class="bar">
           <div class="brand">
             <img src="DCLDailySummary.png" alt="DCL Logo" class="logo-img"/>
@@ -395,7 +392,6 @@ def _ensure_stylesheet_dcl():
           </div>
         </div>
 
-        <!-- Cards sit on BLUE page background -->
         <div class="wrap">
           <div class="card">
             <div class="meta">
@@ -403,7 +399,6 @@ def _ensure_stylesheet_dcl():
               <span><strong>Feed link:</strong> <a href="{rss/channel/link}"><xsl:value-of select="rss/channel/link"/></a></span>
               <span><strong>Last Build:</strong> <xsl:value-of select="rss/channel/lastBuildDate"/></span>
             </div>
-
             <table role="table" aria-label="Items">
               <thead>
                 <tr><th>Title</th><th>Published</th><th>Description</th></tr>
