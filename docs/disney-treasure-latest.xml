@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-<channel>
-  <title>Disney Treasure - Latest Arrival/Departure</title>
-  <link>https://www.vesselfinder.com/vessels/details/9834753</link>
-  <description>Disney Treasure - Latest Arrival/Departure - Auto-generated</description>
-  <lastBuildDate>Thu, 06 Nov 2025 23:56:14 GMT</lastBuildDate>
-  
-  <item>
-    <title>Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/KYGEC001</link>
-    <guid isPermaLink="false">d578ecaa7f61da0def66269db3b09b1e32d816c8</guid>
-    <pubDate>Thu, 06 Nov 2025 22:21:14 GMT</pubDate>
-    <description>Georgetown, Grand Cayman Anch., Cayman Islands Departure (UTC) Nov 3, 22:05 — ET: Nov 03, 05:05 PM EST | Local: Nov 03, 05:05 PM EST</description>
-  </item>
-</channel>
+  <channel>
+    <title>Disney Treasure - Latest Arrival/Departure</title>
+    <link>https://www.vesselfinder.com/vessels/details/9834753</link>
+    <description>Disney Treasure - Latest Arrival/Departure - Auto-generated</description>
+    <lastBuildDate>Fri, 07 Nov 2025 00:38:21 GMT</lastBuildDate>
+    <item>
+      <title>Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/KYGEC001</link>
+      <guid isPermaLink="false">d578ecaa7f61da0def66269db3b09b1e32d816c8</guid>
+      <pubDate>Thu, 06 Nov 2025 22:21:14 GMT</pubDate>
+      <description><![CDATA[Georgetown, Grand Cayman Anch., Cayman Islands Departure (UTC) Nov 3, 22:05 — ET: Nov 03, 05:05 PM EST | Local: Nov 03, 05:05 PM EST]]></description>
+    </item>
+  </channel>
 </rss>

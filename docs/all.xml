@@ -1,388 +1,388 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-<channel>
-  <title>DCL Ships - Arrivals &amp; Departures (All)</title>
-  <link>https://github.com/</link>
-  <description>DCL Ships - Arrivals &amp; Departures (All) - Auto-generated</description>
-  <lastBuildDate>Thu, 06 Nov 2025 23:56:33 GMT</lastBuildDate>
-  
-  <item>
-    <title>Disney Dream Departed from Gorda Cay, Bahamas at Nov 06, 05:06 PM EST. The local time to the port is Nov 06, 05:06 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
-    <guid isPermaLink="false">d6381e5cf3321ffc172b064e9e1ce7d116ea927c</guid>
-    <pubDate>Thu, 06 Nov 2025 22:21:20 GMT</pubDate>
-    <description>Gorda Cay, Bahamas Departure (UTC) Nov 6, 22:06 — ET: Nov 06, 05:06 PM EST | Local: Nov 06, 05:06 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Departed from Nassau, Bahamas at Nov 06, 04:10 PM EST. The local time to the port is Nov 06, 04:10 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">fc196c37222abefad40a211472284a25577f6697</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:31 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) Nov 6, 21:10 — ET: Nov 06, 04:10 PM EST | Local: Nov 06, 04:10 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Arrived at Nassau, Bahamas at Nov 06, 01:50 PM EST. The local time to the port is Nov 06, 01:50 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">7876bd5e384f63868095ca4ff6a903b6fd3fc916</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:31 GMT</pubDate>
-    <description>Nassau, Bahamas Arrival (UTC) Nov 6, 18:50 — ET: Nov 06, 01:50 PM EST | Local: Nov 06, 01:50 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT</title>
-    <link>https://www.vesselfinder.com/ports/AUMEL001</link>
-    <guid isPermaLink="false">d0e4ecdd1f20971a98e96d592e2d08541fab4bf4</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:26 GMT</pubDate>
-    <description>Melbourne, Australia Departure (UTC) Nov 6, 15:57 — ET: Nov 06, 10:57 AM EST | Local: Nov 07, 02:57 AM AEDT</description>
-  </item>
-  <item>
-    <title>Disney Fantasy Departed from A Coruna, Spain at Nov 06, 10:42 AM EST. The local time to the port is Nov 06, 04:42 PM CET</title>
-    <link>https://www.vesselfinder.com/ports/ESLCG001</link>
-    <guid isPermaLink="false">cbb88b5379fafeb49197e9501841f964b23ee7f0</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:17 GMT</pubDate>
-    <description>A Coruna, Spain Departure (UTC) Nov 6, 15:42 — ET: Nov 06, 10:42 AM EST | Local: Nov 06, 04:42 PM CET</description>
-  </item>
-  <item>
-    <title>Disney Dream Arrived at Gorda Cay, Bahamas at Nov 06, 07:31 AM EST. The local time to the port is Nov 06, 07:31 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
-    <guid isPermaLink="false">d6f8aaaeb57e1e312675c4524f58f65cc53d54f7</guid>
-    <pubDate>Thu, 06 Nov 2025 22:21:20 GMT</pubDate>
-    <description>Gorda Cay, Bahamas Arrival (UTC) Nov 6, 12:31 — ET: Nov 06, 07:31 AM EST | Local: Nov 06, 07:31 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Magic Departed from St Johns, Antigua &amp; Barbuda at Nov 05, 05:12 PM EST. The local time to the port is Nov 05, 06:12 PM AST</title>
-    <link>https://www.vesselfinder.com/ports/AGSJO001</link>
-    <guid isPermaLink="false">3a962657f9a74625be34bc7728b616284d2801d3</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:20 GMT</pubDate>
-    <description>St Johns, Antigua &amp; Barbuda Departure (UTC) Nov 5, 22:12 — ET: Nov 05, 05:12 PM EST | Local: Nov 05, 06:12 PM AST</description>
-  </item>
-  <item>
-    <title>Disney Wonder Arrived at Melbourne, Australia at Nov 05, 01:54 PM EST. The local time to the port is Nov 06, 05:54 AM AEDT</title>
-    <link>https://www.vesselfinder.com/ports/AUMEL001</link>
-    <guid isPermaLink="false">f7302d9f5b0459e3a5b798f9eb70912461e5a34d</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:26 GMT</pubDate>
-    <description>Melbourne, Australia Arrival (UTC) Nov 5, 18:54 — ET: Nov 05, 01:54 PM EST | Local: Nov 06, 05:54 AM AEDT</description>
-  </item>
-  <item>
-    <title>Disney Magic Arrived at St Johns, Antigua &amp; Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST</title>
-    <link>https://www.vesselfinder.com/ports/AGSJO001</link>
-    <guid isPermaLink="false">1456f1f419c7bfcd00e8f0fa39c412abb0795382</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:20 GMT</pubDate>
-    <description>St Johns, Antigua &amp; Barbuda Arrival (UTC) Nov 5, 11:42 — ET: Nov 05, 06:42 AM EST | Local: Nov 05, 07:42 AM AST</description>
-  </item>
-  <item>
-    <title>Disney Fantasy Arrived at A Coruna, Spain at Nov 05, 12:00 AM EST. The local time to the port is Nov 05, 06:00 AM CET</title>
-    <link>https://www.vesselfinder.com/ports/ESLCG001</link>
-    <guid isPermaLink="false">843679d9d6a27157e97d152e059920e99c91b37e</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:17 GMT</pubDate>
-    <description>A Coruna, Spain Arrival (UTC) Nov 5, 05:00 — ET: Nov 05, 12:00 AM EST | Local: Nov 05, 06:00 AM CET</description>
-  </item>
-  <item>
-    <title>Disney Wish Departed from Nassau, Bahamas at Nov 04, 05:55 PM EST. The local time to the port is Nov 04, 05:55 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">fb4d3b2ef1f218de7e415a2cedec536428bb2b92</guid>
-    <pubDate>Thu, 06 Nov 2025 22:28:25 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) Nov 4, 22:55 — ET: Nov 04, 05:55 PM EST | Local: Nov 04, 05:55 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Wish Arrived at Nassau, Bahamas at Nov 04, 08:38 AM EST. The local time to the port is Nov 04, 08:38 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">d7e0c0704231fe905c5548b91fcfd1e7e7e434f5</guid>
-    <pubDate>Thu, 06 Nov 2025 22:28:25 GMT</pubDate>
-    <description>Nassau, Bahamas Arrival (UTC) Nov 4, 13:38 — ET: Nov 04, 08:38 AM EST | Local: Nov 04, 08:38 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/KYGEC001</link>
-    <guid isPermaLink="false">d578ecaa7f61da0def66269db3b09b1e32d816c8</guid>
-    <pubDate>Thu, 06 Nov 2025 22:21:14 GMT</pubDate>
-    <description>Georgetown, Grand Cayman Anch., Cayman Islands Departure (UTC) Nov 3, 22:05 — ET: Nov 03, 05:05 PM EST | Local: Nov 03, 05:05 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Treasure Arrived at Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 07:31 AM EST. The local time to the port is Nov 03, 07:31 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/KYGEC001</link>
-    <guid isPermaLink="false">1a2d14cb365b1e0923e8caad890d05a9cc658b38</guid>
-    <pubDate>Thu, 06 Nov 2025 22:21:14 GMT</pubDate>
-    <description>Georgetown, Grand Cayman Anch., Cayman Islands Arrival (UTC) Nov 3, 12:31 — ET: Nov 03, 07:31 AM EST | Local: Nov 03, 07:31 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Adventure Departed from Bremerhaven, Germany at Sep 10, 07:10 PM EDT. The local time to the port is Sep 11, 01:10 AM CEST</title>
-    <link>https://www.vesselfinder.com/ports/DEBRV001</link>
-    <guid isPermaLink="false">ea6f90adfaacef92a053a7ab02c61e67362f9edf</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:28 GMT</pubDate>
-    <description>Bremerhaven, Germany Departure (UTC) Sep 10, 23:10 — ET: Sep 10, 07:10 PM EDT | Local: Sep 11, 01:10 AM CEST</description>
-  </item>
-  <item>
-    <title>Disney Adventure Arrived at Bremerhaven, Germany at Sep 09, 06:00 AM EDT. The local time to the port is Sep 09, 12:00 PM CEST</title>
-    <link>https://www.vesselfinder.com/ports/DEBRV001</link>
-    <guid isPermaLink="false">639844e0bed76ae8204b558fa2302f5b76939c06</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:28 GMT</pubDate>
-    <description>Bremerhaven, Germany Arrival (UTC) Sep 9, 10:00 — ET: Sep 09, 06:00 AM EDT | Local: Sep 09, 12:00 PM CEST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Departed from Nassau, Bahamas at Nov 06, 04:10 PM EST. The local time to the port is Nov 06, 04:10 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">7ea86fbf6a92d0892f50eb4e14b9ec1dda963d75</guid>
-    <pubDate>Thu, 06 Nov 2025 21:39:57 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) Nov 6, 21:10 — Local: Nov 06, 04:10 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Arrived at Nassau, Bahamas at Nov 06, 01:50 PM EST. The local time to the port is Nov 06, 01:50 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">4923efc543f5e068508215eb69c3d55f7110bf59</guid>
-    <pubDate>Thu, 06 Nov 2025 19:38:33 GMT</pubDate>
-    <description>Nassau, Bahamas Arrival (UTC) Nov 6, 18:50 — Local: Nov 06, 01:50 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny — Departure — Nassau, Bahamas</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">6383998bce0a699c5a95a18c14666c18a435edd5</guid>
-    <pubDate>Thu, 06 Nov 2025 19:38:33 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) (time not yet posted)</description>
-  </item>
-  <item>
-    <title>Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT</title>
-    <link>https://www.vesselfinder.com/ports/AUMEL001</link>
-    <guid isPermaLink="false">162a83a6807943959591a4e697a41d05bd22bbf2</guid>
-    <pubDate>Thu, 06 Nov 2025 16:35:51 GMT</pubDate>
-    <description>Melbourne, Australia Departure (UTC) Nov 6, 15:57 — Local: Nov 07, 02:57 AM AEDT</description>
-  </item>
-  <item>
-    <title>Disney Fantasy Departed from A Coruna, Spain at Nov 06, 10:42 AM EST. The local time to the port is Nov 06, 04:42 PM CET</title>
-    <link>https://www.vesselfinder.com/ports/ESLCG001</link>
-    <guid isPermaLink="false">e74666c5a68417764c2af4b089cb5a58edeed212</guid>
-    <pubDate>Thu, 06 Nov 2025 15:48:37 GMT</pubDate>
-    <description>A Coruna, Spain Departure (UTC) Nov 6, 15:42 — Local: Nov 06, 04:42 PM CET</description>
-  </item>
-  <item>
-    <title>Disney Dream Arrived at Gorda Cay, Bahamas at Nov 06, 07:31 AM EST. The local time to the port is Nov 06, 07:31 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
-    <guid isPermaLink="false">915f52c9e1dbfdcb7b864aff370667f523ed7ce8</guid>
-    <pubDate>Thu, 06 Nov 2025 13:41:16 GMT</pubDate>
-    <description>Gorda Cay, Bahamas Arrival (UTC) Nov 6, 12:31 — Local: Nov 06, 07:31 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Dream — Departure — Gorda Cay, Bahamas</title>
-    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
-    <guid isPermaLink="false">a7485f48cb1823b36fe035c5a0058b6de3d746c6</guid>
-    <pubDate>Thu, 06 Nov 2025 13:41:16 GMT</pubDate>
-    <description>Gorda Cay, Bahamas Departure (UTC) (time not yet posted)</description>
-  </item>
-  <item>
-    <title>Disney Dream Arrived at Nassau, Bahamas at Nov 05, 07:17 AM EST. The local time to the port is Nov 05, 07:17 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">cc1ddea55c1b38056523ca9504042e2ecbd494ab</guid>
-    <pubDate>Thu, 06 Nov 2025 00:56:11 GMT</pubDate>
-    <description>Nassau, Bahamas Arrival (UTC) Nov 5, 12:17 — Local: Nov 05, 07:17 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Dream Departed from Nassau, Bahamas at Nov 05, 05:45 PM EST. The local time to the port is Nov 05, 05:45 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">0f27bd4e2c950e20448a7d40e0526dba4f86c00b</guid>
-    <pubDate>Thu, 06 Nov 2025 00:56:11 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) Nov 5, 22:45 — Local: Nov 05, 05:45 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Magic Departed from St Johns, Antigua &amp; Barbuda at Nov 05, 05:12 PM EST. The local time to the port is Nov 05, 06:12 PM AST</title>
-    <link>https://www.vesselfinder.com/ports/AGSJO001</link>
-    <guid isPermaLink="false">afd7c380645aa34386268411e4a58972e929cb5d</guid>
-    <pubDate>Wed, 05 Nov 2025 22:58:51 GMT</pubDate>
-    <description>St Johns, Antigua &amp; Barbuda Departure (UTC) Nov 5, 22:12 — Local: Nov 05, 06:12 PM AST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Arrived at Gorda Cay, Bahamas at Nov 05, 07:15 AM EST. The local time to the port is Nov 05, 07:15 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
-    <guid isPermaLink="false">6ab65fa3feb897a6424152b09d8784126dc049c6</guid>
-    <pubDate>Wed, 05 Nov 2025 22:59:04 GMT</pubDate>
-    <description>Gorda Cay, Bahamas Arrival (UTC) Nov 5, 12:15 — Local: Nov 05, 07:15 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Departed from Gorda Cay, Bahamas at Nov 05, 05:44 PM EST. The local time to the port is Nov 05, 05:44 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
-    <guid isPermaLink="false">723fb2339df70cd252c814b5756a60bc74c1d95c</guid>
-    <pubDate>Wed, 05 Nov 2025 22:59:04 GMT</pubDate>
-    <description>Gorda Cay, Bahamas Departure (UTC) Nov 5, 22:44 — Local: Nov 05, 05:44 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Wonder Arrived at Melbourne, Australia at Nov 05, 01:54 PM EST. The local time to the port is Nov 06, 05:54 AM AEDT</title>
-    <link>https://www.vesselfinder.com/ports/AUMEL001</link>
-    <guid isPermaLink="false">deadbf48f63560f68d03da81502e8ff82d802ae3</guid>
-    <pubDate>Wed, 05 Nov 2025 19:41:02 GMT</pubDate>
-    <description>Melbourne, Australia Arrival (UTC) Nov 5, 18:54 — Local: Nov 06, 05:54 AM AEDT</description>
-  </item>
-  <item>
-    <title>Disney Wonder — Departure — Melbourne, Australia</title>
-    <link>https://www.vesselfinder.com/ports/AUMEL001</link>
-    <guid isPermaLink="false">2c16a271a02174a83a9fce3dee4a85d667a83304</guid>
-    <pubDate>Wed, 05 Nov 2025 19:41:02 GMT</pubDate>
-    <description>Melbourne, Australia Departure (UTC) (time not yet posted)</description>
-  </item>
-  <item>
-    <title>Disney Wish Arrived at Nassau, Bahamas at Nov 04, 08:38 AM EST. The local time to the port is Nov 04, 08:38 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">f8a1f99aa55415cfdb8e84487368a16da022ccd5</guid>
-    <pubDate>Wed, 05 Nov 2025 14:24:26 GMT</pubDate>
-    <description>Nassau, Bahamas Arrival (UTC) Nov 4, 13:38 — Local: Nov 04, 08:38 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Wish Departed from Nassau, Bahamas at Nov 04, 05:55 PM EST. The local time to the port is Nov 04, 05:55 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">8154f90fbb8366d07b660249311a15760356a885</guid>
-    <pubDate>Wed, 05 Nov 2025 14:24:26 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) Nov 4, 22:55 — Local: Nov 04, 05:55 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Treasure Arrived at Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 07:31 AM EST. The local time to the port is Nov 03, 07:31 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/KYGEC001</link>
-    <guid isPermaLink="false">70289f027a48eed32a411100a06a490b4a8cef10</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:18 GMT</pubDate>
-    <description>Georgetown, Grand Cayman Anch., Cayman Islands Arrival (UTC) Nov 3, 12:31 — Local: Nov 03, 07:31 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/KYGEC001</link>
-    <guid isPermaLink="false">1ad5622ca04fd984986b080023dcd6a6ae50dd5c</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:18 GMT</pubDate>
-    <description>Georgetown, Grand Cayman Anch., Cayman Islands Departure (UTC) Nov 3, 22:05 — Local: Nov 03, 05:05 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Dream Arrived at Port Everglades, United States (USA) at Nov 03, 05:49 AM EST. The local time to the port is Nov 03, 05:49 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/USPEF001</link>
-    <guid isPermaLink="false">fc80173a860b74578592cf840b1bfaa9380e0b76</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:26 GMT</pubDate>
-    <description>Port Everglades, United States (USA) Arrival (UTC) Nov 3, 10:49 — Local: Nov 03, 05:49 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Dream Departed from Port Everglades, United States (USA) at Nov 03, 04:37 PM EST. The local time to the port is Nov 03, 04:37 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/USPEF001</link>
-    <guid isPermaLink="false">ca40b8e5150763071b600d134b23bc80459a2679</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:26 GMT</pubDate>
-    <description>Port Everglades, United States (USA) Departure (UTC) Nov 3, 21:37 — Local: Nov 03, 04:37 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Adventure Arrived at Bremerhaven, Germany at Sep 09, 06:00 AM EST. The local time to the port is Sep 09, 06:00 AM EDT</title>
-    <link>https://www.vesselfinder.com/ports/DEBRV001</link>
-    <guid isPermaLink="false">c4f55c980c43d6979e96d58f8c41a4edc5e36cc3</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:30 GMT</pubDate>
-    <description>Bremerhaven, Germany Arrival (UTC) Sep 9, 10:00 — Local: Sep 09, 06:00 AM EDT</description>
-  </item>
-  <item>
-    <title>Disney Adventure Departed from Bremerhaven, Germany at Sep 10, 07:10 PM EST. The local time to the port is Sep 10, 07:10 PM EDT</title>
-    <link>https://www.vesselfinder.com/ports/DEBRV001</link>
-    <guid isPermaLink="false">98ebb64bf08089480413f3327b48b9c0734b6ada</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:30 GMT</pubDate>
-    <description>Bremerhaven, Germany Departure (UTC) Sep 10, 23:10 — Local: Sep 10, 07:10 PM EDT</description>
-  </item>
-  <item>
-    <title>Disney Destiny Arrived at Cape Canaveral, United States (USA) at Nov 02, 06:55 PM EST. The local time to the port is Nov 02, 06:55 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/USPCV001</link>
-    <guid isPermaLink="false">ac3f927a59b5c7c5932bb076d78428a66aa086a0</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:33 GMT</pubDate>
-    <description>Cape Canaveral, United States (USA) Arrival (UTC) Nov 2, 23:55 — Local: Nov 02, 06:55 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 04, 05:07 PM EST. The local time to the port is Nov 04, 05:07 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/USPCV001</link>
-    <guid isPermaLink="false">db650fb3358d57342799d86e9f6f2db2eb249192</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:33 GMT</pubDate>
-    <description>Cape Canaveral, United States (USA) Departure (UTC) Nov 4, 22:07 — Local: Nov 04, 05:07 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Magic Arrived at St Johns, Antigua &amp; Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST</title>
-    <link>https://www.vesselfinder.com/ports/AGSJO001</link>
-    <guid isPermaLink="false">130d3ee109f35c3428e6fc22621d1efcb254384b</guid>
-    <pubDate>Wed, 05 Nov 2025 13:42:13 GMT</pubDate>
-    <description>St Johns, Antigua &amp; Barbuda Arrival (UTC) Nov 5, 11:42 — Local: Nov 05, 07:42 AM AST</description>
-  </item>
-  <item>
-    <title>Disney Magic — Departure — St Johns, Antigua &amp; Barbuda</title>
-    <link>https://www.vesselfinder.com/ports/AGSJO001</link>
-    <guid isPermaLink="false">15f11163d80e45088ff6b9b1ae2d756bc85d9041</guid>
-    <pubDate>Wed, 05 Nov 2025 13:42:13 GMT</pubDate>
-    <description>St Johns, Antigua &amp; Barbuda Departure (UTC) (time not yet posted)</description>
-  </item>
-  <item>
-    <title>Disney Wonder Arrived at Hobart, Australia at Nov 03, 03:18 PM EST. The local time to the port is Nov 04, 07:18 AM AEDT</title>
-    <link>https://www.vesselfinder.com/ports/AUHBA001</link>
-    <guid isPermaLink="false">31ca2da17d10c98085df114cdbd86b5411a0cecd</guid>
-    <pubDate>Wed, 05 Nov 2025 13:42:19 GMT</pubDate>
-    <description>Hobart, Australia Arrival (UTC) Nov 3, 20:18 — Local: Nov 04, 07:18 AM AEDT</description>
-  </item>
-  <item>
-    <title>Disney Wonder Departed from Hobart, Australia at Nov 04, 02:39 AM EST. The local time to the port is Nov 04, 06:39 PM AEDT</title>
-    <link>https://www.vesselfinder.com/ports/AUHBA001</link>
-    <guid isPermaLink="false">7833d3adead1bb5abc2b45905889403b3b688cf2</guid>
-    <pubDate>Wed, 05 Nov 2025 13:42:19 GMT</pubDate>
-    <description>Hobart, Australia Departure (UTC) Nov 4, 07:39 — Local: Nov 04, 06:39 PM AEDT</description>
-  </item>
-  <item>
-    <title>Disney Fantasy Arrived at A Coruna, Spain at Nov 05, 12:00 AM EST. The local time to the port is Nov 05, 06:00 AM CET</title>
-    <link>https://www.vesselfinder.com/ports/ESLCG001</link>
-    <guid isPermaLink="false">c1e998f989b61c3e43051fe1178be4182b8fc044</guid>
-    <pubDate>Wed, 05 Nov 2025 13:35:43 GMT</pubDate>
-    <description>A Coruna, Spain Arrival (UTC) Nov 5, 05:00 — Local: Nov 05, 06:00 AM CET</description>
-  </item>
-  <item>
-    <title>Disney Fantasy — Departure — A Coruna, Spain</title>
-    <link>https://www.vesselfinder.com/ports/ESLCG001</link>
-    <guid isPermaLink="false">e59eb5352752273db360e15555ba17e7060ca8cb</guid>
-    <pubDate>Wed, 05 Nov 2025 13:35:43 GMT</pubDate>
-    <description>A Coruna, Spain Departure (UTC) (time not yet posted)</description>
-  </item>
-  <item>
-    <title>Disney Magic Arrived at St Johns, Antigua &amp; Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST</title>
-    <link>https://www.vesselfinder.com/ports/AGSJO001</link>
-    <guid isPermaLink="false">2a34b43d2c20d69b5fc0d2e53c2c86fb895eaf29</guid>
-    <pubDate>Wed, 05 Nov 2025 13:04:40 GMT</pubDate>
-    <description>St Johns, Antigua &amp; Barbuda Arrival (UTC) Nov 5, 11:42 — Local: Nov 05, 07:42 AM AST</description>
-  </item>
-  <item>
-    <title>Disney Magic — Departure — St Johns, Antigua &amp; Barbuda</title>
-    <link>https://www.vesselfinder.com/ports/AGSJO001</link>
-    <guid isPermaLink="false">dd70243dc183d23891d5a1e8a3ae7b4a105af63d</guid>
-    <pubDate>Wed, 05 Nov 2025 13:04:40 GMT</pubDate>
-    <description>St Johns, Antigua &amp; Barbuda Departure (UTC) (time not yet posted)</description>
-  </item>
-  <item>
-    <title>Disney Wish Arrived at Nassau, Bahamas at Nov 04, 08:38 AM EST. The local time to the port is Nov 04, 08:38 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">eea9fc68c6edb5115ca52c53dd3be1b5b993a208</guid>
-    <pubDate>Wed, 05 Nov 2025 10:30:02 GMT</pubDate>
-    <description>Nassau, Bahamas Arrival (UTC) Nov 4, 13:38 — Local: Nov 04, 08:38 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Wish Departed from Nassau, Bahamas at Nov 04, 05:55 PM EST. The local time to the port is Nov 04, 05:55 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">29ac6829aa1896331e5b0663ae9a8bc75da23102</guid>
-    <pubDate>Wed, 05 Nov 2025 10:30:02 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) Nov 4, 22:55 — Local: Nov 04, 05:55 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Fantasy Arrived at A Coruna, Spain at Nov 05, 12:00 AM EST. The local time to the port is Nov 05, 06:00 AM CET</title>
-    <link>https://www.vesselfinder.com/ports/ESLCG001</link>
-    <guid isPermaLink="false">a74b94681d4b51b9c7ad6a3be49bf591907a41fe</guid>
-    <pubDate>Wed, 05 Nov 2025 05:37:27 GMT</pubDate>
-    <description>A Coruna, Spain Arrival (UTC) Nov 5, 05:00 — Local: Nov 05, 06:00 AM CET</description>
-  </item>
-  <item>
-    <title>Disney Fantasy — Departure — A Coruna, Spain</title>
-    <link>https://www.vesselfinder.com/ports/ESLCG001</link>
-    <guid isPermaLink="false">56b6b2f99909afc1c56981bb21c1f55b30cc3d1c</guid>
-    <pubDate>Wed, 05 Nov 2025 05:37:27 GMT</pubDate>
-    <description>A Coruna, Spain Departure (UTC) (time not yet posted)</description>
-  </item>
-  <item>
-    <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 04, 05:07 PM EST. The local time to the port is Nov 04, 05:07 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/USPCV001</link>
-    <guid isPermaLink="false">953e6ce5e3dd6f15accbfd54e5ee44b968b78d22</guid>
-    <pubDate>Tue, 04 Nov 2025 22:44:58 GMT</pubDate>
-    <description>Cape Canaveral, United States (USA) Departure (UTC) Nov 4, 22:07 — Local: Nov 04, 05:07 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Magic Departed from Roseau, Dominica at Nov 04, 05:07 PM EST. The local time to the port is Nov 04, 06:07 PM AST</title>
-    <link>https://www.vesselfinder.com/ports/DMRSU001</link>
-    <guid isPermaLink="false">0f227db851bb706b4c036e163fda4ed1b00573d1</guid>
-    <pubDate>Tue, 04 Nov 2025 22:30:24 GMT</pubDate>
-    <description>Roseau, Dominica Departure (UTC) Nov 4, 22:07 — Local: Nov 04, 06:07 PM AST</description>
-  </item>
-</channel>
+  <channel>
+    <title>DCL Ships - Arrivals &amp; Departures (All)</title>
+    <link>https://github.com/</link>
+    <description>DCL Ships - Arrivals &amp; Departures (All) - Auto-generated</description>
+    <lastBuildDate>Fri, 07 Nov 2025 00:38:33 GMT</lastBuildDate>
+    <item>
+      <title>Disney Dream Departed from Gorda Cay, Bahamas at Nov 06, 05:06 PM EST. The local time to the port is Nov 06, 05:06 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+      <guid isPermaLink="false">d6381e5cf3321ffc172b064e9e1ce7d116ea927c</guid>
+      <pubDate>Thu, 06 Nov 2025 22:21:20 GMT</pubDate>
+      <description><![CDATA[Gorda Cay, Bahamas Departure (UTC) Nov 6, 22:06 — ET: Nov 06, 05:06 PM EST | Local: Nov 06, 05:06 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Departed from Nassau, Bahamas at Nov 06, 04:10 PM EST. The local time to the port is Nov 06, 04:10 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">fc196c37222abefad40a211472284a25577f6697</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:31 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 6, 21:10 — ET: Nov 06, 04:10 PM EST | Local: Nov 06, 04:10 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Arrived at Nassau, Bahamas at Nov 06, 01:50 PM EST. The local time to the port is Nov 06, 01:50 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">7876bd5e384f63868095ca4ff6a903b6fd3fc916</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:31 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Arrival (UTC) Nov 6, 18:50 — ET: Nov 06, 01:50 PM EST | Local: Nov 06, 01:50 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT</title>
+      <link>https://www.vesselfinder.com/ports/AUMEL001</link>
+      <guid isPermaLink="false">d0e4ecdd1f20971a98e96d592e2d08541fab4bf4</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:26 GMT</pubDate>
+      <description><![CDATA[Melbourne, Australia Departure (UTC) Nov 6, 15:57 — ET: Nov 06, 10:57 AM EST | Local: Nov 07, 02:57 AM AEDT]]></description>
+    </item>
+    <item>
+      <title>Disney Fantasy Departed from A Coruna, Spain at Nov 06, 10:42 AM EST. The local time to the port is Nov 06, 04:42 PM CET</title>
+      <link>https://www.vesselfinder.com/ports/ESLCG001</link>
+      <guid isPermaLink="false">cbb88b5379fafeb49197e9501841f964b23ee7f0</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:17 GMT</pubDate>
+      <description><![CDATA[A Coruna, Spain Departure (UTC) Nov 6, 15:42 — ET: Nov 06, 10:42 AM EST | Local: Nov 06, 04:42 PM CET]]></description>
+    </item>
+    <item>
+      <title>Disney Dream Arrived at Gorda Cay, Bahamas at Nov 06, 07:31 AM EST. The local time to the port is Nov 06, 07:31 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+      <guid isPermaLink="false">d6f8aaaeb57e1e312675c4524f58f65cc53d54f7</guid>
+      <pubDate>Thu, 06 Nov 2025 22:21:20 GMT</pubDate>
+      <description><![CDATA[Gorda Cay, Bahamas Arrival (UTC) Nov 6, 12:31 — ET: Nov 06, 07:31 AM EST | Local: Nov 06, 07:31 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Magic Departed from St Johns, Antigua &amp; Barbuda at Nov 05, 05:12 PM EST. The local time to the port is Nov 05, 06:12 PM AST</title>
+      <link>https://www.vesselfinder.com/ports/AGSJO001</link>
+      <guid isPermaLink="false">3a962657f9a74625be34bc7728b616284d2801d3</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:20 GMT</pubDate>
+      <description><![CDATA[St Johns, Antigua & Barbuda Departure (UTC) Nov 5, 22:12 — ET: Nov 05, 05:12 PM EST | Local: Nov 05, 06:12 PM AST]]></description>
+    </item>
+    <item>
+      <title>Disney Wonder Arrived at Melbourne, Australia at Nov 05, 01:54 PM EST. The local time to the port is Nov 06, 05:54 AM AEDT</title>
+      <link>https://www.vesselfinder.com/ports/AUMEL001</link>
+      <guid isPermaLink="false">f7302d9f5b0459e3a5b798f9eb70912461e5a34d</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:26 GMT</pubDate>
+      <description><![CDATA[Melbourne, Australia Arrival (UTC) Nov 5, 18:54 — ET: Nov 05, 01:54 PM EST | Local: Nov 06, 05:54 AM AEDT]]></description>
+    </item>
+    <item>
+      <title>Disney Magic Arrived at St Johns, Antigua &amp; Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST</title>
+      <link>https://www.vesselfinder.com/ports/AGSJO001</link>
+      <guid isPermaLink="false">1456f1f419c7bfcd00e8f0fa39c412abb0795382</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:20 GMT</pubDate>
+      <description><![CDATA[St Johns, Antigua & Barbuda Arrival (UTC) Nov 5, 11:42 — ET: Nov 05, 06:42 AM EST | Local: Nov 05, 07:42 AM AST]]></description>
+    </item>
+    <item>
+      <title>Disney Fantasy Arrived at A Coruna, Spain at Nov 05, 12:00 AM EST. The local time to the port is Nov 05, 06:00 AM CET</title>
+      <link>https://www.vesselfinder.com/ports/ESLCG001</link>
+      <guid isPermaLink="false">843679d9d6a27157e97d152e059920e99c91b37e</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:17 GMT</pubDate>
+      <description><![CDATA[A Coruna, Spain Arrival (UTC) Nov 5, 05:00 — ET: Nov 05, 12:00 AM EST | Local: Nov 05, 06:00 AM CET]]></description>
+    </item>
+    <item>
+      <title>Disney Wish Departed from Nassau, Bahamas at Nov 04, 05:55 PM EST. The local time to the port is Nov 04, 05:55 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">fb4d3b2ef1f218de7e415a2cedec536428bb2b92</guid>
+      <pubDate>Thu, 06 Nov 2025 22:28:25 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 4, 22:55 — ET: Nov 04, 05:55 PM EST | Local: Nov 04, 05:55 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Wish Arrived at Nassau, Bahamas at Nov 04, 08:38 AM EST. The local time to the port is Nov 04, 08:38 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">d7e0c0704231fe905c5548b91fcfd1e7e7e434f5</guid>
+      <pubDate>Thu, 06 Nov 2025 22:28:25 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Arrival (UTC) Nov 4, 13:38 — ET: Nov 04, 08:38 AM EST | Local: Nov 04, 08:38 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/KYGEC001</link>
+      <guid isPermaLink="false">d578ecaa7f61da0def66269db3b09b1e32d816c8</guid>
+      <pubDate>Thu, 06 Nov 2025 22:21:14 GMT</pubDate>
+      <description><![CDATA[Georgetown, Grand Cayman Anch., Cayman Islands Departure (UTC) Nov 3, 22:05 — ET: Nov 03, 05:05 PM EST | Local: Nov 03, 05:05 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Treasure Arrived at Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 07:31 AM EST. The local time to the port is Nov 03, 07:31 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/KYGEC001</link>
+      <guid isPermaLink="false">1a2d14cb365b1e0923e8caad890d05a9cc658b38</guid>
+      <pubDate>Thu, 06 Nov 2025 22:21:14 GMT</pubDate>
+      <description><![CDATA[Georgetown, Grand Cayman Anch., Cayman Islands Arrival (UTC) Nov 3, 12:31 — ET: Nov 03, 07:31 AM EST | Local: Nov 03, 07:31 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Adventure Departed from Bremerhaven, Germany at Sep 10, 07:10 PM EDT. The local time to the port is Sep 11, 01:10 AM CEST</title>
+      <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+      <guid isPermaLink="false">ea6f90adfaacef92a053a7ab02c61e67362f9edf</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:28 GMT</pubDate>
+      <description><![CDATA[Bremerhaven, Germany Departure (UTC) Sep 10, 23:10 — ET: Sep 10, 07:10 PM EDT | Local: Sep 11, 01:10 AM CEST]]></description>
+    </item>
+    <item>
+      <title>Disney Adventure Arrived at Bremerhaven, Germany at Sep 09, 06:00 AM EDT. The local time to the port is Sep 09, 12:00 PM CEST</title>
+      <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+      <guid isPermaLink="false">639844e0bed76ae8204b558fa2302f5b76939c06</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:28 GMT</pubDate>
+      <description><![CDATA[Bremerhaven, Germany Arrival (UTC) Sep 9, 10:00 — ET: Sep 09, 06:00 AM EDT | Local: Sep 09, 12:00 PM CEST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Departed from Nassau, Bahamas at Nov 06, 04:10 PM EST. The local time to the port is Nov 06, 04:10 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">7ea86fbf6a92d0892f50eb4e14b9ec1dda963d75</guid>
+      <pubDate>Thu, 06 Nov 2025 21:39:57 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 6, 21:10 — Local: Nov 06, 04:10 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Arrived at Nassau, Bahamas at Nov 06, 01:50 PM EST. The local time to the port is Nov 06, 01:50 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">4923efc543f5e068508215eb69c3d55f7110bf59</guid>
+      <pubDate>Thu, 06 Nov 2025 19:38:33 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Arrival (UTC) Nov 6, 18:50 — Local: Nov 06, 01:50 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny — Departure — Nassau, Bahamas</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">6383998bce0a699c5a95a18c14666c18a435edd5</guid>
+      <pubDate>Thu, 06 Nov 2025 19:38:33 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) (time not yet posted)]]></description>
+    </item>
+    <item>
+      <title>Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT</title>
+      <link>https://www.vesselfinder.com/ports/AUMEL001</link>
+      <guid isPermaLink="false">162a83a6807943959591a4e697a41d05bd22bbf2</guid>
+      <pubDate>Thu, 06 Nov 2025 16:35:51 GMT</pubDate>
+      <description><![CDATA[Melbourne, Australia Departure (UTC) Nov 6, 15:57 — Local: Nov 07, 02:57 AM AEDT]]></description>
+    </item>
+    <item>
+      <title>Disney Fantasy Departed from A Coruna, Spain at Nov 06, 10:42 AM EST. The local time to the port is Nov 06, 04:42 PM CET</title>
+      <link>https://www.vesselfinder.com/ports/ESLCG001</link>
+      <guid isPermaLink="false">e74666c5a68417764c2af4b089cb5a58edeed212</guid>
+      <pubDate>Thu, 06 Nov 2025 15:48:37 GMT</pubDate>
+      <description><![CDATA[A Coruna, Spain Departure (UTC) Nov 6, 15:42 — Local: Nov 06, 04:42 PM CET]]></description>
+    </item>
+    <item>
+      <title>Disney Dream Arrived at Gorda Cay, Bahamas at Nov 06, 07:31 AM EST. The local time to the port is Nov 06, 07:31 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+      <guid isPermaLink="false">915f52c9e1dbfdcb7b864aff370667f523ed7ce8</guid>
+      <pubDate>Thu, 06 Nov 2025 13:41:16 GMT</pubDate>
+      <description><![CDATA[Gorda Cay, Bahamas Arrival (UTC) Nov 6, 12:31 — Local: Nov 06, 07:31 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Dream — Departure — Gorda Cay, Bahamas</title>
+      <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+      <guid isPermaLink="false">a7485f48cb1823b36fe035c5a0058b6de3d746c6</guid>
+      <pubDate>Thu, 06 Nov 2025 13:41:16 GMT</pubDate>
+      <description><![CDATA[Gorda Cay, Bahamas Departure (UTC) (time not yet posted)]]></description>
+    </item>
+    <item>
+      <title>Disney Dream Arrived at Nassau, Bahamas at Nov 05, 07:17 AM EST. The local time to the port is Nov 05, 07:17 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">cc1ddea55c1b38056523ca9504042e2ecbd494ab</guid>
+      <pubDate>Thu, 06 Nov 2025 00:56:11 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Arrival (UTC) Nov 5, 12:17 — Local: Nov 05, 07:17 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Dream Departed from Nassau, Bahamas at Nov 05, 05:45 PM EST. The local time to the port is Nov 05, 05:45 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">0f27bd4e2c950e20448a7d40e0526dba4f86c00b</guid>
+      <pubDate>Thu, 06 Nov 2025 00:56:11 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 5, 22:45 — Local: Nov 05, 05:45 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Magic Departed from St Johns, Antigua &amp; Barbuda at Nov 05, 05:12 PM EST. The local time to the port is Nov 05, 06:12 PM AST</title>
+      <link>https://www.vesselfinder.com/ports/AGSJO001</link>
+      <guid isPermaLink="false">afd7c380645aa34386268411e4a58972e929cb5d</guid>
+      <pubDate>Wed, 05 Nov 2025 22:58:51 GMT</pubDate>
+      <description><![CDATA[St Johns, Antigua & Barbuda Departure (UTC) Nov 5, 22:12 — Local: Nov 05, 06:12 PM AST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Arrived at Gorda Cay, Bahamas at Nov 05, 07:15 AM EST. The local time to the port is Nov 05, 07:15 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+      <guid isPermaLink="false">6ab65fa3feb897a6424152b09d8784126dc049c6</guid>
+      <pubDate>Wed, 05 Nov 2025 22:59:04 GMT</pubDate>
+      <description><![CDATA[Gorda Cay, Bahamas Arrival (UTC) Nov 5, 12:15 — Local: Nov 05, 07:15 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Departed from Gorda Cay, Bahamas at Nov 05, 05:44 PM EST. The local time to the port is Nov 05, 05:44 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+      <guid isPermaLink="false">723fb2339df70cd252c814b5756a60bc74c1d95c</guid>
+      <pubDate>Wed, 05 Nov 2025 22:59:04 GMT</pubDate>
+      <description><![CDATA[Gorda Cay, Bahamas Departure (UTC) Nov 5, 22:44 — Local: Nov 05, 05:44 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Wonder Arrived at Melbourne, Australia at Nov 05, 01:54 PM EST. The local time to the port is Nov 06, 05:54 AM AEDT</title>
+      <link>https://www.vesselfinder.com/ports/AUMEL001</link>
+      <guid isPermaLink="false">deadbf48f63560f68d03da81502e8ff82d802ae3</guid>
+      <pubDate>Wed, 05 Nov 2025 19:41:02 GMT</pubDate>
+      <description><![CDATA[Melbourne, Australia Arrival (UTC) Nov 5, 18:54 — Local: Nov 06, 05:54 AM AEDT]]></description>
+    </item>
+    <item>
+      <title>Disney Wonder — Departure — Melbourne, Australia</title>
+      <link>https://www.vesselfinder.com/ports/AUMEL001</link>
+      <guid isPermaLink="false">2c16a271a02174a83a9fce3dee4a85d667a83304</guid>
+      <pubDate>Wed, 05 Nov 2025 19:41:02 GMT</pubDate>
+      <description><![CDATA[Melbourne, Australia Departure (UTC) (time not yet posted)]]></description>
+    </item>
+    <item>
+      <title>Disney Wish Arrived at Nassau, Bahamas at Nov 04, 08:38 AM EST. The local time to the port is Nov 04, 08:38 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">f8a1f99aa55415cfdb8e84487368a16da022ccd5</guid>
+      <pubDate>Wed, 05 Nov 2025 14:24:26 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Arrival (UTC) Nov 4, 13:38 — Local: Nov 04, 08:38 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Wish Departed from Nassau, Bahamas at Nov 04, 05:55 PM EST. The local time to the port is Nov 04, 05:55 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">8154f90fbb8366d07b660249311a15760356a885</guid>
+      <pubDate>Wed, 05 Nov 2025 14:24:26 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 4, 22:55 — Local: Nov 04, 05:55 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Treasure Arrived at Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 07:31 AM EST. The local time to the port is Nov 03, 07:31 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/KYGEC001</link>
+      <guid isPermaLink="false">70289f027a48eed32a411100a06a490b4a8cef10</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:18 GMT</pubDate>
+      <description><![CDATA[Georgetown, Grand Cayman Anch., Cayman Islands Arrival (UTC) Nov 3, 12:31 — Local: Nov 03, 07:31 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/KYGEC001</link>
+      <guid isPermaLink="false">1ad5622ca04fd984986b080023dcd6a6ae50dd5c</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:18 GMT</pubDate>
+      <description><![CDATA[Georgetown, Grand Cayman Anch., Cayman Islands Departure (UTC) Nov 3, 22:05 — Local: Nov 03, 05:05 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Dream Arrived at Port Everglades, United States (USA) at Nov 03, 05:49 AM EST. The local time to the port is Nov 03, 05:49 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPEF001</link>
+      <guid isPermaLink="false">fc80173a860b74578592cf840b1bfaa9380e0b76</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:26 GMT</pubDate>
+      <description><![CDATA[Port Everglades, United States (USA) Arrival (UTC) Nov 3, 10:49 — Local: Nov 03, 05:49 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Dream Departed from Port Everglades, United States (USA) at Nov 03, 04:37 PM EST. The local time to the port is Nov 03, 04:37 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPEF001</link>
+      <guid isPermaLink="false">ca40b8e5150763071b600d134b23bc80459a2679</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:26 GMT</pubDate>
+      <description><![CDATA[Port Everglades, United States (USA) Departure (UTC) Nov 3, 21:37 — Local: Nov 03, 04:37 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Adventure Arrived at Bremerhaven, Germany at Sep 09, 06:00 AM EST. The local time to the port is Sep 09, 06:00 AM EDT</title>
+      <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+      <guid isPermaLink="false">c4f55c980c43d6979e96d58f8c41a4edc5e36cc3</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:30 GMT</pubDate>
+      <description><![CDATA[Bremerhaven, Germany Arrival (UTC) Sep 9, 10:00 — Local: Sep 09, 06:00 AM EDT]]></description>
+    </item>
+    <item>
+      <title>Disney Adventure Departed from Bremerhaven, Germany at Sep 10, 07:10 PM EST. The local time to the port is Sep 10, 07:10 PM EDT</title>
+      <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+      <guid isPermaLink="false">98ebb64bf08089480413f3327b48b9c0734b6ada</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:30 GMT</pubDate>
+      <description><![CDATA[Bremerhaven, Germany Departure (UTC) Sep 10, 23:10 — Local: Sep 10, 07:10 PM EDT]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Arrived at Cape Canaveral, United States (USA) at Nov 02, 06:55 PM EST. The local time to the port is Nov 02, 06:55 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">ac3f927a59b5c7c5932bb076d78428a66aa086a0</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:33 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Arrival (UTC) Nov 2, 23:55 — Local: Nov 02, 06:55 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 04, 05:07 PM EST. The local time to the port is Nov 04, 05:07 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">db650fb3358d57342799d86e9f6f2db2eb249192</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:33 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 4, 22:07 — Local: Nov 04, 05:07 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Magic Arrived at St Johns, Antigua &amp; Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST</title>
+      <link>https://www.vesselfinder.com/ports/AGSJO001</link>
+      <guid isPermaLink="false">130d3ee109f35c3428e6fc22621d1efcb254384b</guid>
+      <pubDate>Wed, 05 Nov 2025 13:42:13 GMT</pubDate>
+      <description><![CDATA[St Johns, Antigua & Barbuda Arrival (UTC) Nov 5, 11:42 — Local: Nov 05, 07:42 AM AST]]></description>
+    </item>
+    <item>
+      <title>Disney Magic — Departure — St Johns, Antigua &amp; Barbuda</title>
+      <link>https://www.vesselfinder.com/ports/AGSJO001</link>
+      <guid isPermaLink="false">15f11163d80e45088ff6b9b1ae2d756bc85d9041</guid>
+      <pubDate>Wed, 05 Nov 2025 13:42:13 GMT</pubDate>
+      <description><![CDATA[St Johns, Antigua & Barbuda Departure (UTC) (time not yet posted)]]></description>
+    </item>
+    <item>
+      <title>Disney Wonder Arrived at Hobart, Australia at Nov 03, 03:18 PM EST. The local time to the port is Nov 04, 07:18 AM AEDT</title>
+      <link>https://www.vesselfinder.com/ports/AUHBA001</link>
+      <guid isPermaLink="false">31ca2da17d10c98085df114cdbd86b5411a0cecd</guid>
+      <pubDate>Wed, 05 Nov 2025 13:42:19 GMT</pubDate>
+      <description><![CDATA[Hobart, Australia Arrival (UTC) Nov 3, 20:18 — Local: Nov 04, 07:18 AM AEDT]]></description>
+    </item>
+    <item>
+      <title>Disney Wonder Departed from Hobart, Australia at Nov 04, 02:39 AM EST. The local time to the port is Nov 04, 06:39 PM AEDT</title>
+      <link>https://www.vesselfinder.com/ports/AUHBA001</link>
+      <guid isPermaLink="false">7833d3adead1bb5abc2b45905889403b3b688cf2</guid>
+      <pubDate>Wed, 05 Nov 2025 13:42:19 GMT</pubDate>
+      <description><![CDATA[Hobart, Australia Departure (UTC) Nov 4, 07:39 — Local: Nov 04, 06:39 PM AEDT]]></description>
+    </item>
+    <item>
+      <title>Disney Fantasy Arrived at A Coruna, Spain at Nov 05, 12:00 AM EST. The local time to the port is Nov 05, 06:00 AM CET</title>
+      <link>https://www.vesselfinder.com/ports/ESLCG001</link>
+      <guid isPermaLink="false">c1e998f989b61c3e43051fe1178be4182b8fc044</guid>
+      <pubDate>Wed, 05 Nov 2025 13:35:43 GMT</pubDate>
+      <description><![CDATA[A Coruna, Spain Arrival (UTC) Nov 5, 05:00 — Local: Nov 05, 06:00 AM CET]]></description>
+    </item>
+    <item>
+      <title>Disney Fantasy — Departure — A Coruna, Spain</title>
+      <link>https://www.vesselfinder.com/ports/ESLCG001</link>
+      <guid isPermaLink="false">e59eb5352752273db360e15555ba17e7060ca8cb</guid>
+      <pubDate>Wed, 05 Nov 2025 13:35:43 GMT</pubDate>
+      <description><![CDATA[A Coruna, Spain Departure (UTC) (time not yet posted)]]></description>
+    </item>
+    <item>
+      <title>Disney Magic Arrived at St Johns, Antigua &amp; Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST</title>
+      <link>https://www.vesselfinder.com/ports/AGSJO001</link>
+      <guid isPermaLink="false">2a34b43d2c20d69b5fc0d2e53c2c86fb895eaf29</guid>
+      <pubDate>Wed, 05 Nov 2025 13:04:40 GMT</pubDate>
+      <description><![CDATA[St Johns, Antigua & Barbuda Arrival (UTC) Nov 5, 11:42 — Local: Nov 05, 07:42 AM AST]]></description>
+    </item>
+    <item>
+      <title>Disney Magic — Departure — St Johns, Antigua &amp; Barbuda</title>
+      <link>https://www.vesselfinder.com/ports/AGSJO001</link>
+      <guid isPermaLink="false">dd70243dc183d23891d5a1e8a3ae7b4a105af63d</guid>
+      <pubDate>Wed, 05 Nov 2025 13:04:40 GMT</pubDate>
+      <description><![CDATA[St Johns, Antigua & Barbuda Departure (UTC) (time not yet posted)]]></description>
+    </item>
+    <item>
+      <title>Disney Wish Arrived at Nassau, Bahamas at Nov 04, 08:38 AM EST. The local time to the port is Nov 04, 08:38 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">eea9fc68c6edb5115ca52c53dd3be1b5b993a208</guid>
+      <pubDate>Wed, 05 Nov 2025 10:30:02 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Arrival (UTC) Nov 4, 13:38 — Local: Nov 04, 08:38 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Wish Departed from Nassau, Bahamas at Nov 04, 05:55 PM EST. The local time to the port is Nov 04, 05:55 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">29ac6829aa1896331e5b0663ae9a8bc75da23102</guid>
+      <pubDate>Wed, 05 Nov 2025 10:30:02 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 4, 22:55 — Local: Nov 04, 05:55 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Fantasy Arrived at A Coruna, Spain at Nov 05, 12:00 AM EST. The local time to the port is Nov 05, 06:00 AM CET</title>
+      <link>https://www.vesselfinder.com/ports/ESLCG001</link>
+      <guid isPermaLink="false">a74b94681d4b51b9c7ad6a3be49bf591907a41fe</guid>
+      <pubDate>Wed, 05 Nov 2025 05:37:27 GMT</pubDate>
+      <description><![CDATA[A Coruna, Spain Arrival (UTC) Nov 5, 05:00 — Local: Nov 05, 06:00 AM CET]]></description>
+    </item>
+    <item>
+      <title>Disney Fantasy — Departure — A Coruna, Spain</title>
+      <link>https://www.vesselfinder.com/ports/ESLCG001</link>
+      <guid isPermaLink="false">56b6b2f99909afc1c56981bb21c1f55b30cc3d1c</guid>
+      <pubDate>Wed, 05 Nov 2025 05:37:27 GMT</pubDate>
+      <description><![CDATA[A Coruna, Spain Departure (UTC) (time not yet posted)]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 04, 05:07 PM EST. The local time to the port is Nov 04, 05:07 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">953e6ce5e3dd6f15accbfd54e5ee44b968b78d22</guid>
+      <pubDate>Tue, 04 Nov 2025 22:44:58 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 4, 22:07 — Local: Nov 04, 05:07 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Magic Departed from Roseau, Dominica at Nov 04, 05:07 PM EST. The local time to the port is Nov 04, 06:07 PM AST</title>
+      <link>https://www.vesselfinder.com/ports/DMRSU001</link>
+      <guid isPermaLink="false">0f227db851bb706b4c036e163fda4ed1b00573d1</guid>
+      <pubDate>Tue, 04 Nov 2025 22:30:24 GMT</pubDate>
+      <description><![CDATA[Roseau, Dominica Departure (UTC) Nov 4, 22:07 — Local: Nov 04, 06:07 PM AST]]></description>
+    </item>
+  </channel>
 </rss>

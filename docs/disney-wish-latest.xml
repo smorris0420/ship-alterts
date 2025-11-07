@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-<channel>
-  <title>Disney Wish - Latest Arrival/Departure</title>
-  <link>https://www.vesselfinder.com/vessels/details/9834739</link>
-  <description>Disney Wish - Latest Arrival/Departure - Auto-generated</description>
-  <lastBuildDate>Thu, 06 Nov 2025 23:56:11 GMT</lastBuildDate>
-  
-  <item>
-    <title>Disney Wish Departed from Nassau, Bahamas at Nov 04, 05:55 PM EST. The local time to the port is Nov 04, 05:55 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">fb4d3b2ef1f218de7e415a2cedec536428bb2b92</guid>
-    <pubDate>Thu, 06 Nov 2025 22:28:25 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) Nov 4, 22:55 — ET: Nov 04, 05:55 PM EST | Local: Nov 04, 05:55 PM EST</description>
-  </item>
-</channel>
+  <channel>
+    <title>Disney Wish - Latest Arrival/Departure</title>
+    <link>https://www.vesselfinder.com/vessels/details/9834739</link>
+    <description>Disney Wish - Latest Arrival/Departure - Auto-generated</description>
+    <lastBuildDate>Fri, 07 Nov 2025 00:38:18 GMT</lastBuildDate>
+    <item>
+      <title>Disney Wish Departed from Nassau, Bahamas at Nov 04, 05:55 PM EST. The local time to the port is Nov 04, 05:55 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">fb4d3b2ef1f218de7e415a2cedec536428bb2b92</guid>
+      <pubDate>Thu, 06 Nov 2025 22:28:25 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 4, 22:55 — ET: Nov 04, 05:55 PM EST | Local: Nov 04, 05:55 PM EST]]></description>
+    </item>
+  </channel>
 </rss>

@@ -1,80 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-<channel>
-  <title>Disney Destiny - Arrivals &amp; Departures</title>
-  <link>https://www.vesselfinder.com/vessels/details/9834741</link>
-  <description>Disney Destiny - Arrivals &amp; Departures - Auto-generated</description>
-  <lastBuildDate>Thu, 06 Nov 2025 23:56:33 GMT</lastBuildDate>
-  
-  <item>
-    <title>Disney Destiny Departed from Nassau, Bahamas at Nov 06, 04:10 PM EST. The local time to the port is Nov 06, 04:10 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">fc196c37222abefad40a211472284a25577f6697</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:31 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) Nov 6, 21:10 — ET: Nov 06, 04:10 PM EST | Local: Nov 06, 04:10 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Arrived at Nassau, Bahamas at Nov 06, 01:50 PM EST. The local time to the port is Nov 06, 01:50 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">7876bd5e384f63868095ca4ff6a903b6fd3fc916</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:31 GMT</pubDate>
-    <description>Nassau, Bahamas Arrival (UTC) Nov 6, 18:50 — ET: Nov 06, 01:50 PM EST | Local: Nov 06, 01:50 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Departed from Nassau, Bahamas at Nov 06, 04:10 PM EST. The local time to the port is Nov 06, 04:10 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">7ea86fbf6a92d0892f50eb4e14b9ec1dda963d75</guid>
-    <pubDate>Thu, 06 Nov 2025 21:39:57 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) Nov 6, 21:10 — Local: Nov 06, 04:10 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Arrived at Nassau, Bahamas at Nov 06, 01:50 PM EST. The local time to the port is Nov 06, 01:50 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">4923efc543f5e068508215eb69c3d55f7110bf59</guid>
-    <pubDate>Thu, 06 Nov 2025 19:38:33 GMT</pubDate>
-    <description>Nassau, Bahamas Arrival (UTC) Nov 6, 18:50 — Local: Nov 06, 01:50 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny — Departure — Nassau, Bahamas</title>
-    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-    <guid isPermaLink="false">6383998bce0a699c5a95a18c14666c18a435edd5</guid>
-    <pubDate>Thu, 06 Nov 2025 19:38:33 GMT</pubDate>
-    <description>Nassau, Bahamas Departure (UTC) (time not yet posted)</description>
-  </item>
-  <item>
-    <title>Disney Destiny Arrived at Gorda Cay, Bahamas at Nov 05, 07:15 AM EST. The local time to the port is Nov 05, 07:15 AM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
-    <guid isPermaLink="false">6ab65fa3feb897a6424152b09d8784126dc049c6</guid>
-    <pubDate>Wed, 05 Nov 2025 22:59:04 GMT</pubDate>
-    <description>Gorda Cay, Bahamas Arrival (UTC) Nov 5, 12:15 — Local: Nov 05, 07:15 AM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Departed from Gorda Cay, Bahamas at Nov 05, 05:44 PM EST. The local time to the port is Nov 05, 05:44 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
-    <guid isPermaLink="false">723fb2339df70cd252c814b5756a60bc74c1d95c</guid>
-    <pubDate>Wed, 05 Nov 2025 22:59:04 GMT</pubDate>
-    <description>Gorda Cay, Bahamas Departure (UTC) Nov 5, 22:44 — Local: Nov 05, 05:44 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Arrived at Cape Canaveral, United States (USA) at Nov 02, 06:55 PM EST. The local time to the port is Nov 02, 06:55 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/USPCV001</link>
-    <guid isPermaLink="false">ac3f927a59b5c7c5932bb076d78428a66aa086a0</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:33 GMT</pubDate>
-    <description>Cape Canaveral, United States (USA) Arrival (UTC) Nov 2, 23:55 — Local: Nov 02, 06:55 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 04, 05:07 PM EST. The local time to the port is Nov 04, 05:07 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/USPCV001</link>
-    <guid isPermaLink="false">db650fb3358d57342799d86e9f6f2db2eb249192</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:33 GMT</pubDate>
-    <description>Cape Canaveral, United States (USA) Departure (UTC) Nov 4, 22:07 — Local: Nov 04, 05:07 PM EST</description>
-  </item>
-  <item>
-    <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 04, 05:07 PM EST. The local time to the port is Nov 04, 05:07 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/USPCV001</link>
-    <guid isPermaLink="false">953e6ce5e3dd6f15accbfd54e5ee44b968b78d22</guid>
-    <pubDate>Tue, 04 Nov 2025 22:44:58 GMT</pubDate>
-    <description>Cape Canaveral, United States (USA) Departure (UTC) Nov 4, 22:07 — Local: Nov 04, 05:07 PM EST</description>
-  </item>
-</channel>
+  <channel>
+    <title>Disney Destiny - Arrivals &amp; Departures</title>
+    <link>https://www.vesselfinder.com/vessels/details/9834741</link>
+    <description>Disney Destiny - Arrivals &amp; Departures - Auto-generated</description>
+    <lastBuildDate>Fri, 07 Nov 2025 00:38:33 GMT</lastBuildDate>
+    <item>
+      <title>Disney Destiny Departed from Nassau, Bahamas at Nov 06, 04:10 PM EST. The local time to the port is Nov 06, 04:10 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">fc196c37222abefad40a211472284a25577f6697</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:31 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 6, 21:10 — ET: Nov 06, 04:10 PM EST | Local: Nov 06, 04:10 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Arrived at Nassau, Bahamas at Nov 06, 01:50 PM EST. The local time to the port is Nov 06, 01:50 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">7876bd5e384f63868095ca4ff6a903b6fd3fc916</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:31 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Arrival (UTC) Nov 6, 18:50 — ET: Nov 06, 01:50 PM EST | Local: Nov 06, 01:50 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Departed from Nassau, Bahamas at Nov 06, 04:10 PM EST. The local time to the port is Nov 06, 04:10 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">7ea86fbf6a92d0892f50eb4e14b9ec1dda963d75</guid>
+      <pubDate>Thu, 06 Nov 2025 21:39:57 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 6, 21:10 — Local: Nov 06, 04:10 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Arrived at Nassau, Bahamas at Nov 06, 01:50 PM EST. The local time to the port is Nov 06, 01:50 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">4923efc543f5e068508215eb69c3d55f7110bf59</guid>
+      <pubDate>Thu, 06 Nov 2025 19:38:33 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Arrival (UTC) Nov 6, 18:50 — Local: Nov 06, 01:50 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny — Departure — Nassau, Bahamas</title>
+      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+      <guid isPermaLink="false">6383998bce0a699c5a95a18c14666c18a435edd5</guid>
+      <pubDate>Thu, 06 Nov 2025 19:38:33 GMT</pubDate>
+      <description><![CDATA[Nassau, Bahamas Departure (UTC) (time not yet posted)]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Arrived at Gorda Cay, Bahamas at Nov 05, 07:15 AM EST. The local time to the port is Nov 05, 07:15 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+      <guid isPermaLink="false">6ab65fa3feb897a6424152b09d8784126dc049c6</guid>
+      <pubDate>Wed, 05 Nov 2025 22:59:04 GMT</pubDate>
+      <description><![CDATA[Gorda Cay, Bahamas Arrival (UTC) Nov 5, 12:15 — Local: Nov 05, 07:15 AM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Departed from Gorda Cay, Bahamas at Nov 05, 05:44 PM EST. The local time to the port is Nov 05, 05:44 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+      <guid isPermaLink="false">723fb2339df70cd252c814b5756a60bc74c1d95c</guid>
+      <pubDate>Wed, 05 Nov 2025 22:59:04 GMT</pubDate>
+      <description><![CDATA[Gorda Cay, Bahamas Departure (UTC) Nov 5, 22:44 — Local: Nov 05, 05:44 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Arrived at Cape Canaveral, United States (USA) at Nov 02, 06:55 PM EST. The local time to the port is Nov 02, 06:55 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">ac3f927a59b5c7c5932bb076d78428a66aa086a0</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:33 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Arrival (UTC) Nov 2, 23:55 — Local: Nov 02, 06:55 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 04, 05:07 PM EST. The local time to the port is Nov 04, 05:07 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">db650fb3358d57342799d86e9f6f2db2eb249192</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:33 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 4, 22:07 — Local: Nov 04, 05:07 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 04, 05:07 PM EST. The local time to the port is Nov 04, 05:07 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">953e6ce5e3dd6f15accbfd54e5ee44b968b78d22</guid>
+      <pubDate>Tue, 04 Nov 2025 22:44:58 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 4, 22:07 — Local: Nov 04, 05:07 PM EST]]></description>
+    </item>
+  </channel>
 </rss>

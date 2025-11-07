@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-<channel>
-  <title>Disney Adventure - Arrivals &amp; Departures</title>
-  <link>https://www.vesselfinder.com/vessels/details/9808986</link>
-  <description>Disney Adventure - Arrivals &amp; Departures - Auto-generated</description>
-  <lastBuildDate>Thu, 06 Nov 2025 23:56:30 GMT</lastBuildDate>
-  
-  <item>
-    <title>Disney Adventure Departed from Bremerhaven, Germany at Sep 10, 07:10 PM EDT. The local time to the port is Sep 11, 01:10 AM CEST</title>
-    <link>https://www.vesselfinder.com/ports/DEBRV001</link>
-    <guid isPermaLink="false">ea6f90adfaacef92a053a7ab02c61e67362f9edf</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:28 GMT</pubDate>
-    <description>Bremerhaven, Germany Departure (UTC) Sep 10, 23:10 — ET: Sep 10, 07:10 PM EDT | Local: Sep 11, 01:10 AM CEST</description>
-  </item>
-  <item>
-    <title>Disney Adventure Arrived at Bremerhaven, Germany at Sep 09, 06:00 AM EDT. The local time to the port is Sep 09, 12:00 PM CEST</title>
-    <link>https://www.vesselfinder.com/ports/DEBRV001</link>
-    <guid isPermaLink="false">639844e0bed76ae8204b558fa2302f5b76939c06</guid>
-    <pubDate>Thu, 06 Nov 2025 22:00:28 GMT</pubDate>
-    <description>Bremerhaven, Germany Arrival (UTC) Sep 9, 10:00 — ET: Sep 09, 06:00 AM EDT | Local: Sep 09, 12:00 PM CEST</description>
-  </item>
-  <item>
-    <title>Disney Adventure Arrived at Bremerhaven, Germany at Sep 09, 06:00 AM EST. The local time to the port is Sep 09, 06:00 AM EDT</title>
-    <link>https://www.vesselfinder.com/ports/DEBRV001</link>
-    <guid isPermaLink="false">c4f55c980c43d6979e96d58f8c41a4edc5e36cc3</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:30 GMT</pubDate>
-    <description>Bremerhaven, Germany Arrival (UTC) Sep 9, 10:00 — Local: Sep 09, 06:00 AM EDT</description>
-  </item>
-  <item>
-    <title>Disney Adventure Departed from Bremerhaven, Germany at Sep 10, 07:10 PM EST. The local time to the port is Sep 10, 07:10 PM EDT</title>
-    <link>https://www.vesselfinder.com/ports/DEBRV001</link>
-    <guid isPermaLink="false">98ebb64bf08089480413f3327b48b9c0734b6ada</guid>
-    <pubDate>Wed, 05 Nov 2025 13:56:30 GMT</pubDate>
-    <description>Bremerhaven, Germany Departure (UTC) Sep 10, 23:10 — Local: Sep 10, 07:10 PM EDT</description>
-  </item>
-</channel>
+  <channel>
+    <title>Disney Adventure - Arrivals &amp; Departures</title>
+    <link>https://www.vesselfinder.com/vessels/details/9808986</link>
+    <description>Disney Adventure - Arrivals &amp; Departures - Auto-generated</description>
+    <lastBuildDate>Fri, 07 Nov 2025 00:38:31 GMT</lastBuildDate>
+    <item>
+      <title>Disney Adventure Departed from Bremerhaven, Germany at Sep 10, 07:10 PM EDT. The local time to the port is Sep 11, 01:10 AM CEST</title>
+      <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+      <guid isPermaLink="false">ea6f90adfaacef92a053a7ab02c61e67362f9edf</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:28 GMT</pubDate>
+      <description><![CDATA[Bremerhaven, Germany Departure (UTC) Sep 10, 23:10 — ET: Sep 10, 07:10 PM EDT | Local: Sep 11, 01:10 AM CEST]]></description>
+    </item>
+    <item>
+      <title>Disney Adventure Arrived at Bremerhaven, Germany at Sep 09, 06:00 AM EDT. The local time to the port is Sep 09, 12:00 PM CEST</title>
+      <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+      <guid isPermaLink="false">639844e0bed76ae8204b558fa2302f5b76939c06</guid>
+      <pubDate>Thu, 06 Nov 2025 22:00:28 GMT</pubDate>
+      <description><![CDATA[Bremerhaven, Germany Arrival (UTC) Sep 9, 10:00 — ET: Sep 09, 06:00 AM EDT | Local: Sep 09, 12:00 PM CEST]]></description>
+    </item>
+    <item>
+      <title>Disney Adventure Arrived at Bremerhaven, Germany at Sep 09, 06:00 AM EST. The local time to the port is Sep 09, 06:00 AM EDT</title>
+      <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+      <guid isPermaLink="false">c4f55c980c43d6979e96d58f8c41a4edc5e36cc3</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:30 GMT</pubDate>
+      <description><![CDATA[Bremerhaven, Germany Arrival (UTC) Sep 9, 10:00 — Local: Sep 09, 06:00 AM EDT]]></description>
+    </item>
+    <item>
+      <title>Disney Adventure Departed from Bremerhaven, Germany at Sep 10, 07:10 PM EST. The local time to the port is Sep 10, 07:10 PM EDT</title>
+      <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+      <guid isPermaLink="false">98ebb64bf08089480413f3327b48b9c0734b6ada</guid>
+      <pubDate>Wed, 05 Nov 2025 13:56:30 GMT</pubDate>
+      <description><![CDATA[Bremerhaven, Germany Departure (UTC) Sep 10, 23:10 — Local: Sep 10, 07:10 PM EDT]]></description>
+    </item>
+  </channel>
 </rss>
