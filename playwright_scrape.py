@@ -328,7 +328,7 @@ def _ensure_stylesheet_dcl():
             margin:0 auto;
           }
           .logo-img{
-            width:96px;height:auto;display:block;
+            width:384px;height:auto;display:block;
             margin:0 auto;            /* center the image */
           }
           .brand h1{
