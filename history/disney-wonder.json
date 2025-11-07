@@ -10,11 +10,31 @@
     "shipName": "Disney Wonder"
   },
   {
+    "title": "Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT",
+    "description": "Melbourne, Australia Departure (UTC) Nov 6, 15:57 — ET: Nov 06, 10:57 AM EST | Local: Nov 07, 02:57 AM AEDT",
+    "link": "https://www.vesselfinder.com/ports/AUMEL001",
+    "guid": "122dacb2a37fe402f04a5dfa20ddc6d0fdc18589",
+    "pubDate": "Fri, 07 Nov 2025 18:25:04 GMT",
+    "eventUtc": "2025-11-06T15:57:00+00:00",
+    "shipSlug": "disney-wonder",
+    "shipName": "Disney Wonder"
+  },
+  {
     "title": "Disney Wonder Arrived at Melbourne, Australia at Nov 05, 01:54 PM EST. The local time to the port is Nov 06, 05:54 AM AEDT",
     "description": "Melbourne, Australia Arrival (UTC) Nov 5, 18:54 — ET: Nov 05, 01:54 PM EST | Local: Nov 06, 05:54 AM AEDT",
     "link": "https://www.vesselfinder.com/ports/AUMEL001",
     "guid": "f7302d9f5b0459e3a5b798f9eb70912461e5a34d",
     "pubDate": "Fri, 07 Nov 2025 17:00:30 GMT",
+    "eventUtc": "2025-11-05T18:54:00+00:00",
+    "shipSlug": "disney-wonder",
+    "shipName": "Disney Wonder"
+  },
+  {
+    "title": "Disney Wonder Arrived at Melbourne, Australia at Nov 05, 01:54 PM EST. The local time to the port is Nov 06, 05:54 AM AEDT",
+    "description": "Melbourne, Australia Arrival (UTC) Nov 5, 18:54 — ET: Nov 05, 01:54 PM EST | Local: Nov 06, 05:54 AM AEDT",
+    "link": "https://www.vesselfinder.com/ports/AUMEL001",
+    "guid": "ff28e1a5acc5af253044eeeffdacfcf4349f103c",
+    "pubDate": "Fri, 07 Nov 2025 18:25:04 GMT",
     "eventUtc": "2025-11-05T18:54:00+00:00",
     "shipSlug": "disney-wonder",
     "shipName": "Disney Wonder"

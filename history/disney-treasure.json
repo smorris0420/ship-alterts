@@ -10,11 +10,31 @@
     "shipName": "Disney Treasure"
   },
   {
+    "title": "Disney Treasure Departed from Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 05:05 PM EST. The local time to the port is Nov 03, 05:05 PM EST",
+    "description": "Georgetown, Grand Cayman Anch., Cayman Islands Departure (UTC) Nov 3, 22:05 — ET: Nov 03, 05:05 PM EST | Local: Nov 03, 05:05 PM EST",
+    "link": "https://www.vesselfinder.com/ports/KYGEC001",
+    "guid": "6321fa6d29fbb0ed9abb313b09975219e16a91c0",
+    "pubDate": "Fri, 07 Nov 2025 18:24:56 GMT",
+    "eventUtc": "2025-11-03T22:05:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure"
+  },
+  {
     "title": "Disney Treasure Arrived at Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 07:31 AM EST. The local time to the port is Nov 03, 07:31 AM EST",
     "description": "Georgetown, Grand Cayman Anch., Cayman Islands Arrival (UTC) Nov 3, 12:31 — ET: Nov 03, 07:31 AM EST | Local: Nov 03, 07:31 AM EST",
     "link": "https://www.vesselfinder.com/ports/KYGEC001",
     "guid": "1a2d14cb365b1e0923e8caad890d05a9cc658b38",
     "pubDate": "Fri, 07 Nov 2025 17:25:09 GMT",
+    "eventUtc": "2025-11-03T12:31:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure"
+  },
+  {
+    "title": "Disney Treasure Arrived at Georgetown, Grand Cayman Anch., Cayman Islands at Nov 03, 07:31 AM EST. The local time to the port is Nov 03, 07:31 AM EST",
+    "description": "Georgetown, Grand Cayman Anch., Cayman Islands Arrival (UTC) Nov 3, 12:31 — ET: Nov 03, 07:31 AM EST | Local: Nov 03, 07:31 AM EST",
+    "link": "https://www.vesselfinder.com/ports/KYGEC001",
+    "guid": "01aaf05c179a6f886c4879f84729bc6f88c72347",
+    "pubDate": "Fri, 07 Nov 2025 18:24:56 GMT",
     "eventUtc": "2025-11-03T12:31:00+00:00",
     "shipSlug": "disney-treasure",
     "shipName": "Disney Treasure"
