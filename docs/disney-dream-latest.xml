@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
+<rss version="2.0">
+  <channel>
+    <title>Disney Dream - Latest Arrival/Departure</title>
+    <link>https://www.vesselfinder.com/vessels/details/9434254</link>
+    <description>Disney Dream - Latest Arrival/Departure - Auto-generated</description>
+    <lastBuildDate>Sat, 08 Nov 2025 14:45:04 GMT</lastBuildDate>
+    <item>
+      <title>Disney Dream Departed from Port Everglades, United States (USA) (time TBA)</title>
+      <link>https://www.vesselfinder.com/ports/USPEF001</link>
+      <guid isPermaLink="false">41583b6df882c8fdc893e20dbcb2d4555b6ce9a6</guid>
+      <pubDate>Sat, 08 Nov 2025 13:59:49 GMT</pubDate>
+      <description><![CDATA[Port Everglades, United States (USA) Departure (UTC) (time not yet posted)]]></description>
+    </item>
+  </channel>
+</rss>
