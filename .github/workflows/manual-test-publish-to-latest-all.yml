@@ -42,7 +42,7 @@ on:
         type: string
         default: "latest-all.xml"
       also_underscore:
-        description: "Also write docs/latest_all.xml"
+        description: "Also write/restore docs/latest_all.xml"
         required: false
         type: boolean
         default: false
@@ -54,14 +54,17 @@ jobs:
   publish-or-restore:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout (with history)
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # IMPORTANT for HEAD~1
 
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      # ---------- Publish ----------
       - name: Install Python
         if: ${{ inputs.mode == 'Publish' }}
         uses: actions/setup-python@v5
@@ -84,25 +87,62 @@ jobs:
       - name: Commit publish
         if: ${{ inputs.mode == 'Publish' }}
         run: |
-          git add "docs/${{ inputs.filename }}"
+          set -e
+          FILE="docs/${{ inputs.filename || 'latest-all.xml' }}"
+          git add "$FILE"
           if [ "${{ inputs.also_underscore }}" = "true" ]; then
-            git add docs/latest_all.xml
+            git add docs/latest_all.xml || true
           fi
           git commit -m "manual publish: ${{ inputs.ship }} ${{ inputs.event }} at ${{ inputs.port }}" || echo "No changes to commit"
           git push
 
+      # ---------- Restore ----------
       - name: Restore previous file (RestorePrevious mode)
         if: ${{ inputs.mode == 'RestorePrevious' }}
+        env:
+          FILE: docs/${{ inputs.filename || 'latest-all.xml' }}
+          ALSO_UNDERSCORE: ${{ inputs.also_underscore }}
         run: |
-          # restore latest-all.xml (or custom filename) from previous commit
-          FILE="docs/${{ inputs.filename }}"
-          if git rev-list -n 2 HEAD -- "$FILE" >/dev/null 2>&1; then
-            # checkout the previous version of the file
-            git checkout HEAD~1 -- "$FILE" || true
-            git add "$FILE"
-            git commit -m "restore previous: $FILE"
-            git push
-            echo "Restored previous version of $FILE"
-          else
-            echo "No previous version found for $FILE; nothing to restore."
+          set -e
+
+          echo "Restoring previous version of: $FILE"
+          echo "Current HEAD: $(git rev-parse --short HEAD)"
+          echo "Commit count: $(git rev-list --count HEAD)"
+
+          # Ensure we have at least one previous commit
+          if [ "$(git rev-list --count HEAD)" -lt 2 ]; then
+            echo "Not enough history to restore previous version. Ensure checkout uses fetch-depth: 0."
+            exit 1
           fi
+
+          # Confirm file existed in previous commit
+          if ! git ls-tree -r --name-only HEAD~1 | grep -qx "$FILE"; then
+            echo "Previous commit does not contain $FILE. Nothing to restore."
+            exit 0
+          fi
+
+          # Show diff for troubleshooting
+          echo "---- DIFF vs previous ----"
+          git diff --stat HEAD~1 -- "$FILE" || true
+          echo "--------------------------"
+
+          # Restore from previous commit
+          git restore --source=HEAD~1 -- "$FILE"
+          git add "$FILE"
+
+          # Optional underscore companion
+          if [ "$ALSO_UNDERSCORE" = "true" ]; then
+            UNDERSCORE="docs/latest_all.xml"
+            if git ls-tree -r --name-only HEAD~1 | grep -qx "$UNDERSCORE"; then
+              git restore --source=HEAD~1 -- "$UNDERSCORE"
+              git add "$UNDERSCORE"
+              echo "Restored $UNDERSCORE as well."
+            else
+              echo "No previous version of $UNDERSCORE found; skipping."
+            fi
+          fi
+
+          # Commit/push (no-op if identical)
+          git commit -m "restore previous: $FILE" || echo "No changes to commit"
+          git push || echo "No changes pushed"
+          echo "Restore step complete."
