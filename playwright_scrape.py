@@ -924,7 +924,7 @@ def main():
             # 1) VesselFinder port-calls (ship page)
             try:
                 rows, used = _vf_events_for_ship(p, s)
-                print(f"[info] Parsed VF {name}: {len(rows)} events}")
+                print(f"[info] Parsed VF {name}: {len(rows)} events")
             except Exception as e:
                 print(f"[error] VF parse failed for {name}: {e}\n{traceback.format_exc()}", file=sys.stderr)
                 rows = []
