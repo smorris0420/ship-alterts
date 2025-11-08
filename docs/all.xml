@@ -5,7 +5,7 @@
     <title>DCL Ships - Arrivals &amp; Departures (All)</title>
     <link>https://github.com/</link>
     <description>DCL Ships - Arrivals &amp; Departures (All) - Auto-generated</description>
-    <lastBuildDate>Sat, 08 Nov 2025 19:45:18 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 08 Nov 2025 19:56:48 GMT</lastBuildDate>
     <item>
       <title>Disney Wonder Arrived at Melbourne, Australia at Nov 08, 01:57 PM EST. The local time to the port is Nov 09, 05:57 AM AEDT</title>
       <link>https://www.vesselfinder.com/ports/AUMEL001</link>
@@ -19,6 +19,13 @@
       <guid isPermaLink="false">a9df69233bc175a9e6cd3cf1187ded8d20702981</guid>
       <pubDate>Sat, 08 Nov 2025 18:51:09 GMT</pubDate>
       <description><![CDATA[Funchal, Madeira, Portugal Departure (UTC) Nov 8, 18:34 — ET: Nov 08, 01:34 PM EST | Local: Nov 08, 06:34 PM WET]]></description>
+    </item>
+    <item>
+      <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 08, 12:30 PM EST. The local time to the port is Nov 08, 12:30 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">3626b5e0b48ce24326259e89552c7834939d758d</guid>
+      <pubDate>Sat, 08 Nov 2025 19:56:25 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 8, 17:30 — ET: Nov 08, 12:30 PM EST | Local: Nov 08, 12:30 PM EST]]></description>
     </item>
   </channel>
 </rss>
