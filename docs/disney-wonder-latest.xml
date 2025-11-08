@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
+<rss version="2.0">
+  <channel>
+    <title>Disney Wonder - Latest Arrival/Departure</title>
+    <link>https://www.vesselfinder.com/vessels/details/9126819</link>
+    <description>Disney Wonder - Latest Arrival/Departure - Auto-generated</description>
+    <lastBuildDate>Sat, 08 Nov 2025 00:51:31 GMT</lastBuildDate>
+    <item>
+      <title>Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT</title>
+      <link>https://www.vesselfinder.com/ports/AUMEL001</link>
+      <guid isPermaLink="false">d0e4ecdd1f20971a98e96d592e2d08541fab4bf4</guid>
+      <pubDate>Fri, 07 Nov 2025 17:00:30 GMT</pubDate>
+      <description><![CDATA[Melbourne, Australia Departure (UTC) Nov 6, 15:57 — ET: Nov 06, 10:57 AM EST | Local: Nov 07, 02:57 AM AEDT]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-06T15:57:00+00:00</eventUtc>
+      <shipSlug>disney-wonder</shipSlug>
+      <shipName>Disney Wonder</shipName>
+    </item>
+  </channel>
+</rss>

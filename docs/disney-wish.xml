@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
+<rss version="2.0">
+  <channel>
+    <title>Disney Wish - Arrivals &amp; Departures</title>
+    <link>https://www.vesselfinder.com/vessels/details/9834739</link>
+    <description>Disney Wish - Arrivals &amp; Departures - Auto-generated</description>
+    <lastBuildDate>Sat, 08 Nov 2025 00:51:19 GMT</lastBuildDate>
+    <item>
+      <title>Disney Wish Departed from Cape Canaveral, United States (USA) at Nov 07, 04:35 PM EST. The local time to the port is Nov 07, 04:35 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">49814e9e5306d9ddd73993a9f7e6108dd4711484</guid>
+      <pubDate>Fri, 07 Nov 2025 21:29:48 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 7, 21:35 — ET: Nov 07, 04:35 PM EST | Local: Nov 07, 04:35 PM EST]]></description>
+      <eventKind>Departed</eventKind>
+      <portName>Cape Canaveral, United States (USA)</portName>
+      <hasTime>true</hasTime>
+      <eventUtc>2025-11-07T21:35:00+00:00</eventUtc>
+      <shipSlug>disney-wish</shipSlug>
+      <shipName>Disney Wish</shipName>
+    </item>
+    <item>
+      <title>Disney Wish Departed from Cape Canaveral, United States (USA) (time TBA)</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">396019d5bf5ec6137329f40fae3fff06c9d7182f</guid>
+      <pubDate>Fri, 07 Nov 2025 18:24:54 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) (time not yet posted)]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-07T18:24:54.094345+00:00</eventUtc>
+      <shipSlug>disney-wish</shipSlug>
+      <shipName>Disney Wish</shipName>
+    </item>
+    <item>
+      <title>Disney Wish Departed from Cape Canaveral, United States (USA) (time TBA)</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">967f50c160e3fad316915de2b1d0894c2221feea</guid>
+      <pubDate>Fri, 07 Nov 2025 17:00:15 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) (time not yet posted)]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-07T17:00:15.416171+00:00</eventUtc>
+      <shipSlug>disney-wish</shipSlug>
+      <shipName>Disney Wish</shipName>
+    </item>
+    <item>
+      <title>Disney Wish Arrived at Cape Canaveral, United States (USA) at Nov 07, 06:12 AM EST. The local time to the port is Nov 07, 06:12 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">39abd10d8f2bccf6a81332de1168a7954d16276c</guid>
+      <pubDate>Fri, 07 Nov 2025 17:00:15 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Arrival (UTC) Nov 7, 11:12 — ET: Nov 07, 06:12 AM EST | Local: Nov 07, 06:12 AM EST]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-07T11:12:00+00:00</eventUtc>
+      <shipSlug>disney-wish</shipSlug>
+      <shipName>Disney Wish</shipName>
+    </item>
+    <item>
+      <title>Disney Wish Arrived at Cape Canaveral, United States (USA) at Nov 07, 06:12 AM EST. The local time to the port is Nov 07, 06:12 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">abe7bf1cb91cf83e104125bd896f53dba50ceb08</guid>
+      <pubDate>Fri, 07 Nov 2025 18:24:54 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Arrival (UTC) Nov 7, 11:12 — ET: Nov 07, 06:12 AM EST | Local: Nov 07, 06:12 AM EST]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-07T11:12:00+00:00</eventUtc>
+      <shipSlug>disney-wish</shipSlug>
+      <shipName>Disney Wish</shipName>
+    </item>
+    <item>
+      <title>Disney Wish Arrived at Port Canaveral, Florida at Nov 07, 06:12 AM EST. The local time to the port is Nov 07, 06:12 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">94ce5c0330ca5a1004cf911843e57cf0b5d988de</guid>
+      <pubDate>Fri, 07 Nov 2025 21:16:34 GMT</pubDate>
+      <description><![CDATA[Port Canaveral, Florida Arrival (UTC) Nov 7, 11:12 — ET: Nov 07, 06:12 AM EST | Local: Nov 07, 06:12 AM EST]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc>2025-11-07T11:12:00+00:00</eventUtc>
+      <shipSlug>disney-wish</shipSlug>
+      <shipName>Disney Wish</shipName>
+    </item>
+    <item>
+      <title>Disney Wish Arrived at Cape Canaveral, United States (USA) at Nov 07, 06:12 AM EST. The local time to the port is Nov 07, 06:12 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">72f6f4428cfd6c22f137a5c71fe995b583e75272</guid>
+      <pubDate>Fri, 07 Nov 2025 21:29:48 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Arrival (UTC) Nov 7, 11:12 — ET: Nov 07, 06:12 AM EST | Local: Nov 07, 06:12 AM EST]]></description>
+      <eventKind>Arrived</eventKind>
+      <portName>Cape Canaveral, United States (USA)</portName>
+      <hasTime>true</hasTime>
+      <eventUtc>2025-11-07T11:12:00+00:00</eventUtc>
+      <shipSlug>disney-wish</shipSlug>
+      <shipName>Disney Wish</shipName>
+    </item>
+    <item>
+      <title>Disney Wish Departed from Port Canaveral, Florida (time TBA)</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">3676168d16210566db18772680baf875c3df84a0</guid>
+      <pubDate>Fri, 07 Nov 2025 21:16:34 GMT</pubDate>
+      <description><![CDATA[Port Canaveral, Florida Departure (UTC) (time not yet posted)]]></description>
+      <eventKind/>
+      <portName/>
+      <hasTime>false</hasTime>
+      <eventUtc/>
+      <shipSlug>disney-wish</shipSlug>
+      <shipName>Disney Wish</shipName>
+    </item>
+  </channel>
+</rss>
