@@ -289,12 +289,19 @@ def to_rfc2822(dt: datetime) -> str:
 def make_id(s: str) -> str:
     return hashlib.sha1((s or "").encode("utf-8")).hexdigest()
 
+# ---- TBA filtering: drop ship-page items with no real UTC time ----
+# You can allow Arrived but skip Departed by toggling these.
+SKIP_TBA = {
+    "Arrived": True,
+    "Departed": True
+}
+
 # ---- Canonical de-dupe (Option C)
 
 def _normalize_port_name(name: str) -> str:
     s = (name or "").lower()
     s = re.sub(r"[^a-z0-9]+", " ", s).strip()
-    # light normalization (you said you’ll further normalize downstream)
+    # light normalization (you’ll normalize further downstream)
     s = s.replace("cape canaveral", "port canaveral")
     s = s.replace("ft lauderdale", "fort lauderdale")
     return re.sub(r"\s+", " ", s)
@@ -917,7 +924,7 @@ def main():
             # 1) VesselFinder port-calls (ship page)
             try:
                 rows, used = _vf_events_for_ship(p, s)
-                print(f"[info] Parsed VF {name}: {len(rows)} events")
+                print(f"[info] Parsed VF {name}: {len(rows)} events}")
             except Exception as e:
                 print(f"[error] VF parse failed for {name}: {e}\n{traceback.format_exc()}", file=sys.stderr)
                 rows = []
@@ -934,12 +941,17 @@ def main():
                     verb = "Arrived" if r.get("event") == "Arrived" else "Departed"
                     title_verb = "Arrived at" if verb == "Arrived" else "Departed from"
 
+                    # ---- Skip TBA (no event time) based on SKIP_TBA switches
+                    if (not event_iso) and SKIP_TBA.get(verb, False):
+                        continue
+
                     if est_str and local_str:
                         title = f"{name} {title_verb} {r['port']} at {est_str}. The local time to the port is {local_str}"
                     elif est_str:
                         title = f"{name} {title_verb} {r['port']} at {est_str}"
                     else:
-                        title = f"{name} {title_verb} {r['port']} (time TBA)"
+                        # no reliable time -> drop instead of fabricating
+                        continue
 
                     base_desc = r.get("detail","").replace(" (UTC) -", " (UTC) (time not yet posted)")
                     if est_str and local_str:
@@ -951,7 +963,10 @@ def main():
 
                     link = urljoin(vf_url, r.get("link","")) if r.get("link") else vf_url
 
-                    event_iso_final = event_iso or datetime.utcnow().replace(tzinfo=timezone.utc).isoformat()
+                    event_iso_final = event_iso
+                    if not event_iso_final:
+                        continue  # double-guard; shouldn't happen with logic above
+
                     guid = _canonical_guid(slug, verb, r['port'], event_iso_final)
                     if canon_seen.get(guid):
                         continue
