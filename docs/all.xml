@@ -2,9 +2,9 @@
 <?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
   <channel>
-    <title>DCL Ships - Latest (One per Ship)</title>
+    <title>DCL Ships - Arrivals &amp; Departures (All)</title>
     <link>https://github.com/</link>
-    <description>DCL Ships - Latest (One per Ship) - Auto-generated</description>
+    <description>DCL Ships - Arrivals &amp; Departures (All) - Auto-generated</description>
     <lastBuildDate>Sat, 08 Nov 2025 17:38:37 GMT</lastBuildDate>
     <item>
       <title>Disney Wish Arrived at Nassau, Bahamas at Nov 08, 08:38 AM EST. The local time to the port is Nov 08, 08:38 AM EST</title>
@@ -42,6 +42,20 @@
       <description><![CDATA[Funchal, Madeira, Portugal Arrival (UTC) Nov 8, 07:40 — ET: Nov 08, 02:40 AM EST | Local: Nov 08, 07:40 AM WET]]></description>
     </item>
     <item>
+      <title>Disney Wish Departed from Cape Canaveral, United States (USA) at Nov 07, 04:35 PM EST. The local time to the port is Nov 07, 04:35 PM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">9bd749cf23528d94a9b0b9dcefdb7f8bc7d34deb</guid>
+      <pubDate>Sat, 08 Nov 2025 14:43:04 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 7, 21:35 — ET: Nov 07, 04:35 PM EST | Local: Nov 07, 04:35 PM EST]]></description>
+    </item>
+    <item>
+      <title>Disney Wish Arrived at Cape Canaveral, United States (USA) at Nov 07, 06:12 AM EST. The local time to the port is Nov 07, 06:12 AM EST</title>
+      <link>https://www.vesselfinder.com/ports/USPCV001</link>
+      <guid isPermaLink="false">d3507fee14cfdc6d0c94ad14b3a41e93ca859d91</guid>
+      <pubDate>Sat, 08 Nov 2025 14:43:04 GMT</pubDate>
+      <description><![CDATA[Cape Canaveral, United States (USA) Arrival (UTC) Nov 7, 11:12 — ET: Nov 07, 06:12 AM EST | Local: Nov 07, 06:12 AM EST]]></description>
+    </item>
+    <item>
       <title>Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT</title>
       <link>https://www.vesselfinder.com/ports/AUMEL001</link>
       <guid isPermaLink="false">258c55773e46d8a8681fc1d9bd760a9336de9975</guid>
@@ -56,11 +70,32 @@
       <description><![CDATA[St Johns, Antigua & Barbuda Departure (UTC) Nov 5, 22:12 — ET: Nov 05, 05:12 PM EST | Local: Nov 05, 06:12 PM AST]]></description>
     </item>
     <item>
+      <title>Disney Wonder Arrived at Melbourne, Australia at Nov 05, 01:54 PM EST. The local time to the port is Nov 06, 05:54 AM AEDT</title>
+      <link>https://www.vesselfinder.com/ports/AUMEL001</link>
+      <guid isPermaLink="false">5907df89d095186e7e981d4f3a6859debe189e56</guid>
+      <pubDate>Sat, 08 Nov 2025 13:26:36 GMT</pubDate>
+      <description><![CDATA[Melbourne, Australia Arrival (UTC) Nov 5, 18:54 — ET: Nov 05, 01:54 PM EST | Local: Nov 06, 05:54 AM AEDT]]></description>
+    </item>
+    <item>
+      <title>Disney Magic Arrived at St Johns, Antigua &amp; Barbuda at Nov 05, 06:42 AM EST. The local time to the port is Nov 05, 07:42 AM AST</title>
+      <link>https://www.vesselfinder.com/ports/AGSJO001</link>
+      <guid isPermaLink="false">92aa38fbf465d3a9a149946dfc36ef364ab4b8a5</guid>
+      <pubDate>Sat, 08 Nov 2025 13:26:11 GMT</pubDate>
+      <description><![CDATA[St Johns, Antigua & Barbuda Arrival (UTC) Nov 5, 11:42 — ET: Nov 05, 06:42 AM EST | Local: Nov 05, 07:42 AM AST]]></description>
+    </item>
+    <item>
       <title>Disney Adventure Departed from Bremerhaven, Germany at Sep 10, 07:10 PM EDT. The local time to the port is Sep 11, 01:10 AM CEST</title>
       <link>https://www.vesselfinder.com/ports/DEBRV001</link>
       <guid isPermaLink="false">6897de159669bba9999f9a0fe7aceedcd47b304b</guid>
       <pubDate>Sat, 08 Nov 2025 13:26:58 GMT</pubDate>
       <description><![CDATA[Bremerhaven, Germany Departure (UTC) Sep 10, 23:10 — ET: Sep 10, 07:10 PM EDT | Local: Sep 11, 01:10 AM CEST]]></description>
+    </item>
+    <item>
+      <title>Disney Adventure Arrived at Bremerhaven, Germany at Sep 09, 06:00 AM EDT. The local time to the port is Sep 09, 12:00 PM CEST</title>
+      <link>https://www.vesselfinder.com/ports/DEBRV001</link>
+      <guid isPermaLink="false">f1b5c6235701e7f566f7264793b5419e1ce8ad54</guid>
+      <pubDate>Sat, 08 Nov 2025 13:26:58 GMT</pubDate>
+      <description><![CDATA[Bremerhaven, Germany Arrival (UTC) Sep 9, 10:00 — ET: Sep 09, 06:00 AM EDT | Local: Sep 09, 12:00 PM CEST]]></description>
     </item>
   </channel>
 </rss>
