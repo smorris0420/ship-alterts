@@ -1,0 +1,108 @@
+name: Manual Publish or Restore latest-all.xml
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Choose Publish (write test) or RestorePrevious (revert latest-all.xml)"
+        required: true
+        type: choice
+        options: [Publish, RestorePrevious]
+        default: Publish
+      ship:
+        description: "Ship name (e.g., Disney Wonder)"
+        required: false
+        type: string
+      event:
+        description: "Event"
+        required: false
+        type: choice
+        options: [Arrived, Departed]
+      port:
+        description: "Port (e.g., Melbourne, Australia)"
+        required: false
+        type: string
+      est:
+        description: "EST label (e.g., Nov 08, 01:57 PM EST)"
+        required: false
+        type: string
+      local:
+        description: "Local time label (optional)"
+        required: false
+        type: string
+        default: ""
+      link:
+        description: "Detail link (optional)"
+        required: false
+        type: string
+        default: "#"
+      filename:
+        description: "Target filename in docs/ (default latest-all.xml)"
+        required: false
+        type: string
+        default: "latest-all.xml"
+      also_underscore:
+        description: "Also write docs/latest_all.xml"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish-or-restore:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Install Python
+        if: ${{ inputs.mode == 'Publish' }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run publisher (Publish mode)
+        if: ${{ inputs.mode == 'Publish' }}
+        run: |
+          python .github/scripts/publish_latest_all.py \
+            --ship "${{ inputs.ship }}" \
+            --event "${{ inputs.event }}" \
+            --port "${{ inputs.port }}" \
+            --est "${{ inputs.est }}" \
+            --local "${{ inputs.local }}" \
+            --link "${{ inputs.link }}" \
+            --filename "${{ inputs.filename }}" \
+            $([ "${{ inputs.also_underscore }}" = "true" ] && echo "--also-underscore")
+
+      - name: Commit publish
+        if: ${{ inputs.mode == 'Publish' }}
+        run: |
+          git add "docs/${{ inputs.filename }}"
+          if [ "${{ inputs.also_underscore }}" = "true" ]; then
+            git add docs/latest_all.xml
+          fi
+          git commit -m "manual publish: ${{ inputs.ship }} ${{ inputs.event }} at ${{ inputs.port }}" || echo "No changes to commit"
+          git push
+
+      - name: Restore previous file (RestorePrevious mode)
+        if: ${{ inputs.mode == 'RestorePrevious' }}
+        run: |
+          # restore latest-all.xml (or custom filename) from previous commit
+          FILE="docs/${{ inputs.filename }}"
+          if git rev-list -n 2 HEAD -- "$FILE" >/dev/null 2>&1; then
+            # checkout the previous version of the file
+            git checkout HEAD~1 -- "$FILE" || true
+            git add "$FILE"
+            git commit -m "restore previous: $FILE"
+            git push
+            echo "Restored previous version of $FILE"
+          else
+            echo "No previous version found for $FILE; nothing to restore."
+          fi
