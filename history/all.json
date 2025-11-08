@@ -1,5 +1,16 @@
 [
   {
+    "title": "Disney Wonder Arrived at Melbourne, Australia at Nov 08, 01:57 PM EST. The local time to the port is Nov 09, 05:57 AM AEDT",
+    "description": "Melbourne, Australia Arrival (UTC) Nov 8, 18:57 — ET: Nov 08, 01:57 PM EST | Local: Nov 09, 05:57 AM AEDT",
+    "link": "https://www.vesselfinder.com/ports/AUMEL001",
+    "guid": "faebcbe1f53c19dca1747b0e4c842003b519a3e7",
+    "pubDate": "Sat, 08 Nov 2025 19:44:08 GMT",
+    "eventUtc": "2025-11-08T18:57:00+00:00",
+    "shipSlug": "disney-wonder",
+    "shipName": "Disney Wonder",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Fantasy Departed from Funchal, Madeira, Portugal at Nov 08, 01:34 PM EST. The local time to the port is Nov 08, 06:34 PM WET",
     "description": "Funchal, Madeira, Portugal Departure (UTC) Nov 8, 18:34 — ET: Nov 08, 01:34 PM EST | Local: Nov 08, 06:34 PM WET",
     "link": "https://www.vesselfinder.com/ports/PTFNC001",
