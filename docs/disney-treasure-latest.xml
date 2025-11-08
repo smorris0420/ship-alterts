@@ -5,19 +5,13 @@
     <title>Disney Treasure - Latest Arrival/Departure</title>
     <link>https://www.vesselfinder.com/vessels/details/9834753</link>
     <description>Disney Treasure - Latest Arrival/Departure - Auto-generated</description>
-    <lastBuildDate>Sat, 08 Nov 2025 01:58:24 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 08 Nov 2025 02:01:02 GMT</lastBuildDate>
     <item>
       <title>Disney Treasure Departed from Gorda Cay, Bahamas at Nov 07, 04:49 PM EST. The local time to the port is Nov 07, 04:49 PM EST</title>
       <link>https://www.vesselfinder.com/ports/BSGOC001</link>
       <guid isPermaLink="false">9c738d8f5dc525d0ceef16575a95841ac6b88ad2</guid>
       <pubDate>Fri, 07 Nov 2025 21:21:51 GMT</pubDate>
       <description><![CDATA[Gorda Cay, Bahamas Departure (UTC) Nov 7, 21:49 — ET: Nov 07, 04:49 PM EST | Local: Nov 07, 04:49 PM EST]]></description>
-      <eventKind>Departed</eventKind>
-      <portName>Gorda Cay, Bahamas</portName>
-      <hasTime>true</hasTime>
-      <eventUtc>2025-11-07T21:49:00+00:00</eventUtc>
-      <shipSlug>disney-treasure</shipSlug>
-      <shipName>Disney Treasure</shipName>
     </item>
   </channel>
 </rss>

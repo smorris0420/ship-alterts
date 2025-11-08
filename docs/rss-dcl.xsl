@@ -9,32 +9,14 @@
         <title><xsl:value-of select="rss/channel/title"/></title>
         <style>
           :root{
-            --dcl-navy:#16578A;
-            --dcl-gold:#C9A227;
-            --ink:#1b1b1b;
-            --muted:#6b6f76;
-            --bg:#16578A;
-            --card:#ffffff;
-            --line:#e9edf2;
-            --pill:#eef4fb;
+            --dcl-navy:#16578A; --dcl-gold:#C9A227; --ink:#1b1b1b; --muted:#6b6f76;
+            --bg:#16578A; --card:#ffffff; --line:#e9edf2; --pill:#eef4fb;
           }
           *{box-sizing:border-box}
-          body{
-            margin:0;
-            background:var(--bg);
-            color:var(--ink);
-            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;
-          }
-          .bar{
-            background:#ffffff;
-            color:var(--dcl-navy);
-            padding:14px 18px;
-            border-bottom:4px solid var(--dcl-gold);
-          }
-          .brand{
-            display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
-            max-width:1100px;margin:0 auto;
-          }
+          body{margin:0;background:var(--bg);color:var(--ink);
+               font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;}
+          .bar{background:#ffffff;color:var(--dcl-navy);padding:14px 18px;border-bottom:4px solid var(--dcl-gold);}
+          .brand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;max-width:1100px;margin:0 auto;}
           .logo-img{width:325px;height:auto;display:block;margin:0 auto;}
           .brand h1{margin:0;font-size:18px;line-height:1.2;font-weight:700;color:var(--dcl-navy);}
           .wrap{max-width:1100px;margin:18px auto;padding:0 16px}
@@ -54,8 +36,7 @@
           .arr{background:#e8f6ee;color:#11643a;border-color:#cfead9}
           .dep{background:#fff0f0;color:#8a1620;border-color:#ffd9de}
           @media (max-width:760px){
-            thead{display:none}
-            tbody tr{display:block;border-bottom:8px solid #f0f4f8}
+            thead{display:none} tbody tr{display:block;border-bottom:8px solid #f0f4f8}
             tbody td{display:block;border:0;padding:8px 14px}
             tbody td::before{content:attr(data-label) " ";font-weight:600;color:var(--muted);display:block;margin-bottom:2px}
             .brand{gap:8px}
@@ -83,25 +64,16 @@
                   <tr>
                     <td class="title" data-label="Title">
                       <span class="badge">
-                        <xsl:attribute name="class">
-                          <xsl:text>badge </xsl:text>
-                          <xsl:choose>
-                            <xsl:when test="contains(title,'Arrived')">arr</xsl:when>
-                            <xsl:otherwise>dep</xsl:otherwise>
-                          </xsl:choose>
+                        <xsl:attribute name="class"><xsl:text>badge </xsl:text>
+                          <xsl:choose><xsl:when test="contains(title,'Arrived')">arr</xsl:when><xsl:otherwise>dep</xsl:otherwise></xsl:choose>
                         </xsl:attribute>
-                        <xsl:choose>
-                          <xsl:when test="contains(title,'Arrived')">ARRIVED</xsl:when>
-                          <xsl:otherwise>DEPARTED</xsl:otherwise>
-                        </xsl:choose>
+                        <xsl:choose><xsl:when test="contains(title,'Arrived')">ARRIVED</xsl:when><xsl:otherwise>DEPARTED</xsl:otherwise></xsl:choose>
                       </span>
                       <a href="{link}"><xsl:value-of select="title"/></a><br/>
                       <span class="guid"><xsl:value-of select="guid"/></span>
                     </td>
                     <td data-label="Published"><xsl:value-of select="pubDate"/></td>
-                    <td class="desc" data-label="Description">
-                      <xsl:value-of select="description" disable-output-escaping="yes"/>
-                    </td>
+                    <td class="desc" data-label="Description"><xsl:value-of select="description" disable-output-escaping="yes"/></td>
                   </tr>
                 </xsl:for-each>
               </tbody>
