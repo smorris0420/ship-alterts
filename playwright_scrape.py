@@ -9,7 +9,7 @@
 #   pip install playwright beautifulsoup4
 #   python -m playwright install --with-deps chromium
 
-import os, json, hashlib, sys, math, traceback, re
+import os, json, hashlib, sys, math, traceback, re, time, random
 from datetime import datetime, timezone, timedelta
 try:
     from zoneinfo import ZoneInfo
@@ -185,7 +185,36 @@ TZ_BY_PORT_PREFIX = {
     "CO": "America/Bogota",
 }
 
+# ---- Default port pages to try when ship rows + home_ports are empty
+DEFAULT_PORTS_BY_SHIP = {
+    "Disney Wish":       [ { "link": "/ports/USCPV?name=Port-Canaveral", "label": "Port Canaveral" } ],
+    "Disney Treasure":   [ { "link": "/ports/USCPV?name=Port-Canaveral", "label": "Port Canaveral" } ],
+    "Disney Fantasy":    [ { "link": "/ports/USCPV?name=Port-Canaveral", "label": "Port Canaveral" } ],
+    "Disney Dream":      [ { "link": "/ports/USFLL?name=Port-Everglades", "label": "Port Everglades" } ],
+    "Disney Magic":      [ { "link": "/ports/USFLL?name=Port-Everglades", "label": "Port Everglades" },
+                           { "link": "/ports/PRSJU?name=San-Juan", "label": "San Juan" } ],
+    "Disney Wonder":     [ { "link": "/ports/USSEA?name=Seattle", "label": "Seattle" },
+                           { "link": "/ports/CAVAN?name=Vancouver", "label": "Vancouver" } ],
+    "Disney Adventure":  [ { "link": "/ports/USLAX?name=Los-Angeles", "label": "Los Angeles" } ],
+    "Disney Destiny":    [ { "link": "/ports/USCPV?name=Port-Canaveral", "label": "Port Canaveral" } ],
+}
+GLOBAL_FALLBACK_PORTS = [
+    { "link": "/ports/USCPV?name=Port-Canaveral", "label": "Port Canaveral" },
+    { "link": "/ports/USFLL?name=Port-Everglades", "label": "Port Everglades" },
+    { "link": "/ports/USGLV?name=Galveston", "label": "Galveston" },
+    { "link": "/ports/PRSJU?name=San-Juan", "label": "San Juan" },
+    { "link": "/ports/BSNAS?name=Nassau", "label": "Nassau" },
+]
+
 # ---------- Utilities ----------
+
+def _sleep_jitter(min_s=0.8, max_s=1.6):
+    time.sleep(random.uniform(min_s, max_s))
+
+def _looks_blocked(html: str) -> bool:
+    if not html: return True
+    low = html.lower()
+    return ("captcha" in low) or ("access denied" in low) or ("cf-") in low and ("turnstile" in low)
 
 def zinfo(tz_name: str):
     """Safe ZoneInfo constructor with fallback to America/New_York."""
@@ -265,7 +294,7 @@ def make_id(s: str) -> str:
 def _normalize_port_name(name: str) -> str:
     s = (name or "").lower()
     s = re.sub(r"[^a-z0-9]+", " ", s).strip()
-    # light normalization
+    # light normalization (you said you’ll further normalize downstream)
     s = s.replace("cape canaveral", "port canaveral")
     s = s.replace("ft lauderdale", "fort lauderdale")
     return re.sub(r"\s+", " ", s)
@@ -615,9 +644,17 @@ def _rendered_html(url: str, p, mobile: bool):
             page.wait_for_selector("text=Recent Port Calls", timeout=8000)
         except PWTimeout:
             pass
-        return page.content()
+        html = page.content()
     finally:
         ctx.close(); browser.close()
+
+    if _looks_blocked(html) and not mobile:
+        _sleep_jitter()
+        parsed = urlparse(url)
+        mobile_url = urlunparse(parsed._replace(netloc="m.vesselfinder.com"))
+        return _rendered_html(mobile_url, p, mobile=True)
+    _sleep_jitter()
+    return html
 
 def _vf_events_for_ship(p, ship):
     base_url = ship["url"]
@@ -795,13 +832,12 @@ def _parse_port_table_for_ship(html: str, ship_name: str, port_url: str, tab_kin
     # Look for a row with the ship name; first column is time (LT)
     for tr in table.find_all("tr"):
         tds = tr.find_all("td")
-        if len(tds) < 2: 
+        if len(tds) < 2:
             continue
         txt = tr.get_text(" ", strip=True)
         if ship_name.lower() not in txt.lower():
             continue
 
-        # Usually first td has time in LT
         lt = tds[0].get_text(strip=True)
         est_str, local_str, iso_utc = _parse_port_time_lt(lt, tz)
         if not iso_utc:
@@ -839,7 +875,7 @@ def _fetch_port_fallback_events(p, ship_name: str, candidate_links_with_labels: 
                 rows = _parse_port_table_for_ship(html, ship_name, port_url, tab, label or port_url)
                 for r in rows:
                     key = (r["event"], r["port"], r["_iso"])
-                    if key in seen: 
+                    if key in seen:
                         continue
                     out.append(r)
                     seen.add(key)
@@ -860,11 +896,9 @@ def main():
     # name -> slug lookup (for latest-all fallback)
     slug_by_name = {s["name"]: s["slug"] for s in ships}
 
-    state = load_json(STATE_PATH, {"seen": {}, "geo": {}})
+    state = load_json(STATE_PATH, {"seen": {}, "geo": {}, "canon_seen": {}})
     if "seen" not in state: state["seen"] = {}
     if "geo" not in state: state["geo"] = {}
-
-    # ALSO maintain a canonical-seen to prevent duplicates from port vs ship sources
     canon_seen = state.setdefault("canon_seen", {})
 
     all_items_new = []
@@ -946,19 +980,30 @@ def main():
                 if rows and rows[0].get("link"):
                     candidate_links.append((rows[0]["link"], rows[0].get("port","")))
 
-                # Optional: 'home_ports' array in ships.json: each item may be either a VF port URL
-                # (e.g. '/ports/USCPV?name=Port-Canaveral') or tuple dicts with {link, label}
+                # Optional: 'home_ports' array in ships.json
                 for hp in s.get("home_ports", []):
                     if isinstance(hp, str):
                         candidate_links.append((hp, ""))
                     elif isinstance(hp, dict):
-                        candidate_links.append((hp.get("link",""), hp.get("label","")))
+                        link = hp.get("link","")
+                        label = hp.get("label","")
+                        if link:
+                            candidate_links.append((link, label))
+
                 # De-dup by URL
                 dedup = {}
                 for u,lbl in candidate_links:
                     if u and u not in dedup:
                         dedup[u] = lbl
                 candidate_links = [(u, dedup[u]) for u in dedup.keys()]
+
+                # Defaults if nothing to try
+                if not candidate_links:
+                    dflt = DEFAULT_PORTS_BY_SHIP.get(name, [])
+                    if dflt:
+                        candidate_links = [(d["link"], d.get("label","")) for d in dflt if d.get("link")]
+                    else:
+                        candidate_links = [(d["link"], d.get("label","")) for d in GLOBAL_FALLBACK_PORTS]
 
                 if candidate_links:
                     port_rows = _fetch_port_fallback_events(p, name, candidate_links)
@@ -967,7 +1012,6 @@ def main():
                     for r in port_rows:
                         try:
                             verb = r["event"]
-                            # We already computed est/local/iso in r for speed
                             est_str, local_str, event_iso = r.get("_est"), r.get("_local"), r.get("_iso")
                             title_verb = "Arrived at" if verb == "Arrived" else "Departed from"
                             title = f"{name} {title_verb} {r['port']} at {est_str}. The local time to the port is {local_str}"
@@ -1021,6 +1065,13 @@ def main():
             ship_hist = load_history(slug)
             ship_hist = merge_items(ship_hist, ship_items_new, PER_SHIP_CAP)
             save_history(slug, ship_hist)
+
+            # DEBUG metrics
+            print(f"[debug] {name} new_items: ship_page={len([i for i in ship_items_new if i.get('source')=='vf_ship'])} "
+                  f"port_fallback={len([i for i in ship_items_new if i.get('source')=='vf_port'])} "
+                  f"geo={len([i for i in ship_items_new if i.get('source')=='geo'])} "
+                  f"total_added_this_run={len(ship_items_new)} "
+                  f"hist_after_merge={len(ship_hist)}")
 
             # Write per-ship feeds (pretty + XSL PI)
             try:
