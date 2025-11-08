@@ -1,5 +1,93 @@
 [
   {
+    "title": "Disney Destiny Departed from Cape Canaveral, United States (USA) (time TBA)",
+    "description": "Cape Canaveral, United States (USA) Departure (UTC) (time not yet posted)",
+    "link": "https://www.vesselfinder.com/ports/USPCV001",
+    "guid": "1791f09eb55e192ea7a2f305208f37341dcc0f5b",
+    "pubDate": "Sat, 08 Nov 2025 13:38:21 GMT",
+    "eventUtc": "2025-11-08T13:38:21.665521+00:00",
+    "shipSlug": "disney-destiny",
+    "shipName": "Disney Destiny",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Dream Departed from Port Everglades, United States (USA) (time TBA)",
+    "description": "Port Everglades, United States (USA) Departure (UTC) (time not yet posted)",
+    "link": "https://www.vesselfinder.com/ports/USPEF001",
+    "guid": "c13f1665139319f02c8c1ffd4b0d0925bcd6bdd3",
+    "pubDate": "Sat, 08 Nov 2025 13:37:17 GMT",
+    "eventUtc": "2025-11-08T13:37:17.437777+00:00",
+    "shipSlug": "disney-dream",
+    "shipName": "Disney Dream",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Fantasy Departed from Funchal, Madeira, Portugal (time TBA)",
+    "description": "Funchal, Madeira, Portugal Departure (UTC) (time not yet posted)",
+    "link": "https://www.vesselfinder.com/ports/PTFNC001",
+    "guid": "bf099b82ca8fe47dbcbd33e2b692290c52c7521d",
+    "pubDate": "Sat, 08 Nov 2025 13:36:52 GMT",
+    "eventUtc": "2025-11-08T13:36:52.944057+00:00",
+    "shipSlug": "disney-fantasy",
+    "shipName": "Disney Fantasy",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Treasure Departed from Cape Canaveral, United States (USA) (time TBA)",
+    "description": "Cape Canaveral, United States (USA) Departure (UTC) (time not yet posted)",
+    "link": "https://www.vesselfinder.com/ports/USPCV001",
+    "guid": "7f84220f62a4491779627db0c1fe69756c98312e",
+    "pubDate": "Sat, 08 Nov 2025 13:36:31 GMT",
+    "eventUtc": "2025-11-08T13:36:31.170791+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Treasure Arrived at Cape Canaveral, United States (USA) at Nov 08, 05:45 AM EST. The local time to the port is Nov 08, 05:45 AM EST",
+    "description": "Cape Canaveral, United States (USA) Arrival (UTC) Nov 8, 10:45 — ET: Nov 08, 05:45 AM EST | Local: Nov 08, 05:45 AM EST",
+    "link": "https://www.vesselfinder.com/ports/USPCV001",
+    "guid": "70180f8cb40f3b12df71052448f502a7e972487f",
+    "pubDate": "Sat, 08 Nov 2025 13:36:31 GMT",
+    "eventUtc": "2025-11-08T10:45:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Dream Arrived at Port Everglades, United States (USA) at Nov 08, 05:01 AM EST. The local time to the port is Nov 08, 05:01 AM EST",
+    "description": "Port Everglades, United States (USA) Arrival (UTC) Nov 8, 10:01 — ET: Nov 08, 05:01 AM EST | Local: Nov 08, 05:01 AM EST",
+    "link": "https://www.vesselfinder.com/ports/USPEF001",
+    "guid": "7837dae98811e510bf12e63187b012eeb375619d",
+    "pubDate": "Sat, 08 Nov 2025 13:37:17 GMT",
+    "eventUtc": "2025-11-08T10:01:00+00:00",
+    "shipSlug": "disney-dream",
+    "shipName": "Disney Dream",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Destiny Arrived at Cape Canaveral, United States (USA) at Nov 08, 04:27 AM EST. The local time to the port is Nov 08, 04:27 AM EST",
+    "description": "Cape Canaveral, United States (USA) Arrival (UTC) Nov 8, 09:27 — ET: Nov 08, 04:27 AM EST | Local: Nov 08, 04:27 AM EST",
+    "link": "https://www.vesselfinder.com/ports/USPCV001",
+    "guid": "12f58afcdf0176f20f2ad1689628e9053f996d71",
+    "pubDate": "Sat, 08 Nov 2025 13:38:21 GMT",
+    "eventUtc": "2025-11-08T09:27:00+00:00",
+    "shipSlug": "disney-destiny",
+    "shipName": "Disney Destiny",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Fantasy Arrived at Funchal, Madeira, Portugal at Nov 08, 02:40 AM EST. The local time to the port is Nov 08, 07:40 AM WET",
+    "description": "Funchal, Madeira, Portugal Arrival (UTC) Nov 8, 07:40 — ET: Nov 08, 02:40 AM EST | Local: Nov 08, 07:40 AM WET",
+    "link": "https://www.vesselfinder.com/ports/PTFNC001",
+    "guid": "d84bf72de729e7cac07082f945769487fee122c3",
+    "pubDate": "Sat, 08 Nov 2025 13:36:52 GMT",
+    "eventUtc": "2025-11-08T07:40:00+00:00",
+    "shipSlug": "disney-fantasy",
+    "shipName": "Disney Fantasy",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Wonder Departed from Melbourne, Australia at Nov 06, 10:57 AM EST. The local time to the port is Nov 07, 02:57 AM AEDT",
     "description": "Melbourne, Australia Departure (UTC) Nov 6, 15:57 — ET: Nov 06, 10:57 AM EST | Local: Nov 07, 02:57 AM AEDT",
     "link": "https://www.vesselfinder.com/ports/AUMEL001",

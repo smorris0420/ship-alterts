@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "title": "Disney Fantasy Departed from Funchal, Madeira, Portugal (time TBA)",
+    "description": "Funchal, Madeira, Portugal Departure (UTC) (time not yet posted)",
+    "link": "https://www.vesselfinder.com/ports/PTFNC001",
+    "guid": "bf099b82ca8fe47dbcbd33e2b692290c52c7521d",
+    "pubDate": "Sat, 08 Nov 2025 13:36:52 GMT",
+    "eventUtc": "2025-11-08T13:36:52.944057+00:00",
+    "shipSlug": "disney-fantasy",
+    "shipName": "Disney Fantasy",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Fantasy Arrived at Funchal, Madeira, Portugal at Nov 08, 02:40 AM EST. The local time to the port is Nov 08, 07:40 AM WET",
+    "description": "Funchal, Madeira, Portugal Arrival (UTC) Nov 8, 07:40 — ET: Nov 08, 02:40 AM EST | Local: Nov 08, 07:40 AM WET",
+    "link": "https://www.vesselfinder.com/ports/PTFNC001",
+    "guid": "d84bf72de729e7cac07082f945769487fee122c3",
+    "pubDate": "Sat, 08 Nov 2025 13:36:52 GMT",
+    "eventUtc": "2025-11-08T07:40:00+00:00",
+    "shipSlug": "disney-fantasy",
+    "shipName": "Disney Fantasy",
+    "source": "vf_ship"
+  }
+]
