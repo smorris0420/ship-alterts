@@ -290,31 +290,22 @@ def make_id(s: str) -> str:
     return hashlib.sha1((s or "").encode("utf-8")).hexdigest()
 
 # ---- TBA filtering: drop ship-page items with no real UTC time ----
-# Toggle which verbs to drop if no time is posted yet.
+# You can allow Arrived but skip Departed by toggling these.
 SKIP_TBA = {
     "Arrived": True,
     "Departed": True
 }
 
 def _is_tba(item: dict) -> bool:
-    """Treat as TBA if eventUtc missing/invalid OR text hints say 'time TBA/not yet posted'."""
-    iso = item.get("eventUtc")
-    if not iso:
-        return True
-    try:
-        # allow timezone-aware ISO 8601
-        datetime.fromisoformat(iso)
-    except Exception:
-        return True
-    txt = (item.get("title","") + " " + item.get("description","")).lower()
-    return ("time tba" in txt) or ("time not yet posted" in txt)
+    """True if the item has no concrete eventUtc."""
+    return not bool(item.get("eventUtc"))
 
 # ---- Canonical de-dupe (Option C)
 
 def _normalize_port_name(name: str) -> str:
     s = (name or "").lower()
     s = re.sub(r"[^a-z0-9]+", " ", s).strip()
-    # light normalization (you normalize further downstream in Power Automate)
+    # light normalization (you’ll normalize further downstream)
     s = s.replace("cape canaveral", "port canaveral")
     s = s.replace("ft lauderdale", "fort lauderdale")
     return re.sub(r"\s+", " ", s)
@@ -978,7 +969,7 @@ def main():
 
                     event_iso_final = event_iso
                     if not event_iso_final:
-                        continue  # double-guard; shouldn't happen with logic above
+                        continue  # double-guard
 
                     guid = _canonical_guid(slug, verb, r['port'], event_iso_final)
                     if canon_seen.get(guid):
@@ -1095,16 +1086,11 @@ def main():
             save_history(slug, ship_hist)
 
             # DEBUG metrics
-            print(
-                "[debug] {nm} new_items: ship_page={a} port_fallback={b} geo={c} total_added_this_run={t} hist_after_merge={h}".format(
-                    nm=name,
-                    a=len([i for i in ship_items_new if i.get('source')=='vf_ship']),
-                    b=len([i for i in ship_items_new if i.get('source')=='vf_port']),
-                    c=len([i for i in ship_items_new if i.get('source')=='geo']),
-                    t=len(ship_items_new),
-                    h=len(ship_hist)
-                )
-            )
+            print(f"[debug] {name} new_items: ship_page={len([i for i in ship_items_new if i.get('source')=='vf_ship'])} "
+                  f"port_fallback={len([i for i in ship_items_new if i.get('source')=='vf_port'])} "
+                  f"geo={len([i for i in ship_items_new if i.get('source')=='geo'])} "
+                  f"total_added_this_run={len(ship_items_new)} "
+                  f"hist_after_merge={len(ship_hist)}")
 
             # Write per-ship feeds (pretty + XSL PI)
             try:
@@ -1147,7 +1133,7 @@ def main():
                 return sl
         return base.strip()
 
-    # Ensure newest→oldest by eventUtc just in case
+    # Ensure newest→oldest by eventUtc for input
     all_hist_sorted = sorted(all_hist, key=_event_key, reverse=True)
 
     latest_by_slug = {}
@@ -1161,11 +1147,16 @@ def main():
         if slug not in latest_by_slug:
             latest_by_slug[slug] = it
 
-    latest_all = list(latest_by_slug.values())
+    # Sort the final list strictly by event time (newest first), regardless of Arrived/Departed
+    latest_all = sorted(list(latest_by_slug.values()), key=_event_key, reverse=True)
+
     try:
         latest_all_xml = build_rss("DCL Ships - Latest (One per Ship)", "https://github.com/", latest_all)
         if PRETTY_XML: latest_all_xml = _pretty_xml(latest_all_xml)
         with open(os.path.join(DOCS_DIR, "latest-all.xml"), "w", encoding="utf-8") as f:
+            f.write(latest_all_xml)
+        # Optional short alias
+        with open(os.path.join(DOCS_DIR, "latest.xml"), "w", encoding="utf-8") as f:
             f.write(latest_all_xml)
     except Exception as e:
         print(f"[error] Writing latest-all.xml failed: {e}", file=sys.stderr)
