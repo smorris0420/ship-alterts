@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
+
+  <!-- GMT → EST helper (simple GMT-5 hour shift for RFC-822 strings like "Thu, 06 Nov 2025 15:59:47 GMT") -->
+  <xsl:template name="to-est">
+    <xsl:param name="gmt"/>
+    <!-- Extract HH from "Thu, 06 Nov 2025 15:59:47 GMT" (HH starts at char 18) -->
+    <xsl:variable name="hh" select="number(substring($gmt, 18, 2))"/>
+    <!-- Shift -5; wrap within 0–23 -->
+    <xsl:variable name="est_hh_raw">
+      <xsl:choose>
+        <xsl:when test="$hh - 5 &lt; 0"><xsl:value-of select="24 + ($hh - 5)"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="$hh - 5"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <!-- Zero-pad -->
+    <xsl:variable name="est_hh">
+      <xsl:choose>
+        <xsl:when test="$est_hh_raw &lt; 10">0<xsl:value-of select="$est_hh_raw"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="$est_hh_raw"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <!-- Rebuild same string with adjusted HH; append EST -->
+    <xsl:value-of select="concat(substring($gmt, 1, 17), $est_hh, substring($gmt, 20))"/>
+    <xsl:text> EST</xsl:text>
+  </xsl:template>
+
   <xsl:template match="/">
     <html>
       <head>
@@ -66,7 +91,14 @@
             <div class="meta">
               <span class="chip">DCL • Airport &amp; Resort Reporting</span>
               <span><strong>Feed link:</strong> <a href="{rss/channel/link}"><xsl:value-of select="rss/channel/link"/></a></span>
-              <span><strong>Last Build:</strong> <xsl:value-of select="rss/channel/lastBuildDate"/></span>
+
+              <!-- Show Last Build in EST -->
+              <span>
+                <strong>Last Build:</strong>
+                <xsl:call-template name="to-est">
+                  <xsl:with-param name="gmt" select="rss/channel/lastBuildDate"/>
+                </xsl:call-template>
+              </span>
             </div>
             <table role="table" aria-label="Items">
               <thead><tr><th>Title</th><th>Published</th><th>Description</th></tr></thead>
