@@ -18,6 +18,7 @@ except Exception:
 from urllib.parse import urljoin, urlparse, urlunparse, parse_qs, urlencode
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 from bs4 import BeautifulSoup, Tag, NavigableString
+import urllib.request  # <-- webhook HTTP client
 
 REPO_ROOT  = os.path.dirname(__file__)
 DOCS_DIR   = os.path.join(REPO_ROOT, "docs")
@@ -451,6 +452,32 @@ def _ensure_stylesheet_dcl():
     except Exception as e:
         print(f"[warn] Could not write stylesheet: {e}", file=sys.stderr)
 
+# ---------- Webhook helper ----------
+
+def post_flow_webhook(payload: dict):
+    """
+    Fire-and-forget POST to your Power Automate HTTP trigger.
+
+    Expects env vars:
+      FLOW_URL    -> full HTTP trigger URL
+      FLOW_SECRET -> value for header: x-shipalerts-secret
+    """
+    url = os.getenv("FLOW_URL", "").strip()
+    secret = os.getenv("FLOW_SECRET", "").strip()
+    if not url or not secret:
+        print("[info] FLOW_URL/FLOW_SECRET not set; skipping webhook.")
+        return
+    try:
+        data = json.dumps(payload).encode("utf-8")
+        req = urllib.request.Request(url, data=data, method="POST")
+        req.add_header("Content-Type", "application/json")
+        req.add_header("x-shipalerts-secret", secret)
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            print(f"[info] webhook -> {resp.status}")
+    except Exception as e:
+        # Never break the scraper on webhook issues
+        print(f"[warn] webhook failed: {e}", file=sys.stderr)
+
 def build_rss(channel_title: str, channel_link: str, items: list, stylesheet=None, use_cdata=None) -> str:
     if stylesheet is None:
         stylesheet = STYLESHEET_NAME
@@ -767,7 +794,12 @@ def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
                 "eventUtc": event_iso or now_utc.isoformat(),
                 "shipSlug": slug,
                 "shipName": ship_name,
-                "source": "geo"
+                "source": "geo",
+                # explicit fields for webhook convenience:
+                "eventType": "Arrived",
+                "portName": fence_name,
+                "estLabel": est_str or "",
+                "localLabel": local_str or ""
             })
 
         elif (not inside) and prev:
@@ -787,7 +819,12 @@ def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
                 "eventUtc": event_iso or now_utc.isoformat(),
                 "shipSlug": slug,
                 "shipName": ship_name,
-                "source": "geo"
+                "source": "geo",
+                # explicit fields for webhook convenience:
+                "eventType": "Departed",
+                "portName": fence_name,
+                "estLabel": est_str or "",
+                "localLabel": local_str or ""
             })
 
         geo_state[key] = inside
@@ -997,6 +1034,21 @@ def main():
                     ship_items_new.append(item)
                     all_items_new.append(item)
                     canon_seen[guid] = True
+
+                    # ---- webhook notify for new VF ship-page item
+                    post_flow_webhook({
+                        "ShipName":   name,
+                        "EventType":  verb,                 # Arrived | Departed
+                        "PortName":   r["port"],
+                        "ESTLabel":   est_str or "",
+                        "LocalLabel": local_str or "",
+                        "Link":       link or "",
+                        "Title":      title,
+                        "GuidKey":    guid,
+                        "PubDate":    item["pubDate"],
+                        "Description": desc
+                    })
+
                 except Exception as e:
                     print(f"[warn] VF item build failed for {name}: {e}", file=sys.stderr)
 
@@ -1062,6 +1114,21 @@ def main():
                             ship_items_new.append(item)
                             all_items_new.append(item)
                             canon_seen[guid] = True
+
+                            # ---- webhook notify for new port-fallback item
+                            post_flow_webhook({
+                                "ShipName":   name,
+                                "EventType":  verb,
+                                "PortName":   r["port"],
+                                "ESTLabel":   est_str or "",
+                                "LocalLabel": local_str or "",
+                                "Link":       link or "",
+                                "Title":      title,
+                                "GuidKey":    guid,
+                                "PubDate":    item["pubDate"],
+                                "Description": desc
+                            })
+
                         except Exception as e:
                             print(f"[warn] Port-fallback build failed for {name}: {e}", file=sys.stderr)
             except Exception as e:
@@ -1079,6 +1146,21 @@ def main():
                         ship_items_new.append(it)
                         all_items_new.append(it)
                         canon_seen[it["guid"]] = True
+
+                        # ---- webhook notify for new geofence item
+                        post_flow_webhook({
+                            "ShipName":   it["shipName"],
+                            "EventType":  it.get("eventType",""),
+                            "PortName":   it.get("portName",""),
+                            "ESTLabel":   it.get("estLabel",""),
+                            "LocalLabel": it.get("localLabel",""),
+                            "Link":       it.get("link",""),
+                            "Title":      it.get("title",""),
+                            "GuidKey":    it.get("guid",""),
+                            "PubDate":    it.get("pubDate",""),
+                            "Description": it.get("description","")
+                        })
+
                 else:
                     print(f"[warn] No coords from CruiseMapper for {name} ({cm_url})")
             except Exception as e:
