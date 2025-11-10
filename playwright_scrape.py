@@ -19,6 +19,10 @@ from urllib.parse import urljoin, urlparse, urlunparse, parse_qs, urlencode
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 from bs4 import BeautifulSoup, Tag, NavigableString
 
+# --- NEW: stdlib HTTP for webhook ---
+import urllib.request
+import urllib.error
+
 REPO_ROOT  = os.path.dirname(__file__)
 DOCS_DIR   = os.path.join(REPO_ROOT, "docs")
 STATE_PATH = os.path.join(REPO_ROOT, "state.json")
@@ -208,13 +212,13 @@ GLOBAL_FALLBACK_PORTS = [
 
 # ---------- Utilities ----------
 
-def _sleep_jitter(min_s=0.8, max_s=1.6):
+def _sleep_jitter(min_s=0.3, max_s=0.8):
     time.sleep(random.uniform(min_s, max_s))
 
 def _looks_blocked(html: str) -> bool:
     if not html: return True
     low = html.lower()
-    return ("captcha" in low) or ("access denied" in low) or ("cf-") in low and ("turnstile" in low)
+    return ("captcha" in low) or ("access denied" in low) or (("cf-") in low and ("turnstile" in low))
 
 def zinfo(tz_name: str):
     """Safe ZoneInfo constructor with fallback to America/New_York."""
@@ -767,6 +771,10 @@ def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
                 "eventUtc": event_iso or now_utc.isoformat(),
                 "shipSlug": slug,
                 "shipName": ship_name,
+                "portName": fence_name,           # NEW
+                "event": "Arrived",               # NEW
+                "estLabel": est_str or "",        # NEW
+                "localLabel": local_str or "",    # NEW
                 "source": "geo"
             })
 
@@ -787,6 +795,10 @@ def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
                 "eventUtc": event_iso or now_utc.isoformat(),
                 "shipSlug": slug,
                 "shipName": ship_name,
+                "portName": fence_name,           # NEW
+                "event": "Departed",              # NEW
+                "estLabel": est_str or "",        # NEW
+                "localLabel": local_str or "",    # NEW
                 "source": "geo"
             })
 
@@ -904,6 +916,69 @@ def _fetch_port_fallback_events(p, ship_name: str, candidate_links_with_labels: 
                 print(f"[warn] Port fallback {label or port_url} ({tab}) failed: {e}", file=sys.stderr)
     return out
 
+# ---------- NEW: Power Automate webhook ----------
+
+def _env(name, default=""):
+    v = os.environ.get(name)
+    return v if v is not None else default
+
+FLOW_URL    = _env("FLOW_URL", "").strip()
+FLOW_SECRET = _env("FLOW_SECRET", "").strip()
+FLOW_NONCE  = (_env("FLOW_NONCE") or _env("GITHUB_RUN_ID") or "").strip()
+
+def _post_json(url: str, headers: dict, data_obj: dict, timeout=20) -> (int, str):
+    body = json.dumps(data_obj).encode("utf-8")
+    req = urllib.request.Request(url, data=body, method="POST")
+    for k, v in (headers or {}).items():
+        req.add_header(k, v)
+    req.add_header("Content-Type", "application/json")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return resp.getcode(), resp.read().decode("utf-8", errors="replace")
+    except urllib.error.HTTPError as e:
+        try:
+            err = e.read().decode("utf-8", errors="replace")
+        except Exception:
+            err = str(e)
+        return e.code, err
+    except Exception as e:
+        return 0, str(e)
+
+def _notify_power_automate(new_items: list):
+    if not FLOW_URL or not FLOW_SECRET:
+        print("[info] FLOW_URL/FLOW_SECRET not set; skipping webhook notifications.")
+        return
+
+    print(f"[info] Notifying Power Automate for {len(new_items)} new item(s).")
+    for it in new_items:
+        payload = {
+            "ShipName":   it.get("shipName",""),
+            "EventType":  it.get("event",""),                 # Arrived / Departed
+            "PortName":   it.get("portName",""),
+            "ESTLabel":   it.get("estLabel",""),
+            "LocalLabel": it.get("localLabel",""),
+            "Link":       it.get("link",""),
+            "Title":      it.get("title",""),
+            "GuidKey":    it.get("guid",""),
+            "PubDate":    it.get("pubDate",""),               # RFC 2822
+            "Description": it.get("description",""),
+            "Nonce":      FLOW_NONCE,
+        }
+        headers = { "x-shipalerts-secret": FLOW_SECRET }
+
+        # basic retry (3 attempts; small jitter)
+        attempts = 0
+        while attempts < 3:
+            code, resp = _post_json(FLOW_URL, headers, payload, timeout=20)
+            if 200 <= code < 300:
+                print(f"[info] Flow OK ({code}) – {payload['ShipName']} {payload['EventType']} @ {payload['PortName']}")
+                break
+            else:
+                attempts += 1
+                print(f"[warn] Flow post attempt {attempts} failed: HTTP {code} :: {resp[:300]}")
+                _sleep_jitter(0.5, 1.2)
+        _sleep_jitter(0.2, 0.5)
+
 # ---------- Main ----------
 
 def main():
@@ -992,6 +1067,10 @@ def main():
                         "eventUtc": event_iso_final,
                         "shipSlug": slug,
                         "shipName": name,
+                        "portName": r['port'],            # NEW
+                        "event": verb,                     # NEW
+                        "estLabel": est_str or "",         # NEW
+                        "localLabel": local_str or "",     # NEW
                         "source": "vf_ship"
                     }
                     ship_items_new.append(item)
@@ -1057,6 +1136,10 @@ def main():
                                 "eventUtc": event_iso,
                                 "shipSlug": slug,
                                 "shipName": name,
+                                "portName": r['port'],        # NEW
+                                "event": verb,                 # NEW
+                                "estLabel": est_str or "",     # NEW
+                                "localLabel": local_str or "", # NEW
                                 "source": "vf_port"
                             }
                             ship_items_new.append(item)
@@ -1160,6 +1243,12 @@ def main():
             f.write(latest_all_xml)
     except Exception as e:
         print(f"[error] Writing latest-all.xml failed: {e}", file=sys.stderr)
+
+    # ---- NEW: fire webhook for new items ----
+    try:
+        _notify_power_automate(all_items_new)
+    except Exception as e:
+        print(f"[warn] Webhook notify failed: {e}", file=sys.stderr)
 
     save_json(STATE_PATH, state)
 
