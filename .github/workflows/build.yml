@@ -29,7 +29,13 @@ jobs:
         run: |
           python -m playwright install --with-deps chromium
 
-      - name: Run scraper
+      # --------------------------
+      # ✅ This is where secrets go
+      # --------------------------
+      - name: Run scraper (with webhook support)
+        env:
+          FLOW_URL: ${{ secrets.FLOW_URL }}
+          FLOW_SECRET: ${{ secrets.FLOW_SECRET }}
         run: |
           python playwright_scrape.py
 
