@@ -10,7 +10,7 @@ permissions:
 
 concurrency:
   group: build-rss
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
