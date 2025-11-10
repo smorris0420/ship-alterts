@@ -1,5 +1,16 @@
 [
   {
+    "title": "Disney Magic Arrived at Willemstad, Curacao at Nov 10, 06:27 AM EST. The local time to the port is Nov 10, 07:27 AM AST",
+    "description": "Willemstad, Curacao Arrival (UTC) Nov 10, 11:27 — ET: Nov 10, 06:27 AM EST | Local: Nov 10, 07:27 AM AST",
+    "link": "https://www.vesselfinder.com/ports/CWWIL002",
+    "guid": "2d43025447df286d2dec564e44032adb5ef59060",
+    "pubDate": "Mon, 10 Nov 2025 12:45:00 GMT",
+    "eventUtc": "2025-11-10T11:27:00+00:00",
+    "shipSlug": "disney-magic",
+    "shipName": "Disney Magic",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Magic Departed from Oranjestad, Aruba at Nov 09, 08:55 PM EST. The local time to the port is Nov 09, 09:55 PM AST",
     "description": "Oranjestad, Aruba Departure (UTC) Nov 10, 01:55 — ET: Nov 09, 08:55 PM EST | Local: Nov 09, 09:55 PM AST",
     "link": "https://www.vesselfinder.com/ports/AWORJ001",
