@@ -8,12 +8,21 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: build-rss
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PYTHONUNBUFFERED: "1"
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout (with history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -29,9 +38,7 @@ jobs:
         run: |
           python -m playwright install --with-deps chromium
 
-      # --------------------------
-      # ✅ This is where secrets go
-      # --------------------------
+      # Webhook secrets are provided to the scraper here
       - name: Run scraper (with webhook support)
         env:
           FLOW_URL: ${{ secrets.FLOW_URL }}
@@ -41,9 +48,13 @@ jobs:
 
       - name: Commit & push
         run: |
-          git config user.name "rss-bot"
-          git config user.email "rss-bot@users.noreply.github.com"
+          git config --global user.name "rss-bot"
+          git config --global user.email "rss-bot@users.noreply.github.com"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+          # Rebase to include remote changes before we push our generated files
           git pull --rebase --strategy-option ours || true
+
           git add -A
           git commit -m "update feeds" || echo "No changes"
           git push
