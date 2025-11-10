@@ -124,38 +124,38 @@ jobs:
           git push
           echo "Publish committed & pushed."
 
-- name: Notify Power Automate (Publish mode)
-  if: ${{ inputs.mode == 'Publish' }}
-  shell: bash
-  env:
-    FLOW_URL: ${{ secrets.FLOW_URL }}
-    FLOW_SECRET: ${{ secrets.FLOW_SECRET }}
-    SHIP: ${{ inputs.ship }}
-    EVENT: ${{ inputs.event }}          # Arrived | Departed
-    PORT: ${{ inputs.port }}
-    EST: ${{ inputs.est }}
-    LOCAL: ${{ inputs.local }}
-    LINK: ${{ inputs.link }}
-  run: |
-    set -euo pipefail
+      - name: Notify Power Automate (Publish mode)
+        if: ${{ inputs.mode == 'Publish' }}
+        shell: bash
+        env:
+          FLOW_URL: ${{ secrets.FLOW_URL }}
+          FLOW_SECRET: ${{ secrets.FLOW_SECRET }}
+          SHIP: ${{ inputs.ship }}
+          EVENT: ${{ inputs.event }}          # Arrived | Departed
+          PORT: ${{ inputs.port }}
+          EST: ${{ inputs.est }}
+          LOCAL: ${{ inputs.local }}
+          LINK: ${{ inputs.link }}
+        run: |
+          set -euo pipefail
 
-    if [ -z "${FLOW_URL:-}" ] || [ -z "${FLOW_SECRET:-}" ]; then
-      echo "::warning ::FLOW_URL or FLOW_SECRET not set; skipping webhook notify."
-      exit 0
-    fi
+          if [ -z "${FLOW_URL:-}" ] || [ -z "${FLOW_SECRET:-}" ]; then
+            echo "::warning ::FLOW_URL or FLOW_SECRET not set; skipping webhook notify."
+            exit 0
+          fi
 
-    if [ "${EVENT}" = "Arrived" ]; then
-      VERB_PHRASE="Arrived at"
-    else
-      VERB_PHRASE="Departed from"
-    fi
+          if [ "${EVENT}" = "Arrived" ]; then
+            VERB_PHRASE="Arrived at"
+          else
+            VERB_PHRASE="Departed from"
+          fi
 
-    TITLE="${SHIP} ${VERB_PHRASE} ${PORT} at ${EST}"
-    if [ -n "${LOCAL}" ]; then
-      TITLE="${TITLE}. The local time to the port is ${LOCAL}"
-    fi
+          TITLE="${SHIP} ${VERB_PHRASE} ${PORT} at ${EST}"
+          if [ -n "${LOCAL}" ]; then
+            TITLE="${TITLE}. The local time to the port is ${LOCAL}"
+          fi
 
-    GUID=$(python - <<'PY'
+          GUID=$(python - <<'PY'
 import hashlib, os
 ship=os.environ['SHIP']; event=os.environ['EVENT']; port=os.environ['PORT']; est=os.environ['EST']
 key=f"manual|{ship}|{event}|{port}|{est}"
@@ -163,11 +163,11 @@ print(hashlib.sha1(key.encode()).hexdigest())
 PY
 )
 
-    PUB=$(date -u -R)
+          PUB=$(date -u -R)
 
-    # Write payload.json with Python to avoid YAML/heredoc parsing issues
-    python - <<'PY'
-import json, os, sys
+          # Write payload.json with Python to avoid YAML/heredoc parsing issues
+          python - <<'PY'
+import json, os
 payload = {
   "ShipName":   os.environ["SHIP"],
   "EventType":  os.environ["EVENT"],
@@ -175,7 +175,7 @@ payload = {
   "ESTLabel":   os.environ["EST"],
   "LocalLabel": os.environ.get("LOCAL",""),
   "Link":       os.environ.get("LINK","#"),
-  "Title":      os.environ["TITLE"] if "TITLE" in os.environ else "",
+  "Title":      os.environ.get("TITLE",""),
   "GuidKey":    os.environ["GUID"],
   "PubDate":    os.environ["PUB"],
   "Description": ""
@@ -184,10 +184,10 @@ with open("payload.json","w", encoding="utf-8") as f:
   json.dump(payload, f, ensure_ascii=False)
 PY
 
-    curl -sS -X POST "$FLOW_URL" \
-      -H "Content-Type: application/json" \
-      -H "x-shipalerts-secret: $FLOW_SECRET" \
-      --data @payload.json
+          curl -sS -X POST "$FLOW_URL" \
+            -H "Content-Type: application/json" \
+            -H "x-shipalerts-secret: $FLOW_SECRET" \
+            --data @payload.json
 
       # ---------- Restore (copy latest.xml -> latest-all.xml) ----------
       - name: Restore from latest.xml (RestorePrevious mode)
