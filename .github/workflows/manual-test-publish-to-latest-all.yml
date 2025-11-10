@@ -1,3 +1,5 @@
+
+
 name: Manual Publish or Restore
 
 on:
@@ -123,65 +125,6 @@ jobs:
           git commit -m "manual publish: ${{ inputs.ship }} ${{ inputs.event }} at ${{ inputs.port }}"
           git push
           echo "Publish committed & pushed."
-
-      - name: Notify Power Automate (Publish mode)
-        if: ${{ inputs.mode == 'Publish' }}
-        env:
-          FLOW_URL: ${{ secrets.FLOW_URL }}
-          FLOW_SECRET: ${{ secrets.FLOW_SECRET }}
-          SHIP: ${{ inputs.ship }}
-          EVENT: ${{ inputs.event }}          # Arrived | Departed
-          PORT: ${{ inputs.port }}
-          EST: ${{ inputs.est }}
-          LOCAL: ${{ inputs.local }}
-          LINK: ${{ inputs.link }}
-        run: |
-          set -euo pipefail
-
-          if [ -z "${FLOW_URL:-}" ] || [ -z "${FLOW_SECRET:-}" ]; then
-            echo "::warning ::FLOW_URL or FLOW_SECRET not set; skipping webhook notify."
-            exit 0
-          fi
-
-          if [ "${EVENT}" = "Arrived" ]; then
-            VERB_PHRASE="Arrived at"
-          else
-            VERB_PHRASE="Departed from"
-          fi
-
-          TITLE="${SHIP} ${VERB_PHRASE} ${PORT} at ${EST}"
-          if [ -n "${LOCAL}" ]; then
-            TITLE="${TITLE}. The local time to the port is ${LOCAL}"
-          fi
-
-          GUID=$(python - <<'PY'
-import hashlib, os
-ship=os.environ['SHIP']; event=os.environ['EVENT']; port=os.environ['PORT']; est=os.environ['EST']
-key=f"manual|{ship}|{event}|{port}|{est}"
-print(hashlib.sha1(key.encode()).hexdigest()))
-PY
-)
-
-          PUB=$(date -u -R)
-
-          echo "Posting webhook for ${SHIP} ${EVENT} @ ${PORT}"
-          curl -sS -X POST "$FLOW_URL" \
-            -H "Content-Type: application/json" \
-            -H "x-shipalerts-secret: $FLOW_SECRET" \
-            -d @- <<JSON
-{
-  "ShipName":   "$SHIP",
-  "EventType":  "$EVENT",
-  "PortName":   "$PORT",
-  "ESTLabel":   "$EST",
-  "LocalLabel": "$LOCAL",
-  "Link":       "$LINK",
-  "Title":      "$TITLE",
-  "GuidKey":    "$GUID",
-  "PubDate":    "$PUB",
-  "Description": ""
-}
-JSON
 
       # ---------- Restore (copy latest.xml -> latest-all.xml) ----------
       - name: Restore from latest.xml (RestorePrevious mode)
