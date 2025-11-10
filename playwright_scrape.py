@@ -19,10 +19,6 @@ from urllib.parse import urljoin, urlparse, urlunparse, parse_qs, urlencode
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 from bs4 import BeautifulSoup, Tag, NavigableString
 
-# --- stdlib HTTP for webhook ---
-import urllib.request
-import urllib.error
-
 REPO_ROOT  = os.path.dirname(__file__)
 DOCS_DIR   = os.path.join(REPO_ROOT, "docs")
 STATE_PATH = os.path.join(REPO_ROOT, "state.json")
@@ -212,13 +208,13 @@ GLOBAL_FALLBACK_PORTS = [
 
 # ---------- Utilities ----------
 
-def _sleep_jitter(min_s=0.3, max_s=0.8):
+def _sleep_jitter(min_s=0.8, max_s=1.6):
     time.sleep(random.uniform(min_s, max_s))
 
 def _looks_blocked(html: str) -> bool:
     if not html: return True
     low = html.lower()
-    return ("captcha" in low) or ("access denied" in low) or (("cf-") in low and ("turnstile" in low))
+    return ("captcha" in low) or ("access denied" in low) or ("cf-") in low and ("turnstile" in low)
 
 def zinfo(tz_name: str):
     """Safe ZoneInfo constructor with fallback to America/New_York."""
@@ -432,7 +428,7 @@ def _ensure_stylesheet_dcl():
                         <xsl:choose>
                           <xsl:when test="contains(title,'Arrived')">ARRIVED</xsl:when>
                           <xsl:otherwise>DEPARTED</xsl:otherwise>
-                          </xsl:choose>
+                        </xsl:choose>
                       </span>
                       <a href="{link}"><xsl:value-of select="title"/></a><br/>
                       <span class="guid"><xsl:value-of select="guid"/></span>
@@ -640,6 +636,7 @@ def _rendered_html(url: str, p, mobile: bool, wait_selector: str = None, wait_te
     try:
         page.goto(url, timeout=45000, wait_until="domcontentloaded")
 
+        # Optional waits for dynamic content
         if wait_text:
             try:
                 page.wait_for_selector(f"text={wait_text}", timeout=10000)
@@ -651,6 +648,7 @@ def _rendered_html(url: str, p, mobile: bool, wait_selector: str = None, wait_te
             except PWTimeout:
                 pass
 
+        # Allow background XHRs to settle
         try:
             page.wait_for_load_state("networkidle", timeout=8000)
         except PWTimeout:
@@ -769,10 +767,6 @@ def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
                 "eventUtc": event_iso or now_utc.isoformat(),
                 "shipSlug": slug,
                 "shipName": ship_name,
-                "portName": fence_name,
-                "event": "Arrived",
-                "estLabel": est_str or "",
-                "localLabel": local_str or "",
                 "source": "geo"
             })
 
@@ -793,10 +787,6 @@ def geofence_events_from_coords(ship_name: str, slug: str, coords, state_seen):
                 "eventUtc": event_iso or now_utc.isoformat(),
                 "shipSlug": slug,
                 "shipName": ship_name,
-                "portName": fence_name,
-                "event": "Departed",
-                "estLabel": est_str or "",
-                "localLabel": local_str or "",
                 "source": "geo"
             })
 
@@ -893,9 +883,11 @@ def _fetch_port_fallback_events(p, ship_name: str, candidate_links_with_labels: 
         for tab in ("departures", "arrivals"):
             try:
                 url = _ensure_tab(urljoin("https://www.vesselfinder.com", port_url), tab)
+                # Desktop with robust waits
                 html = _rendered_html(url, p, mobile=False, wait_selector="table")
                 rows = _parse_port_table_for_ship(html, ship_name, port_url, tab, label or port_url)
 
+                # If nothing, try mobile (often more stable)
                 if not rows:
                     parsed = urlparse(url)
                     mobile_url = urlunparse(parsed._replace(netloc="m.vesselfinder.com"))
@@ -911,108 +903,6 @@ def _fetch_port_fallback_events(p, ship_name: str, candidate_links_with_labels: 
             except Exception as e:
                 print(f"[warn] Port fallback {label or port_url} ({tab}) failed: {e}", file=sys.stderr)
     return out
-
-# ---------- Power Automate webhook (robust, non-blocking) ----------
-
-def _env(name, default=""):
-    v = os.environ.get(name)
-    return default if v is None else str(v)
-
-FLOW_URL          = _env("FLOW_URL").strip()
-FLOW_SECRET       = _env("FLOW_SECRET").strip()
-FLOW_NONCE        = (_env("FLOW_NONCE") or _env("GITHUB_RUN_ID")).strip()
-FLOW_DEBUG        = _env("FLOW_DEBUG", "0").strip()            # "1" to print payload + responses
-FLOW_DRY_RUN      = _env("FLOW_DRY_RUN", "0").strip()          # "1" to skip actual POSTs
-FLOW_MAX_POSTS    = int(_env("FLOW_MAX_POSTS", "25"))          # cap posts per run
-FLOW_ONLY_LATEST  = _env("FLOW_ONLY_LATEST", "0").strip()      # "1" to send only newest item
-
-def _post_json(url: str, headers: dict, data_obj: dict, timeout=10):
-    body = json.dumps(data_obj, ensure_ascii=False).encode("utf-8")
-    req = urllib.request.Request(url, data=body, method="POST")
-    req.add_header("Content-Type", "application/json; charset=utf-8")
-    for k, v in (headers or {}).items():
-        req.add_header(k, v)
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            return resp.getcode(), resp.read().decode("utf-8", errors="replace")
-    except urllib.error.HTTPError as e:
-        try:
-            err = e.read().decode("utf-8", errors="replace")
-        except Exception:
-            err = str(e)
-        return e.code, err
-    except Exception as e:
-        return 0, str(e)
-
-def _coerce_str(x):
-    return "" if x is None else str(x)
-
-def _notify_power_automate(new_items: list):
-    """
-    Posts each NEW item to the Power Automate HTTP trigger.
-    Non-fatal: webhook issues never raise, they log warnings only.
-    """
-    if not FLOW_URL or not FLOW_SECRET:
-        print("[info] FLOW_URL/FLOW_SECRET not set; skipping webhook notifications.")
-        return
-
-    if not new_items:
-        print("[info] No new items to notify.")
-        return
-
-    # sort newest first by eventUtc (fallback to pubDate text)
-    def sort_key(it):
-        iso = it.get("eventUtc") or ""
-        try:
-            return datetime.fromisoformat(iso).timestamp()
-        except Exception:
-            return 0.0
-
-    items = sorted(new_items, key=sort_key, reverse=True)
-    if FLOW_ONLY_LATEST == "1":
-        items = items[:1]
-    else:
-        items = items[:FLOW_MAX_POSTS]
-
-    print(f"[info] Notifying Power Automate for {len(items)} item(s). (debug={FLOW_DEBUG}, dry_run={FLOW_DRY_RUN})")
-
-    for it in items:
-        payload = {
-            "ShipName":   _coerce_str(it.get("shipName")),
-            "EventType":  _coerce_str(it.get("event")),         # Arrived / Departed
-            "PortName":   _coerce_str(it.get("portName")),
-            "ESTLabel":   _coerce_str(it.get("estLabel")),
-            "LocalLabel": _coerce_str(it.get("localLabel")),
-            "Link":       _coerce_str(it.get("link")),
-            "Title":      _coerce_str(it.get("title")),
-            "GuidKey":    _coerce_str(it.get("guid")),
-            "PubDate":    _coerce_str(it.get("pubDate")),       # RFC 2822 string
-            "Description": _coerce_str(it.get("description")),
-            "Nonce":      _coerce_str(FLOW_NONCE),
-        }
-
-        if FLOW_DEBUG == "1":
-            print("[debug] Flow payload:", json.dumps(payload, ensure_ascii=False))
-
-        if FLOW_DRY_RUN == "1":
-            print("[info] DRY RUN: skipping POST.")
-            continue
-
-        headers = { "x-shipalerts-secret": FLOW_SECRET }
-
-        # basic retry (3 attempts)
-        for attempt in range(1, 4):
-            code, resp = _post_json(FLOW_URL, headers, payload, timeout=10)
-            ok = 200 <= code < 300
-            if FLOW_DEBUG == "1":
-                print(f"[debug] Flow response attempt {attempt}: code={code} body={resp[:400]}")
-            if ok:
-                print(f"[info] Flow OK ({code}) – {payload['ShipName']} {payload['EventType']} @ {payload['PortName']}")
-                break
-            else:
-                print(f"[warn] Flow POST failed attempt {attempt}: HTTP {code} :: {resp[:300]}")
-                _sleep_jitter(0.5, 1.2)
-        _sleep_jitter(0.2, 0.5)
 
 # ---------- Main ----------
 
@@ -1102,10 +992,6 @@ def main():
                         "eventUtc": event_iso_final,
                         "shipSlug": slug,
                         "shipName": name,
-                        "portName": r['port'],
-                        "event": verb,
-                        "estLabel": est_str or "",
-                        "localLabel": local_str or "",
                         "source": "vf_ship"
                     }
                     ship_items_new.append(item)
@@ -1171,10 +1057,6 @@ def main():
                                 "eventUtc": event_iso,
                                 "shipSlug": slug,
                                 "shipName": name,
-                                "portName": r['port'],
-                                "event": verb,
-                                "estLabel": est_str or "",
-                                "localLabel": local_str or "",
                                 "source": "vf_port"
                             }
                             ship_items_new.append(item)
@@ -1278,12 +1160,6 @@ def main():
             f.write(latest_all_xml)
     except Exception as e:
         print(f"[error] Writing latest-all.xml failed: {e}", file=sys.stderr)
-
-    # ---- fire webhook for new items (non-fatal) ----
-    try:
-        _notify_power_automate(all_items_new)
-    except Exception as e:
-        print(f"[warn] Webhook notify failed: {e}", file=sys.stderr)
 
     save_json(STATE_PATH, state)
 
