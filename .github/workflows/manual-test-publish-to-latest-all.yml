@@ -199,8 +199,8 @@ jobs:
 
           echo "Restore committed & pushed."
 
-      # ---------- Email notification (Publish only) ----------
-      - name: Send email (Publish)
+      # ---------- Email notification (Publish only; attaches JSON, not XML) ----------
+      - name: Send email (Publish, JSON test)
         if: ${{ inputs.mode == 'Publish' && inputs.notify }}
         shell: python
         env:
@@ -210,10 +210,10 @@ jobs:
           SMTP_PASS:   ${{ secrets.SMTP_PASS }}
           ALERT_FROM:  ${{ secrets.ALERT_FROM }}
           ALERT_INBOX: ${{ secrets.ALERT_INBOX }}
-          TARGET_FILE: docs/${{ inputs.filename }}
         run: |
-          import os, ssl, smtplib, mimetypes, pathlib
+          import os, ssl, smtplib, json
           from email.message import EmailMessage
+          from email.utils import formatdate
 
           smtp_host = os.environ["SMTP_HOST"]
           smtp_port = int(os.environ.get("SMTP_PORT","587"))
@@ -221,7 +221,6 @@ jobs:
           smtp_pass = os.environ["SMTP_PASS"]
           sender    = os.environ["ALERT_FROM"]
           to        = os.environ["ALERT_INBOX"]
-          fname     = os.environ["TARGET_FILE"]
 
           ship   = """${{ inputs.ship }}"""
           event  = """${{ inputs.event }}"""
@@ -230,41 +229,42 @@ jobs:
           local  = """${{ inputs.local }}"""
           link   = """${{ inputs.link }}"""
 
-          subj = f"DCL Ship Alerts: {ship} {event} " + ("at " if event=="Arrived" else "from ") + port
+          title = f"{ship} " + ("Arrived at " if event == "Arrived" else "Departed from ") + f"{port} at {est}"
+          subj  = f"DCL Ship Alerts (TEST JSON): {ship} {event} " + ("at " if event=="Arrived" else "from ") + port
 
-          html = f"""
-          <div style="font-family:Segoe UI,Arial,sans-serif">
-            <h3 style="margin:0 0 8px 0;">{ship} — {event}</h3>
-            <p style="margin:4px 0;"><b>Port:</b> {port}</p>
-            <p style="margin:4px 0;"><b>EST:</b> {est}</p>
-            {f'<p style="margin:4px 0;"><b>Local:</b> {local}</p>' if local else ''}
-            {f'<p style="margin:4px 0;"><b>Link:</b> <a href="{link}">{link}</a></p>' if link and link != '#' else ''}
-            <p style="margin:8px 0 0 0;"><i>Updated file:</i> {fname}</p>
-          </div>
-          """
+          payload = {
+            "ShipName":  ship,
+            "EventType": event,             # Arrived | Departed
+            "PortName":  port,
+            "ESTLabel":  est,
+            "LocalLabel": local or "",
+            "Link":       "" if (not link or link == "#") else link,
+            "Title":      title,
+            "GuidKey":    "",
+            "PubDate":    formatdate(usegmt=True),
+            "Description": f"Manual publish test for {ship}"
+          }
 
+          # Build email (no XML attachment; JSON only)
           msg = EmailMessage()
           msg["From"] = sender
           msg["To"] = to
           msg["Subject"] = subj
           msg.set_content(
-            f"{ship} {event} " + ("at " if event=="Arrived" else "from ") + f"{port}\n"
-            f"EST: {est}\n"
+            f"{title}\nEST: {est}\n"
             + (f"Local: {local}\n" if local else "")
             + (f"Link: {link}\n" if link and link != "#" else "")
-            + f"\nUpdated file: {fname}"
+            + "\nAttachment: shipalert.json"
           )
-          msg.add_alternative(html, subtype="html")
+          msg.add_alternative(f"<pre style='font-family:Consolas,monospace'>{json.dumps(payload, indent=2)}</pre>", subtype="html")
 
-          if os.path.exists(fname):
-            ctype, _ = mimetypes.guess_type(fname)
-            maintype, subtype = (ctype.split("/",1) if ctype else ("application","octet-stream"))
-            with open(fname, "rb") as f:
-              msg.add_attachment(f.read(), maintype=maintype, subtype=subtype, filename=pathlib.Path(fname).name)
+          # Attach JSON (what your Flow expects)
+          data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+          msg.add_attachment(data, maintype="application", subtype="json", filename="shipalert.json")
 
           context = ssl.create_default_context()
           with smtplib.SMTP(smtp_host, smtp_port, timeout=30) as s:
             s.starttls(context=context)
             s.login(smtp_user, smtp_pass)
             s.send_message(msg)
-          print("Email sent.")
+          print("Email with shipalert.json sent.")
