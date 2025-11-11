@@ -1,5 +1,3 @@
-
-
 name: Manual Publish or Restore
 
 on:
@@ -48,6 +46,11 @@ on:
         required: false
         type: boolean
         default: false
+      notify:
+        description: "Send email notification (Publish only)"
+        required: false
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -67,7 +70,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       # ---------- Publish ----------
-      - name: Validate inputs (Publish mode)
+      - name: Validate inputs (Publish)
         if: ${{ inputs.mode == 'Publish' }}
         run: |
           set -e
@@ -76,19 +79,16 @@ jobs:
             exit 1
           fi
 
-      - name: Install Python
+      - name: Setup Python (Publish)
         if: ${{ inputs.mode == 'Publish' }}
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Run publisher (Publish mode)
+      - name: Run publisher (Publish)
         if: ${{ inputs.mode == 'Publish' }}
-        env:
-          TARGET_FILE: docs/${{ inputs.filename }}
         run: |
           set -euo pipefail
-          echo "Writing to: $TARGET_FILE"
           python .github/scripts/publish_latest_all.py \
             --ship "${{ inputs.ship }}" \
             --event "${{ inputs.event }}" \
@@ -100,9 +100,9 @@ jobs:
             --nonce "${{ github.run_id }}" \
             $([ "${{ inputs.also_underscore }}" = "true" ] && echo "--also-underscore")
 
-          echo "---- HEAD of file after write ----"
-          sed -n '1,80p' "$TARGET_FILE" || true
-          echo "----------------------------------"
+          echo "---- HEAD of written file ----"
+          sed -n '1,80p' "docs/${{ inputs.filename }}" || true
+          echo "--------------------------------"
 
       - name: Commit publish
         if: ${{ inputs.mode == 'Publish' }}
@@ -111,8 +111,7 @@ jobs:
           ALSO_UNDERSCORE: ${{ inputs.also_underscore }}
         run: |
           set -euo pipefail
-          git status --porcelain
-          if git diff --quiet -- "$TARGET_FILE"; then
+          if ! git status --porcelain | grep -q "$TARGET_FILE"; then
             echo "::error ::No changes detected in $TARGET_FILE after publisher ran."
             exit 1
           fi
@@ -123,11 +122,11 @@ jobs:
           fi
 
           git commit -m "manual publish: ${{ inputs.ship }} ${{ inputs.event }} at ${{ inputs.port }}"
+          git pull --rebase || true
           git push
-          echo "Publish committed & pushed."
 
       # ---------- Restore (copy latest.xml -> latest-all.xml) ----------
-      - name: Restore from latest.xml (RestorePrevious mode)
+      - name: Restore from latest.xml (RestorePrevious)
         if: ${{ inputs.mode == 'RestorePrevious' }}
         env:
           DEST_FILE: docs/${{ inputs.filename }}
@@ -154,5 +153,73 @@ jobs:
 
           git add "$DEST_FILE"
           git commit -m "restore: copy latest.xml -> $DEST_FILE" || echo "No changes to commit"
+          git pull --rebase || true
           git push || echo "No changes pushed"
           echo "Restore complete."
+
+      # ---------- Email notification (Publish only) ----------
+      - name: Send email (Publish)
+        if: ${{ inputs.mode == 'Publish' && inputs.notify == true }}
+        env:
+          SMTP_HOST:   ${{ secrets.SMTP_HOST }}
+          SMTP_PORT:   ${{ secrets.SMTP_PORT }}
+          SMTP_USER:   ${{ secrets.SMTP_USER }}
+          SMTP_PASS:   ${{ secrets.SMTP_PASS }}
+          ALERT_FROM:  ${{ secrets.ALERT_FROM }}
+          ALERT_INBOX: ${{ secrets.ALERT_INBOX }}
+          TARGET_FILE: docs/${{ inputs.filename }}
+        run: |
+          python - << 'PY'
+import os, ssl, smtplib, mimetypes
+from email.message import EmailMessage
+
+smtp_host = os.environ["SMTP_HOST"]
+smtp_port = int(os.environ.get("SMTP_PORT","587"))
+smtp_user = os.environ["SMTP_USER"]
+smtp_pass = os.environ["SMTP_PASS"]
+sender    = os.environ["ALERT_FROM"]
+to        = os.environ["ALERT_INBOX"]
+fname     = os.environ["TARGET_FILE"]
+
+ship   = """${{ inputs.ship }}"""
+event  = """${{ inputs.event }}"""
+port   = """${{ inputs.port }}"""
+est    = """${{ inputs.est }}"""
+local  = """${{ inputs.local }}"""
+link   = """${{ inputs.link }}"""
+
+subj = f"DCL Ship Alerts: {ship} {event} " + ("at " if event=="Arrived" else "from ") + port
+
+html = f"""
+<div style="font-family:Segoe UI,Arial,sans-serif">
+  <h3 style="margin:0 0 8px 0;">{ship} — {event}</h3>
+  <p style="margin:4px 0;"><b>Port:</b> {port}</p>
+  <p style="margin:4px 0;"><b>EST:</b> {est}</p>
+  {f'<p style="margin:4px 0;"><b>Local:</b> {local}</p>' if local else ''}
+  {f'<p style="margin:4px 0;"><b>Link:</b> <a href="{link}">{link}</a></p>' if link and link != '#' else ''}
+  <p style="margin:8px 0 0 0;"><i>Updated file:</i> {fname}</p>
+</div>
+"""
+
+msg = EmailMessage()
+msg["From"] = sender
+msg["To"] = to
+msg["Subject"] = subj
+msg.set_content(f"{ship} {event} " + ("at " if event=="Arrived" else "from ") + f"{port}\nEST: {est}\n" + (f"Local: {local}\n" if local else "") + (f"Link: {link}\n" if link and link != "#" else "") + f"\nUpdated file: {fname}")
+msg.add_alternative(html, subtype="html")
+
+# Attach the target XML for convenience
+if os.path.exists(fname):
+    import pathlib, mimetypes
+    ctype, _ = mimetypes.guess_type(fname)
+    maintype, subtype = (ctype.split("/",1) if ctype else ("application","octet-stream"))
+    with open(fname, "rb") as f:
+        msg.add_attachment(f.read(), maintype=maintype, subtype=subtype, filename=pathlib.Path(fname).name)
+
+context = ssl.create_default_context()
+with smtplib.SMTP(smtp_host, smtp_port, timeout=30) as s:
+    s.starttls(context=context)
+    s.login(smtp_user, smtp_pass)
+    s.send_message(msg)
+print("Email sent.")
+PY
