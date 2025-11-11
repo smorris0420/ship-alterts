@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHONUNBUFFERED: "1"
+      # Optional: disable pretty XML to shave a bit of time
+      PRETTY_XML: "0"
 
     steps:
       - name: Checkout (with history)
@@ -47,18 +49,33 @@ jobs:
           SMTP_PASS:   ${{ secrets.SMTP_PASS }}
           ALERT_INBOX: ${{ secrets.ALERT_INBOX }}   # shared mailbox address
           ALERT_FROM:  ${{ secrets.ALERT_FROM }}    # optional
+          ALERT_SUBJECT_PREFIX: ${{ secrets.ALERT_SUBJECT_PREFIX }} # optional
         run: |
           python playwright_scrape.py
 
-      - name: Commit & push
+      - name: Commit & push (robust)
         run: |
+          set -euo pipefail
+
+          # Identity + safety
           git config --global user.name "rss-bot"
           git config --global user.email "rss-bot@users.noreply.github.com"
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-          # Rebase to include remote changes before we push our generated files
-          git pull --rebase --strategy-option ours || true
+          # Ensure we're tracking the latest remote main
+          git fetch origin main
+          git checkout -B main origin/main
 
+          # Stage and commit generated files first
           git add -A
-          git commit -m "update feeds" || echo "No changes"
-          git push
+          git commit -m "update feeds" || echo "No changes to commit"
+
+          # Rebase onto remote with autostash to handle any residual changes
+          git pull --rebase --autostash origin main || {
+            echo "Rebase failed; aborting and falling back to merge with ours preference."
+            git rebase --abort || true
+            git pull --no-rebase -X ours --no-edit origin main || true
+          }
+
+          # Push updated main
+          git push origin HEAD:main
