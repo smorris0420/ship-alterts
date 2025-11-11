@@ -713,7 +713,7 @@ def _rendered_html(url: str, p, mobile: bool, wait_selector: str = None, wait_te
     if _looks_blocked(html) and not mobile:
         _sleep_jitter()
         parsed = urlparse(url)
-        mobile_url = urlunparse(parsed._replace(netloc="m.vesselfinder.com"))
+        mobile_url = urlunparse(parsed._replace(netloc="www.vesselfinder.com"))
         return _rendered_html(mobile_url, p, mobile=True, wait_selector=wait_selector, wait_text=wait_text)
     _sleep_jitter()
     return html
@@ -730,7 +730,7 @@ def _vf_events_for_ship(p, ship):
     # Mobile
     try:
         parsed = urlparse(base_url)
-        mobile_url = urlunparse(parsed._replace(netloc="m.vesselfinder.com"))
+        mobile_url = urlunparse(parsed._replace(netloc="www.vesselfinder.com"))
         html = _rendered_html(mobile_url, p, mobile=True, wait_text="Recent Port Calls")
         rows = _parse_vf(html)
         if rows: return rows, mobile_url
@@ -951,7 +951,7 @@ def _fetch_port_fallback_events(p, ship_name: str, candidate_links_with_labels: 
                 # If nothing, try mobile (often more stable)
                 if not rows:
                     parsed = urlparse(url)
-                    mobile_url = urlunparse(parsed._replace(netloc="m.vesselfinder.com"))
+                    mobile_url = urlunparse(parsed._replace(netloc="www.vesselfinder.com"))
                     html_m = _rendered_html(mobile_url, p, mobile=True, wait_selector="table")
                     rows = _parse_port_table_for_ship(html_m, ship_name, port_url, tab, label or port_url)
 
