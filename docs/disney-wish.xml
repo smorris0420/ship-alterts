@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-  <channel>
-    <title>Disney Wish - Arrivals &amp; Departures</title>
-    <link>https://www.vesselfinder.com/vessels/details/9834739</link>
-    <description>Disney Wish - Arrivals &amp; Departures - Auto-generated</description>
-    <lastBuildDate>Tue, 11 Nov 2025 16:38:27 GMT</lastBuildDate>
-    <item>
-      <title>Disney Wish Departed from Cape Canaveral, United States (USA) at Nov 10, 04:57 PM EST. The local time to the port is Nov 10, 04:57 PM EST</title>
-      <link>https://www.vesselfinder.com/ports/USPCV001</link>
-      <guid isPermaLink="false">ef72cd2d436ca3de08bf5abd0edc3245fef6dadd</guid>
-      <pubDate>Mon, 10 Nov 2025 22:41:05 GMT</pubDate>
-      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 10, 21:57 — ET: Nov 10, 04:57 PM EST | Local: Nov 10, 04:57 PM EST]]></description>
-    </item>
-    <item>
-      <title>Disney Wish Arrived at Cape Canaveral, United States (USA) at Nov 10, 06:20 AM EST. The local time to the port is Nov 10, 06:20 AM EST</title>
-      <link>https://www.vesselfinder.com/ports/USPCV001</link>
-      <guid isPermaLink="false">4c6c59a757b0ab5a2b01d89b97f44a212ab972c9</guid>
-      <pubDate>Mon, 10 Nov 2025 12:43:14 GMT</pubDate>
-      <description><![CDATA[Cape Canaveral, United States (USA) Arrival (UTC) Nov 10, 11:20 — ET: Nov 10, 06:20 AM EST | Local: Nov 10, 06:20 AM EST]]></description>
-    </item>
-    <item>
-      <title>Disney Wish Departed from Gorda Cay, Bahamas at Nov 09, 04:36 PM EST. The local time to the port is Nov 09, 04:36 PM EST</title>
-      <link>https://www.vesselfinder.com/ports/BSGOC001</link>
-      <guid isPermaLink="false">1d79284a737f02b59d39be24df50fd3f0f7cc930</guid>
-      <pubDate>Sun, 09 Nov 2025 22:01:31 GMT</pubDate>
-      <description><![CDATA[Gorda Cay, Bahamas Departure (UTC) Nov 9, 21:36 — ET: Nov 09, 04:36 PM EST | Local: Nov 09, 04:36 PM EST]]></description>
-    </item>
-    <item>
-      <title>Disney Wish Arrived at Gorda Cay, Bahamas at Nov 09, 07:50 AM EST. The local time to the port is Nov 09, 07:50 AM EST</title>
-      <link>https://www.vesselfinder.com/ports/BSGOC001</link>
-      <guid isPermaLink="false">ba12b6b0ac4e7e3afc3e59bb812fa9dce06271e5</guid>
-      <pubDate>Sun, 09 Nov 2025 13:41:09 GMT</pubDate>
-      <description><![CDATA[Gorda Cay, Bahamas Arrival (UTC) Nov 9, 12:50 — ET: Nov 09, 07:50 AM EST | Local: Nov 09, 07:50 AM EST]]></description>
-    </item>
-    <item>
-      <title>Disney Wish Departed from Nassau, Bahamas at Nov 08, 05:38 PM EST. The local time to the port is Nov 08, 05:38 PM EST</title>
-      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-      <guid isPermaLink="false">86cce5560d58a9a4a477288aad46b660270ac1e8</guid>
-      <pubDate>Sat, 08 Nov 2025 23:37:40 GMT</pubDate>
-      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 8, 22:38 — ET: Nov 08, 05:38 PM EST | Local: Nov 08, 05:38 PM EST]]></description>
-    </item>
-  </channel>
+<channel>
+  <title>Disney Wish - Arrivals &amp; Departures</title>
+  <link>https://www.vesselfinder.com/vessels/details/9834739</link>
+  <description>Disney Wish - Arrivals &amp; Departures - Auto-generated</description>
+  <lastBuildDate>Tue, 11 Nov 2025 16:46:21 GMT</lastBuildDate>
+  
+  <item>
+    <title>Disney Wish Departed from Cape Canaveral, United States (USA) at Nov 10, 04:57 PM EST. The local time to the port is Nov 10, 04:57 PM EST</title>
+    <link>https://www.vesselfinder.com/ports/USPCV001</link>
+    <guid isPermaLink="false">ef72cd2d436ca3de08bf5abd0edc3245fef6dadd</guid>
+    <pubDate>Mon, 10 Nov 2025 22:41:05 GMT</pubDate>
+    <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 10, 21:57 — ET: Nov 10, 04:57 PM EST | Local: Nov 10, 04:57 PM EST]]></description>
+  </item>
+  <item>
+    <title>Disney Wish Arrived at Cape Canaveral, United States (USA) at Nov 10, 06:20 AM EST. The local time to the port is Nov 10, 06:20 AM EST</title>
+    <link>https://www.vesselfinder.com/ports/USPCV001</link>
+    <guid isPermaLink="false">4c6c59a757b0ab5a2b01d89b97f44a212ab972c9</guid>
+    <pubDate>Mon, 10 Nov 2025 12:43:14 GMT</pubDate>
+    <description><![CDATA[Cape Canaveral, United States (USA) Arrival (UTC) Nov 10, 11:20 — ET: Nov 10, 06:20 AM EST | Local: Nov 10, 06:20 AM EST]]></description>
+  </item>
+  <item>
+    <title>Disney Wish Departed from Gorda Cay, Bahamas at Nov 09, 04:36 PM EST. The local time to the port is Nov 09, 04:36 PM EST</title>
+    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+    <guid isPermaLink="false">1d79284a737f02b59d39be24df50fd3f0f7cc930</guid>
+    <pubDate>Sun, 09 Nov 2025 22:01:31 GMT</pubDate>
+    <description><![CDATA[Gorda Cay, Bahamas Departure (UTC) Nov 9, 21:36 — ET: Nov 09, 04:36 PM EST | Local: Nov 09, 04:36 PM EST]]></description>
+  </item>
+  <item>
+    <title>Disney Wish Arrived at Gorda Cay, Bahamas at Nov 09, 07:50 AM EST. The local time to the port is Nov 09, 07:50 AM EST</title>
+    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+    <guid isPermaLink="false">ba12b6b0ac4e7e3afc3e59bb812fa9dce06271e5</guid>
+    <pubDate>Sun, 09 Nov 2025 13:41:09 GMT</pubDate>
+    <description><![CDATA[Gorda Cay, Bahamas Arrival (UTC) Nov 9, 12:50 — ET: Nov 09, 07:50 AM EST | Local: Nov 09, 07:50 AM EST]]></description>
+  </item>
+  <item>
+    <title>Disney Wish Departed from Nassau, Bahamas at Nov 08, 05:38 PM EST. The local time to the port is Nov 08, 05:38 PM EST</title>
+    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+    <guid isPermaLink="false">86cce5560d58a9a4a477288aad46b660270ac1e8</guid>
+    <pubDate>Sat, 08 Nov 2025 23:37:40 GMT</pubDate>
+    <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 8, 22:38 — ET: Nov 08, 05:38 PM EST | Local: Nov 08, 05:38 PM EST]]></description>
+  </item>
+</channel>
 </rss>

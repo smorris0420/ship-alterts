@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-  <channel>
-    <title>Disney Magic - Arrivals &amp; Departures</title>
-    <link>https://www.vesselfinder.com/vessels/details/9126807</link>
-    <description>Disney Magic - Arrivals &amp; Departures - Auto-generated</description>
-    <lastBuildDate>Tue, 11 Nov 2025 16:41:11 GMT</lastBuildDate>
-    <item>
-      <title>Disney Magic Departed from Willemstad, Curacao at Nov 10, 05:06 PM EST. The local time to the port is Nov 10, 06:06 PM AST</title>
-      <link>https://www.vesselfinder.com/ports/CWWIL002</link>
-      <guid isPermaLink="false">a5bd973e1fbf41bb670288dcc9abb49db7919abb</guid>
-      <pubDate>Mon, 10 Nov 2025 22:25:23 GMT</pubDate>
-      <description><![CDATA[Willemstad, Curacao Departure (UTC) Nov 10, 22:06 — ET: Nov 10, 05:06 PM EST | Local: Nov 10, 06:06 PM AST]]></description>
-    </item>
-    <item>
-      <title>Disney Magic Arrived at Willemstad, Curacao at Nov 10, 06:27 AM EST. The local time to the port is Nov 10, 07:27 AM AST</title>
-      <link>https://www.vesselfinder.com/ports/CWWIL002</link>
-      <guid isPermaLink="false">2d43025447df286d2dec564e44032adb5ef59060</guid>
-      <pubDate>Mon, 10 Nov 2025 12:45:00 GMT</pubDate>
-      <description><![CDATA[Willemstad, Curacao Arrival (UTC) Nov 10, 11:27 — ET: Nov 10, 06:27 AM EST | Local: Nov 10, 07:27 AM AST]]></description>
-    </item>
-    <item>
-      <title>Disney Magic Departed from Oranjestad, Aruba at Nov 09, 08:55 PM EST. The local time to the port is Nov 09, 09:55 PM AST</title>
-      <link>https://www.vesselfinder.com/ports/AWORJ001</link>
-      <guid isPermaLink="false">ead0bad3d4adc81e9ec2474d5bfec9f712836fc5</guid>
-      <pubDate>Mon, 10 Nov 2025 02:59:05 GMT</pubDate>
-      <description><![CDATA[Oranjestad, Aruba Departure (UTC) Nov 10, 01:55 — ET: Nov 09, 08:55 PM EST | Local: Nov 09, 09:55 PM AST]]></description>
-    </item>
-    <item>
-      <title>Disney Magic Arrived at Oranjestad, Aruba at Nov 09, 06:53 AM EST. The local time to the port is Nov 09, 07:53 AM AST</title>
-      <link>https://www.vesselfinder.com/ports/AWORJ001</link>
-      <guid isPermaLink="false">7e60b39863f777d302f5f54d2e5909c5935f4142</guid>
-      <pubDate>Sun, 09 Nov 2025 12:58:16 GMT</pubDate>
-      <description><![CDATA[Oranjestad, Aruba Arrival (UTC) Nov 9, 11:53 — ET: Nov 09, 06:53 AM EST | Local: Nov 09, 07:53 AM AST]]></description>
-    </item>
-    <item>
-      <title>Disney Magic Departed from San Juan, Puerto Rico at Nov 07, 04:24 PM EST. The local time to the port is Nov 07, 05:24 PM AST</title>
-      <link>https://www.vesselfinder.com/ports/PRSJU001</link>
-      <guid isPermaLink="false">845bd398e31ec27d74bafd36f52b3ed2878d277a</guid>
-      <pubDate>Sun, 09 Nov 2025 09:40:41 GMT</pubDate>
-      <description><![CDATA[San Juan, Puerto Rico Departure (UTC) Nov 7, 21:24 — ET: Nov 07, 04:24 PM EST | Local: Nov 07, 05:24 PM AST]]></description>
-    </item>
-    <item>
-      <title>Disney Magic Arrived at San Juan, Puerto Rico at Nov 07, 05:08 AM EST. The local time to the port is Nov 07, 06:08 AM AST</title>
-      <link>https://www.vesselfinder.com/ports/PRSJU001</link>
-      <guid isPermaLink="false">e800013174127dfefca34b161c742d1dcce09940</guid>
-      <pubDate>Sun, 09 Nov 2025 09:40:41 GMT</pubDate>
-      <description><![CDATA[San Juan, Puerto Rico Arrival (UTC) Nov 7, 10:08 — ET: Nov 07, 05:08 AM EST | Local: Nov 07, 06:08 AM AST]]></description>
-    </item>
-  </channel>
+<channel>
+  <title>Disney Magic - Arrivals &amp; Departures</title>
+  <link>https://www.vesselfinder.com/vessels/details/9126807</link>
+  <description>Disney Magic - Arrivals &amp; Departures - Auto-generated</description>
+  <lastBuildDate>Tue, 11 Nov 2025 16:48:38 GMT</lastBuildDate>
+  
+  <item>
+    <title>Disney Magic Departed from Willemstad, Curacao at Nov 10, 05:06 PM EST. The local time to the port is Nov 10, 06:06 PM AST</title>
+    <link>https://www.vesselfinder.com/ports/CWWIL002</link>
+    <guid isPermaLink="false">a5bd973e1fbf41bb670288dcc9abb49db7919abb</guid>
+    <pubDate>Mon, 10 Nov 2025 22:25:23 GMT</pubDate>
+    <description><![CDATA[Willemstad, Curacao Departure (UTC) Nov 10, 22:06 — ET: Nov 10, 05:06 PM EST | Local: Nov 10, 06:06 PM AST]]></description>
+  </item>
+  <item>
+    <title>Disney Magic Arrived at Willemstad, Curacao at Nov 10, 06:27 AM EST. The local time to the port is Nov 10, 07:27 AM AST</title>
+    <link>https://www.vesselfinder.com/ports/CWWIL002</link>
+    <guid isPermaLink="false">2d43025447df286d2dec564e44032adb5ef59060</guid>
+    <pubDate>Mon, 10 Nov 2025 12:45:00 GMT</pubDate>
+    <description><![CDATA[Willemstad, Curacao Arrival (UTC) Nov 10, 11:27 — ET: Nov 10, 06:27 AM EST | Local: Nov 10, 07:27 AM AST]]></description>
+  </item>
+  <item>
+    <title>Disney Magic Departed from Oranjestad, Aruba at Nov 09, 08:55 PM EST. The local time to the port is Nov 09, 09:55 PM AST</title>
+    <link>https://www.vesselfinder.com/ports/AWORJ001</link>
+    <guid isPermaLink="false">ead0bad3d4adc81e9ec2474d5bfec9f712836fc5</guid>
+    <pubDate>Mon, 10 Nov 2025 02:59:05 GMT</pubDate>
+    <description><![CDATA[Oranjestad, Aruba Departure (UTC) Nov 10, 01:55 — ET: Nov 09, 08:55 PM EST | Local: Nov 09, 09:55 PM AST]]></description>
+  </item>
+  <item>
+    <title>Disney Magic Arrived at Oranjestad, Aruba at Nov 09, 06:53 AM EST. The local time to the port is Nov 09, 07:53 AM AST</title>
+    <link>https://www.vesselfinder.com/ports/AWORJ001</link>
+    <guid isPermaLink="false">7e60b39863f777d302f5f54d2e5909c5935f4142</guid>
+    <pubDate>Sun, 09 Nov 2025 12:58:16 GMT</pubDate>
+    <description><![CDATA[Oranjestad, Aruba Arrival (UTC) Nov 9, 11:53 — ET: Nov 09, 06:53 AM EST | Local: Nov 09, 07:53 AM AST]]></description>
+  </item>
+  <item>
+    <title>Disney Magic Departed from San Juan, Puerto Rico at Nov 07, 04:24 PM EST. The local time to the port is Nov 07, 05:24 PM AST</title>
+    <link>https://www.vesselfinder.com/ports/PRSJU001</link>
+    <guid isPermaLink="false">845bd398e31ec27d74bafd36f52b3ed2878d277a</guid>
+    <pubDate>Sun, 09 Nov 2025 09:40:41 GMT</pubDate>
+    <description><![CDATA[San Juan, Puerto Rico Departure (UTC) Nov 7, 21:24 — ET: Nov 07, 04:24 PM EST | Local: Nov 07, 05:24 PM AST]]></description>
+  </item>
+  <item>
+    <title>Disney Magic Arrived at San Juan, Puerto Rico at Nov 07, 05:08 AM EST. The local time to the port is Nov 07, 06:08 AM AST</title>
+    <link>https://www.vesselfinder.com/ports/PRSJU001</link>
+    <guid isPermaLink="false">e800013174127dfefca34b161c742d1dcce09940</guid>
+    <pubDate>Sun, 09 Nov 2025 09:40:41 GMT</pubDate>
+    <description><![CDATA[San Juan, Puerto Rico Arrival (UTC) Nov 7, 10:08 — ET: Nov 07, 05:08 AM EST | Local: Nov 07, 06:08 AM AST]]></description>
+  </item>
+</channel>
 </rss>

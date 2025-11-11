@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-  <channel>
-    <title>Disney Magic - Latest Arrival/Departure</title>
-    <link>https://www.vesselfinder.com/vessels/details/9126807</link>
-    <description>Disney Magic - Latest Arrival/Departure - Auto-generated</description>
-    <lastBuildDate>Tue, 11 Nov 2025 16:41:11 GMT</lastBuildDate>
-    <item>
-      <title>Disney Magic Departed from Willemstad, Curacao at Nov 10, 05:06 PM EST. The local time to the port is Nov 10, 06:06 PM AST</title>
-      <link>https://www.vesselfinder.com/ports/CWWIL002</link>
-      <guid isPermaLink="false">a5bd973e1fbf41bb670288dcc9abb49db7919abb</guid>
-      <pubDate>Mon, 10 Nov 2025 22:25:23 GMT</pubDate>
-      <description><![CDATA[Willemstad, Curacao Departure (UTC) Nov 10, 22:06 — ET: Nov 10, 05:06 PM EST | Local: Nov 10, 06:06 PM AST]]></description>
-    </item>
-  </channel>
+<channel>
+  <title>Disney Magic - Latest Arrival/Departure</title>
+  <link>https://www.vesselfinder.com/vessels/details/9126807</link>
+  <description>Disney Magic - Latest Arrival/Departure - Auto-generated</description>
+  <lastBuildDate>Tue, 11 Nov 2025 16:48:38 GMT</lastBuildDate>
+  
+  <item>
+    <title>Disney Magic Departed from Willemstad, Curacao at Nov 10, 05:06 PM EST. The local time to the port is Nov 10, 06:06 PM AST</title>
+    <link>https://www.vesselfinder.com/ports/CWWIL002</link>
+    <guid isPermaLink="false">a5bd973e1fbf41bb670288dcc9abb49db7919abb</guid>
+    <pubDate>Mon, 10 Nov 2025 22:25:23 GMT</pubDate>
+    <description><![CDATA[Willemstad, Curacao Departure (UTC) Nov 10, 22:06 — ET: Nov 10, 05:06 PM EST | Local: Nov 10, 06:06 PM AST]]></description>
+  </item>
+</channel>
 </rss>

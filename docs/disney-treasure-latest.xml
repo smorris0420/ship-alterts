@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-  <channel>
-    <title>Disney Treasure - Latest Arrival/Departure</title>
-    <link>https://www.vesselfinder.com/vessels/details/9834753</link>
-    <description>Disney Treasure - Latest Arrival/Departure - Auto-generated</description>
-    <lastBuildDate>Tue, 11 Nov 2025 16:39:21 GMT</lastBuildDate>
-    <item>
-      <title>Disney Treasure Arrived at Road Town, Tortola, British Virgin Islands at Nov 11, 06:02 AM EST. The local time to the port is Nov 11, 07:02 AM AST</title>
-      <link>https://www.vesselfinder.com/ports/VGRAD001</link>
-      <guid isPermaLink="false">7295234fb5fb9f2e0361b4a1921f3cf7fee1c21a</guid>
-      <pubDate>Tue, 11 Nov 2025 11:39:47 GMT</pubDate>
-      <description><![CDATA[Road Town, Tortola, British Virgin Islands Arrival (UTC) Nov 11, 11:02 — ET: Nov 11, 06:02 AM EST | Local: Nov 11, 07:02 AM AST]]></description>
-    </item>
-  </channel>
+<channel>
+  <title>Disney Treasure - Latest Arrival/Departure</title>
+  <link>https://www.vesselfinder.com/vessels/details/9834753</link>
+  <description>Disney Treasure - Latest Arrival/Departure - Auto-generated</description>
+  <lastBuildDate>Tue, 11 Nov 2025 16:47:07 GMT</lastBuildDate>
+  
+  <item>
+    <title>Disney Treasure Arrived at Road Town, Tortola, British Virgin Islands at Nov 11, 06:02 AM EST. The local time to the port is Nov 11, 07:02 AM AST</title>
+    <link>https://www.vesselfinder.com/ports/VGRAD001</link>
+    <guid isPermaLink="false">7295234fb5fb9f2e0361b4a1921f3cf7fee1c21a</guid>
+    <pubDate>Tue, 11 Nov 2025 11:39:47 GMT</pubDate>
+    <description><![CDATA[Road Town, Tortola, British Virgin Islands Arrival (UTC) Nov 11, 11:02 — ET: Nov 11, 06:02 AM EST | Local: Nov 11, 07:02 AM AST]]></description>
+  </item>
+</channel>
 </rss>

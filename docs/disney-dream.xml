@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-  <channel>
-    <title>Disney Dream - Arrivals &amp; Departures</title>
-    <link>https://www.vesselfinder.com/vessels/details/9434254</link>
-    <description>Disney Dream - Arrivals &amp; Departures - Auto-generated</description>
-    <lastBuildDate>Tue, 11 Nov 2025 16:42:06 GMT</lastBuildDate>
-    <item>
-      <title>Disney Dream Departed from Nassau, Bahamas at Nov 09, 07:16 PM EST. The local time to the port is Nov 09, 07:16 PM EST</title>
-      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-      <guid isPermaLink="false">455f330ed12660e73f245f525ae81609fe5f02cb</guid>
-      <pubDate>Mon, 10 Nov 2025 04:50:08 GMT</pubDate>
-      <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 10, 00:16 — ET: Nov 09, 07:16 PM EST | Local: Nov 09, 07:16 PM EST]]></description>
-    </item>
-    <item>
-      <title>Disney Dream Arrived at Nassau, Bahamas at Nov 09, 07:46 AM EST. The local time to the port is Nov 09, 07:46 AM EST</title>
-      <link>https://www.vesselfinder.com/ports/BSNAS001</link>
-      <guid isPermaLink="false">f5ec515e4b7220505a30bfca29323f2027865f19</guid>
-      <pubDate>Sun, 09 Nov 2025 17:22:12 GMT</pubDate>
-      <description><![CDATA[Nassau, Bahamas Arrival (UTC) Nov 9, 12:46 — ET: Nov 09, 07:46 AM EST | Local: Nov 09, 07:46 AM EST]]></description>
-    </item>
-    <item>
-      <title>Disney Dream Departed from Port Everglades, United States (USA) at Nov 08, 04:39 PM EST. The local time to the port is Nov 08, 04:39 PM EST</title>
-      <link>https://www.vesselfinder.com/ports/USPEF001</link>
-      <guid isPermaLink="false">e2e21828102af9a1f08c64b4bef9fec5968b4c28</guid>
-      <pubDate>Sat, 08 Nov 2025 21:55:11 GMT</pubDate>
-      <description><![CDATA[Port Everglades, United States (USA) Departure (UTC) Nov 8, 21:39 — ET: Nov 08, 04:39 PM EST | Local: Nov 08, 04:39 PM EST]]></description>
-    </item>
-  </channel>
+<channel>
+  <title>Disney Dream - Arrivals &amp; Departures</title>
+  <link>https://www.vesselfinder.com/vessels/details/9434254</link>
+  <description>Disney Dream - Arrivals &amp; Departures - Auto-generated</description>
+  <lastBuildDate>Tue, 11 Nov 2025 16:49:23 GMT</lastBuildDate>
+  
+  <item>
+    <title>Disney Dream Departed from Nassau, Bahamas at Nov 09, 07:16 PM EST. The local time to the port is Nov 09, 07:16 PM EST</title>
+    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+    <guid isPermaLink="false">455f330ed12660e73f245f525ae81609fe5f02cb</guid>
+    <pubDate>Mon, 10 Nov 2025 04:50:08 GMT</pubDate>
+    <description><![CDATA[Nassau, Bahamas Departure (UTC) Nov 10, 00:16 — ET: Nov 09, 07:16 PM EST | Local: Nov 09, 07:16 PM EST]]></description>
+  </item>
+  <item>
+    <title>Disney Dream Arrived at Nassau, Bahamas at Nov 09, 07:46 AM EST. The local time to the port is Nov 09, 07:46 AM EST</title>
+    <link>https://www.vesselfinder.com/ports/BSNAS001</link>
+    <guid isPermaLink="false">f5ec515e4b7220505a30bfca29323f2027865f19</guid>
+    <pubDate>Sun, 09 Nov 2025 17:22:12 GMT</pubDate>
+    <description><![CDATA[Nassau, Bahamas Arrival (UTC) Nov 9, 12:46 — ET: Nov 09, 07:46 AM EST | Local: Nov 09, 07:46 AM EST]]></description>
+  </item>
+  <item>
+    <title>Disney Dream Departed from Port Everglades, United States (USA) at Nov 08, 04:39 PM EST. The local time to the port is Nov 08, 04:39 PM EST</title>
+    <link>https://www.vesselfinder.com/ports/USPEF001</link>
+    <guid isPermaLink="false">e2e21828102af9a1f08c64b4bef9fec5968b4c28</guid>
+    <pubDate>Sat, 08 Nov 2025 21:55:11 GMT</pubDate>
+    <description><![CDATA[Port Everglades, United States (USA) Departure (UTC) Nov 8, 21:39 — ET: Nov 08, 04:39 PM EST | Local: Nov 08, 04:39 PM EST]]></description>
+  </item>
+</channel>
 </rss>

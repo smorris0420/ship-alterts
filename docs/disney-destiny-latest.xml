@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-  <channel>
-    <title>Disney Destiny - Latest Arrival/Departure</title>
-    <link>https://www.vesselfinder.com/vessels/details/9834741</link>
-    <description>Disney Destiny - Latest Arrival/Departure - Auto-generated</description>
-    <lastBuildDate>Tue, 11 Nov 2025 16:44:50 GMT</lastBuildDate>
-    <item>
-      <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 08, 12:30 PM EST. The local time to the port is Nov 08, 12:30 PM EST</title>
-      <link>https://www.vesselfinder.com/ports/USPCV001</link>
-      <guid isPermaLink="false">3626b5e0b48ce24326259e89552c7834939d758d</guid>
-      <pubDate>Sat, 08 Nov 2025 19:56:25 GMT</pubDate>
-      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 8, 17:30 — ET: Nov 08, 12:30 PM EST | Local: Nov 08, 12:30 PM EST]]></description>
-    </item>
-  </channel>
+<channel>
+  <title>Disney Destiny - Latest Arrival/Departure</title>
+  <link>https://www.vesselfinder.com/vessels/details/9834741</link>
+  <description>Disney Destiny - Latest Arrival/Departure - Auto-generated</description>
+  <lastBuildDate>Tue, 11 Nov 2025 16:51:35 GMT</lastBuildDate>
+  
+  <item>
+    <title>Disney Destiny Departed from Cape Canaveral, United States (USA) at Nov 08, 12:30 PM EST. The local time to the port is Nov 08, 12:30 PM EST</title>
+    <link>https://www.vesselfinder.com/ports/USPCV001</link>
+    <guid isPermaLink="false">3626b5e0b48ce24326259e89552c7834939d758d</guid>
+    <pubDate>Sat, 08 Nov 2025 19:56:25 GMT</pubDate>
+    <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 8, 17:30 — ET: Nov 08, 12:30 PM EST | Local: Nov 08, 12:30 PM EST]]></description>
+  </item>
+</channel>
 </rss>

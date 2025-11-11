@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-  <channel>
-    <title>Disney Treasure - Arrivals &amp; Departures</title>
-    <link>https://www.vesselfinder.com/vessels/details/9834753</link>
-    <description>Disney Treasure - Arrivals &amp; Departures - Auto-generated</description>
-    <lastBuildDate>Tue, 11 Nov 2025 16:39:21 GMT</lastBuildDate>
-    <item>
-      <title>Disney Treasure Arrived at Road Town, Tortola, British Virgin Islands at Nov 11, 06:02 AM EST. The local time to the port is Nov 11, 07:02 AM AST</title>
-      <link>https://www.vesselfinder.com/ports/VGRAD001</link>
-      <guid isPermaLink="false">7295234fb5fb9f2e0361b4a1921f3cf7fee1c21a</guid>
-      <pubDate>Tue, 11 Nov 2025 11:39:47 GMT</pubDate>
-      <description><![CDATA[Road Town, Tortola, British Virgin Islands Arrival (UTC) Nov 11, 11:02 — ET: Nov 11, 06:02 AM EST | Local: Nov 11, 07:02 AM AST]]></description>
-    </item>
-    <item>
-      <title>Disney Treasure Departed from Cape Canaveral, United States (USA) at Nov 08, 05:34 PM EST. The local time to the port is Nov 08, 05:34 PM EST</title>
-      <link>https://www.vesselfinder.com/ports/USPCV001</link>
-      <guid isPermaLink="false">c06182793ae9a3e0770d14918a828c2f2d5714e5</guid>
-      <pubDate>Sat, 08 Nov 2025 23:38:15 GMT</pubDate>
-      <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 8, 22:34 — ET: Nov 08, 05:34 PM EST | Local: Nov 08, 05:34 PM EST]]></description>
-    </item>
-  </channel>
+<channel>
+  <title>Disney Treasure - Arrivals &amp; Departures</title>
+  <link>https://www.vesselfinder.com/vessels/details/9834753</link>
+  <description>Disney Treasure - Arrivals &amp; Departures - Auto-generated</description>
+  <lastBuildDate>Tue, 11 Nov 2025 16:47:07 GMT</lastBuildDate>
+  
+  <item>
+    <title>Disney Treasure Arrived at Road Town, Tortola, British Virgin Islands at Nov 11, 06:02 AM EST. The local time to the port is Nov 11, 07:02 AM AST</title>
+    <link>https://www.vesselfinder.com/ports/VGRAD001</link>
+    <guid isPermaLink="false">7295234fb5fb9f2e0361b4a1921f3cf7fee1c21a</guid>
+    <pubDate>Tue, 11 Nov 2025 11:39:47 GMT</pubDate>
+    <description><![CDATA[Road Town, Tortola, British Virgin Islands Arrival (UTC) Nov 11, 11:02 — ET: Nov 11, 06:02 AM EST | Local: Nov 11, 07:02 AM AST]]></description>
+  </item>
+  <item>
+    <title>Disney Treasure Departed from Cape Canaveral, United States (USA) at Nov 08, 05:34 PM EST. The local time to the port is Nov 08, 05:34 PM EST</title>
+    <link>https://www.vesselfinder.com/ports/USPCV001</link>
+    <guid isPermaLink="false">c06182793ae9a3e0770d14918a828c2f2d5714e5</guid>
+    <pubDate>Sat, 08 Nov 2025 23:38:15 GMT</pubDate>
+    <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 8, 22:34 — ET: Nov 08, 05:34 PM EST | Local: Nov 08, 05:34 PM EST]]></description>
+  </item>
+</channel>
 </rss>

@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-  <channel>
-    <title>Disney Fantasy - Latest Arrival/Departure</title>
-    <link>https://www.vesselfinder.com/vessels/details/9445590</link>
-    <description>Disney Fantasy - Latest Arrival/Departure - Auto-generated</description>
-    <lastBuildDate>Tue, 11 Nov 2025 16:40:16 GMT</lastBuildDate>
-    <item>
-      <title>Disney Fantasy Departed from Funchal, Madeira, Portugal at Nov 08, 01:34 PM EST. The local time to the port is Nov 08, 06:34 PM WET</title>
-      <link>https://www.vesselfinder.com/ports/PTFNC001</link>
-      <guid isPermaLink="false">a9df69233bc175a9e6cd3cf1187ded8d20702981</guid>
-      <pubDate>Sat, 08 Nov 2025 18:51:09 GMT</pubDate>
-      <description><![CDATA[Funchal, Madeira, Portugal Departure (UTC) Nov 8, 18:34 — ET: Nov 08, 01:34 PM EST | Local: Nov 08, 06:34 PM WET]]></description>
-    </item>
-  </channel>
+<channel>
+  <title>Disney Fantasy - Latest Arrival/Departure</title>
+  <link>https://www.vesselfinder.com/vessels/details/9445590</link>
+  <description>Disney Fantasy - Latest Arrival/Departure - Auto-generated</description>
+  <lastBuildDate>Tue, 11 Nov 2025 16:47:51 GMT</lastBuildDate>
+  
+  <item>
+    <title>Disney Fantasy Departed from Funchal, Madeira, Portugal at Nov 08, 01:34 PM EST. The local time to the port is Nov 08, 06:34 PM WET</title>
+    <link>https://www.vesselfinder.com/ports/PTFNC001</link>
+    <guid isPermaLink="false">a9df69233bc175a9e6cd3cf1187ded8d20702981</guid>
+    <pubDate>Sat, 08 Nov 2025 18:51:09 GMT</pubDate>
+    <description><![CDATA[Funchal, Madeira, Portugal Departure (UTC) Nov 8, 18:34 — ET: Nov 08, 01:34 PM EST | Local: Nov 08, 06:34 PM WET]]></description>
+  </item>
+</channel>
 </rss>

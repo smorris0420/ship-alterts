@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="rss-dcl.xsl"?>
 <rss version="2.0">
-  <channel>
-    <title>Disney Adventure - Latest Arrival/Departure</title>
-    <link>https://www.vesselfinder.com/vessels/details/9808986</link>
-    <description>Disney Adventure - Latest Arrival/Departure - Auto-generated</description>
-    <lastBuildDate>Tue, 11 Nov 2025 16:43:56 GMT</lastBuildDate>
-  </channel>
+<channel>
+  <title>Disney Adventure - Latest Arrival/Departure</title>
+  <link>https://www.vesselfinder.com/vessels/details/9808986</link>
+  <description>Disney Adventure - Latest Arrival/Departure - Auto-generated</description>
+  <lastBuildDate>Tue, 11 Nov 2025 16:50:49 GMT</lastBuildDate>
+  
+</channel>
 </rss>
