@@ -18,7 +18,9 @@ except Exception:
 from urllib.parse import urljoin, urlparse, urlunparse, parse_qs, urlencode
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 from bs4 import BeautifulSoup, Tag, NavigableString
-import urllib.request  # <-- webhook HTTP client
+import urllib.request  # kept (no longer used, but harmless)
+import smtplib, ssl
+from email.message import EmailMessage
 
 REPO_ROOT  = os.path.dirname(__file__)
 DOCS_DIR   = os.path.join(REPO_ROOT, "docs")
@@ -452,31 +454,53 @@ def _ensure_stylesheet_dcl():
     except Exception as e:
         print(f"[warn] Could not write stylesheet: {e}", file=sys.stderr)
 
-# ---------- Webhook helper ----------
+# ---------- Email helper (replaces webhook) ----------
 
 def post_flow_webhook(payload: dict):
     """
-    Fire-and-forget POST to your Power Automate HTTP trigger.
-
-    Expects env vars:
-      FLOW_URL    -> full HTTP trigger URL
-      FLOW_SECRET -> value for header: x-shipalerts-secret
+    Sends the ShipAlert payload as a .json attachment to a mailbox your Flow watches.
+    Env required:
+      SMTP_HOST, SMTP_PORT (e.g., 587)
+      SMTP_USER, SMTP_PASS
+      ALERT_INBOX  -> recipient (shared mailbox)
+      ALERT_FROM   -> optional (defaults to SMTP_USER)
     """
-    url = os.getenv("FLOW_URL", "").strip()
-    secret = os.getenv("FLOW_SECRET", "").strip()
-    if not url or not secret:
-        print("[info] FLOW_URL/FLOW_SECRET not set; skipping webhook.")
+    smtp_host = os.getenv("SMTP_HOST", "").strip()
+    smtp_port = int(os.getenv("SMTP_PORT", "587").strip() or "587")
+    smtp_user = os.getenv("SMTP_USER", "").strip()
+    smtp_pass = os.getenv("SMTP_PASS", "").strip()
+    to_addr   = os.getenv("ALERT_INBOX", "").strip()
+    from_addr = (os.getenv("ALERT_FROM", smtp_user) or smtp_user).strip()
+
+    if not (smtp_host and smtp_port and smtp_user and smtp_pass and to_addr):
+        print("[info] SMTP env not set; skipping email alert.")
         return
+
     try:
-        data = json.dumps(payload).encode("utf-8")
-        req = urllib.request.Request(url, data=data, method="POST")
-        req.add_header("Content-Type", "application/json")
-        req.add_header("x-shipalerts-secret", secret)
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            print(f"[info] webhook -> {resp.status}")
+        msg = EmailMessage()
+        msg["From"] = from_addr
+        msg["To"]   = to_addr
+        ship = (payload.get("ShipName") or "").strip()
+        evt  = (payload.get("EventType") or "").strip()
+        msg["Subject"] = f"ShipAlerts | {ship} | {evt}" if ship and evt else "ShipAlerts"
+
+        msg.set_content("ShipAlerts JSON payload attached.")
+        data = json.dumps(payload, ensure_ascii=False)
+        msg.add_attachment(
+            data.encode("utf-8"),
+            maintype="application",
+            subtype="json",
+            filename="payload.json"
+        )
+
+        context = ssl.create_default_context()
+        with smtplib.SMTP(smtp_host, smtp_port) as s:
+            s.starttls(context=context)
+            s.login(smtp_user, smtp_pass)
+            s.send_message(msg)
+            print("[info] email alert (with JSON attachment) sent")
     except Exception as e:
-        # Never break the scraper on webhook issues
-        print(f"[warn] webhook failed: {e}", file=sys.stderr)
+        print(f"[warn] email alert failed: {e}", file=sys.stderr)
 
 def build_rss(channel_title: str, channel_link: str, items: list, stylesheet=None, use_cdata=None) -> str:
     if stylesheet is None:
@@ -1035,7 +1059,7 @@ def main():
                     all_items_new.append(item)
                     canon_seen[guid] = True
 
-                    # ---- webhook notify for new VF ship-page item
+                    # ---- email notify (JSON attachment)
                     post_flow_webhook({
                         "ShipName":   name,
                         "EventType":  verb,                 # Arrived | Departed
@@ -1115,7 +1139,7 @@ def main():
                             all_items_new.append(item)
                             canon_seen[guid] = True
 
-                            # ---- webhook notify for new port-fallback item
+                            # ---- email notify (JSON attachment)
                             post_flow_webhook({
                                 "ShipName":   name,
                                 "EventType":  verb,
@@ -1147,7 +1171,7 @@ def main():
                         all_items_new.append(it)
                         canon_seen[it["guid"]] = True
 
-                        # ---- webhook notify for new geofence item
+                        # ---- email notify (JSON attachment)
                         post_flow_webhook({
                             "ShipName":   it["shipName"],
                             "EventType":  it.get("eventType",""),
