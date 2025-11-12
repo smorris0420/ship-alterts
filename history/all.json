@@ -22,6 +22,17 @@
     "source": "vf_port"
   },
   {
+    "title": "Disney Treasure Departed from Saint Thomas, US Virgin Islands at Nov 12, 03:21 PM EST. The local time to the port is Nov 12, 03:21 PM EST",
+    "description": "Saint Thomas, US Virgin Islands Departure (UTC) Nov 12, 20:21 — ET: Nov 12, 03:21 PM EST | Local: Nov 12, 03:21 PM EST",
+    "link": "https://www.vesselfinder.com/ports/VISTT001",
+    "guid": "a4a708c6c34cc74b8ec2da0fcf5b1d2d2f8929dc",
+    "pubDate": "Wed, 12 Nov 2025 20:31:50 GMT",
+    "eventUtc": "2025-11-12T20:21:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Wonder Arrived at Melbourne, Australia at Nov 12, 01:50 PM EST. The local time to the port is Nov 13, 05:50 AM AEDT",
     "description": "Melbourne, Australia Arrival (UTC) Nov 12, 18:50 — ET: Nov 12, 01:50 PM EST | Local: Nov 13, 05:50 AM AEDT",
     "link": "https://www.vesselfinder.com/ports/AUMEL001",
