@@ -22,6 +22,28 @@
     "source": "vf_port"
   },
   {
+    "title": "Disney Treasure Arrived at Saint Thomas, US Virgin Islands at Nov 12, 06:25 AM EST. The local time to the port is Nov 12, 06:25 AM EST",
+    "description": "Saint Thomas, US Virgin Islands Arrival (UTC) Nov 12, 11:25 — ET: Nov 12, 06:25 AM EST | Local: Nov 12, 06:25 AM EST",
+    "link": "https://www.vesselfinder.com/ports/VISTT001",
+    "guid": "78846ac8b73c1d9dc0b6b70367bf0edf145e309a",
+    "pubDate": "Wed, 12 Nov 2025 12:02:34 GMT",
+    "eventUtc": "2025-11-12T11:25:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Magic Arrived at St Johns, Antigua & Barbuda at Nov 12, 06:17 AM EST. The local time to the port is Nov 12, 07:17 AM AST",
+    "description": "St Johns, Antigua & Barbuda Arrival (UTC) Nov 12, 11:17 — ET: Nov 12, 06:17 AM EST | Local: Nov 12, 07:17 AM AST",
+    "link": "https://www.vesselfinder.com/ports/AGSJO001",
+    "guid": "45a4a4e69bcdc9f53ef7605ba405d1a57f59c6e8",
+    "pubDate": "Wed, 12 Nov 2025 12:03:33 GMT",
+    "eventUtc": "2025-11-12T11:17:00+00:00",
+    "shipSlug": "disney-magic",
+    "shipName": "Disney Magic",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Dream Arrived at Port Everglades, United States (USA) at Nov 12, 06:06 AM EST. The local time to the port is Nov 12, 06:06 AM EST",
     "description": "Port Everglades, United States (USA) Arrival (UTC) Nov 12, 11:06 — ET: Nov 12, 06:06 AM EST | Local: Nov 12, 06:06 AM EST",
     "link": "https://www.vesselfinder.com/ports/USPEF001",
