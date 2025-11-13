@@ -22,6 +22,17 @@
     "source": "vf_port"
   },
   {
+    "title": "Disney Wonder Departed from Melbourne, Australia at Nov 13, 10:16 AM EST. The local time to the port is Nov 14, 02:16 AM AEDT",
+    "description": "Melbourne, Australia Departure (UTC) Nov 13, 15:16 — ET: Nov 13, 10:16 AM EST | Local: Nov 14, 02:16 AM AEDT",
+    "link": "https://www.vesselfinder.com/ports/AUMEL001",
+    "guid": "ea7c2cfe1fcc7ff09d6e3933a550f9d23c21f751",
+    "pubDate": "Thu, 13 Nov 2025 15:24:27 GMT",
+    "eventUtc": "2025-11-13T15:16:00+00:00",
+    "shipSlug": "disney-wonder",
+    "shipName": "Disney Wonder",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Magic Arrived at Basseterre, St Kitts & Nevis at Nov 13, 05:17 AM EST. The local time to the port is Nov 13, 06:17 AM AST",
     "description": "Basseterre, St Kitts & Nevis Arrival (UTC) Nov 13, 10:17 — ET: Nov 13, 05:17 AM EST | Local: Nov 13, 06:17 AM AST",
     "link": "https://www.vesselfinder.com/ports/KNBAS001",
