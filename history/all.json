@@ -77,6 +77,17 @@
     "source": "vf_port"
   },
   {
+    "title": "Disney Dream Arrived at Nassau, Bahamas at Nov 14, 07:31 AM EST. The local time to the port is Nov 14, 07:31 AM EST",
+    "description": "Nassau, Bahamas Arrival (UTC) Nov 14, 12:31 — ET: Nov 14, 07:31 AM EST | Local: Nov 14, 07:31 AM EST",
+    "link": "https://www.vesselfinder.com/ports/BSNAS001",
+    "guid": "182aea231fd766f08de598cc092b2339b373ba94",
+    "pubDate": "Fri, 14 Nov 2025 23:00:36 GMT",
+    "eventUtc": "2025-11-14T12:31:00+00:00",
+    "shipSlug": "disney-dream",
+    "shipName": "Disney Dream",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Wish Arrived at Cape Canaveral, United States (USA) at Nov 14, 05:59 AM EST. The local time to the port is Nov 14, 05:59 AM EST",
     "description": "Cape Canaveral, United States (USA) Arrival (UTC) Nov 14, 10:59 — ET: Nov 14, 05:59 AM EST | Local: Nov 14, 05:59 AM EST",
     "link": "https://www.vesselfinder.com/ports/USPCV001",
