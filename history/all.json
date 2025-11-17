@@ -1,5 +1,27 @@
 [
   {
+    "title": "Disney Treasure Arrived at Cozumel, Mexico at Nov 17, 07:26 AM EST. The local time to the port is Nov 17, 07:26 AM EST",
+    "description": "Cozumel, Mexico Arrival (UTC) Nov 17, 12:26 — ET: Nov 17, 07:26 AM EST | Local: Nov 17, 07:26 AM EST",
+    "link": "https://www.vesselfinder.com/ports/MXCZM001",
+    "guid": "8adee356340fed44a97aa99abd8d4f3ffac1770b",
+    "pubDate": "Mon, 17 Nov 2025 13:21:47 GMT",
+    "eventUtc": "2025-11-17T12:26:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Magic Arrived at Gorda Cay, Bahamas at Nov 17, 07:25 AM EST. The local time to the port is Nov 17, 07:25 AM EST",
+    "description": "Gorda Cay, Bahamas Arrival (UTC) Nov 17, 12:25 — ET: Nov 17, 07:25 AM EST | Local: Nov 17, 07:25 AM EST",
+    "link": "https://www.vesselfinder.com/ports/BSGOC001",
+    "guid": "25a09a274f5ac3fa16ad570f41e1e9f1ac9c5935",
+    "pubDate": "Mon, 17 Nov 2025 13:22:30 GMT",
+    "eventUtc": "2025-11-17T12:25:00+00:00",
+    "shipSlug": "disney-magic",
+    "shipName": "Disney Magic",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Dream Arrived at Port Everglades, United States (USA) at Nov 17, 05:59 AM EST. The local time to the port is Nov 17, 05:59 AM EST",
     "description": "Port Everglades, United States (USA) Arrival (UTC) Nov 17, 10:59 — ET: Nov 17, 05:59 AM EST | Local: Nov 17, 05:59 AM EST",
     "link": "https://www.vesselfinder.com/ports/USPEF001",
