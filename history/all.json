@@ -1,5 +1,27 @@
 [
   {
+    "title": "Disney Dream Departed from Port Everglades, United States (USA) at Nov 17, 05:30 PM EST. The local time to the port is Nov 17, 05:30 PM EST",
+    "description": "Port Everglades, United States (USA) Departure (UTC) Nov 17, 22:30 — ET: Nov 17, 05:30 PM EST | Local: Nov 17, 05:30 PM EST",
+    "link": "https://www.vesselfinder.com/ports/USPEF001",
+    "guid": "74f9043cee2b9ad7ba34e994436be1fed756ab8d",
+    "pubDate": "Mon, 17 Nov 2025 22:36:12 GMT",
+    "eventUtc": "2025-11-17T22:30:00+00:00",
+    "shipSlug": "disney-dream",
+    "shipName": "Disney Dream",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Treasure Departed from Cozumel, Mexico at Nov 17, 05:20 PM EST. The local time to the port is Nov 17, 05:20 PM EST",
+    "description": "Cozumel, Mexico Departure (UTC) Nov 17, 22:20 — ET: Nov 17, 05:20 PM EST | Local: Nov 17, 05:20 PM EST",
+    "link": "https://www.vesselfinder.com/ports/MXCZM001",
+    "guid": "4c283b77034e7bb987d453fbeaa46743da80a5bd",
+    "pubDate": "Mon, 17 Nov 2025 22:35:14 GMT",
+    "eventUtc": "2025-11-17T22:20:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Wish Departed from Cape Canaveral, United States (USA) at Nov 17, 04:37 PM EST. The local time to the port is Nov 17, 04:37 PM EST",
     "description": "Cape Canaveral, United States (USA) Departure (UTC) Nov 17, 21:37 — ET: Nov 17, 04:37 PM EST | Local: Nov 17, 04:37 PM EST",
     "link": "https://www.vesselfinder.com/ports/USPCV001",
@@ -19,6 +41,17 @@
     "eventUtc": "2025-11-17T20:19:00+00:00",
     "shipSlug": "disney-wonder",
     "shipName": "Disney Wonder",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Magic Departed from Gorda Cay, Bahamas at Nov 17, 03:02 PM EST. The local time to the port is Nov 17, 03:02 PM EST",
+    "description": "Gorda Cay, Bahamas Departure (UTC) Nov 17, 20:02 — ET: Nov 17, 03:02 PM EST | Local: Nov 17, 03:02 PM EST",
+    "link": "https://www.vesselfinder.com/ports/BSGOC001",
+    "guid": "9cb5963a9315d507acb1caef90ada27576793995",
+    "pubDate": "Mon, 17 Nov 2025 22:35:59 GMT",
+    "eventUtc": "2025-11-17T20:02:00+00:00",
+    "shipSlug": "disney-magic",
+    "shipName": "Disney Magic",
     "source": "vf_ship"
   },
   {

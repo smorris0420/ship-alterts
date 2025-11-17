@@ -1,5 +1,16 @@
 [
   {
+    "title": "Disney Treasure Departed from Cozumel, Mexico at Nov 17, 05:20 PM EST. The local time to the port is Nov 17, 05:20 PM EST",
+    "description": "Cozumel, Mexico Departure (UTC) Nov 17, 22:20 — ET: Nov 17, 05:20 PM EST | Local: Nov 17, 05:20 PM EST",
+    "link": "https://www.vesselfinder.com/ports/MXCZM001",
+    "guid": "4c283b77034e7bb987d453fbeaa46743da80a5bd",
+    "pubDate": "Mon, 17 Nov 2025 22:35:14 GMT",
+    "eventUtc": "2025-11-17T22:20:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Treasure Arrived at Cozumel, Mexico at Nov 17, 07:26 AM EST. The local time to the port is Nov 17, 07:26 AM EST",
     "description": "Cozumel, Mexico Arrival (UTC) Nov 17, 12:26 — ET: Nov 17, 07:26 AM EST | Local: Nov 17, 07:26 AM EST",
     "link": "https://www.vesselfinder.com/ports/MXCZM001",
