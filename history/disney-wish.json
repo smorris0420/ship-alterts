@@ -1,5 +1,16 @@
 [
   {
+    "title": "Disney Wish Departed from Nassau, Bahamas at Nov 18, 06:05 PM EST. The local time to the port is Nov 18, 06:05 PM EST",
+    "description": "Nassau, Bahamas Departure (UTC) Nov 18, 23:05 — ET: Nov 18, 06:05 PM EST | Local: Nov 18, 06:05 PM EST",
+    "link": "https://www.vesselfinder.com/ports/BSNAS001",
+    "guid": "e0ba51ef286bde60982be6c647e834070fd4c47c",
+    "pubDate": "Tue, 18 Nov 2025 23:19:39 GMT",
+    "eventUtc": "2025-11-18T23:05:00+00:00",
+    "shipSlug": "disney-wish",
+    "shipName": "Disney Wish",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Wish Arrived at Nassau, Bahamas at Nov 18, 08:46 AM EST. The local time to the port is Nov 18, 08:46 AM EST",
     "description": "Nassau, Bahamas Arrival (UTC) Nov 18, 13:46 — ET: Nov 18, 08:46 AM EST | Local: Nov 18, 08:46 AM EST",
     "link": "https://www.vesselfinder.com/ports/BSNAS001",
