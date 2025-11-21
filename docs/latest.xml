@@ -5,7 +5,7 @@
   <title>DCL Ships - Latest (One per Ship)</title>
   <link>https://github.com/</link>
   <description>DCL Ships - Latest (One per Ship) - Auto-generated</description>
-  <lastBuildDate>Fri, 21 Nov 2025 21:31:31 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 21 Nov 2025 21:43:47 GMT</lastBuildDate>
   
   <item>
     <title>Disney Fantasy Departed from Cape Canaveral, United States (USA) at Nov 21, 08:45 AM EST. The local time to the port is Nov 21, 08:45 AM EST</title>
@@ -13,6 +13,13 @@
     <guid isPermaLink="false">22ed764d40d67627b19db910923eda0216c7bbf8</guid>
     <pubDate>Thu, 20 Nov 2025 23:30:57 GMT</pubDate>
     <description><![CDATA[Cape Canaveral, United States (USA) Departure (UTC) Nov 21, 13:45 — ET: Nov 21, 08:45 AM EST | Local: Nov 21, 08:45 AM EST]]></description>
+  </item>
+  <item>
+    <title>Disney Treasure Arrived at Gorda Cay, Bahamas at Nov 21, 07:12 AM EST. The local time to the port is Nov 21, 07:12 AM EST</title>
+    <link>https://www.vesselfinder.com/ports/BSGOC001</link>
+    <guid isPermaLink="false">852abbbafd328f5ece3efb8425daf80b3e2f3910</guid>
+    <pubDate>Fri, 21 Nov 2025 21:39:36 GMT</pubDate>
+    <description><![CDATA[Gorda Cay, Bahamas Arrival (UTC) Nov 21, 12:12 — ET: Nov 21, 07:12 AM EST | Local: Nov 21, 07:12 AM EST]]></description>
   </item>
   <item>
     <title>Disney Wish Arrived at Cape Canaveral, United States (USA) at Nov 21, 05:32 AM EST. The local time to the port is Nov 21, 05:32 AM EST</title>
@@ -48,13 +55,6 @@
     <guid isPermaLink="false">4cd5a777e12d894cdd17c3ab89db7a33ca00b4e5</guid>
     <pubDate>Thu, 20 Nov 2025 06:44:04 GMT</pubDate>
     <description><![CDATA[Melbourne, Australia Departure (UTC) Nov 20, 06:35 — ET: Nov 20, 01:35 AM EST | Local: Nov 20, 05:35 PM AEDT]]></description>
-  </item>
-  <item>
-    <title>Disney Treasure Departed from Cozumel, Mexico at Nov 17, 05:20 PM EST. The local time to the port is Nov 17, 05:20 PM EST</title>
-    <link>https://www.vesselfinder.com/ports/MXCZM001</link>
-    <guid isPermaLink="false">4c283b77034e7bb987d453fbeaa46743da80a5bd</guid>
-    <pubDate>Mon, 17 Nov 2025 22:35:14 GMT</pubDate>
-    <description><![CDATA[Cozumel, Mexico Departure (UTC) Nov 17, 22:20 — ET: Nov 17, 05:20 PM EST | Local: Nov 17, 05:20 PM EST]]></description>
   </item>
 </channel>
 </rss>
