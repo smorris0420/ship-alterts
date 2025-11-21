@@ -44,6 +44,17 @@
     "source": "vf_ship"
   },
   {
+    "title": "Disney Fantasy Departed from Gorda Cay, Bahamas at Nov 20, 04:38 PM EST. The local time to the port is Nov 20, 04:38 PM EST",
+    "description": "Gorda Cay, Bahamas Departure (UTC) Nov 20, 21:38 — ET: Nov 20, 04:38 PM EST | Local: Nov 20, 04:38 PM EST",
+    "link": "https://www.vesselfinder.com/ports/BSGOC001",
+    "guid": "6fbdad6203bdf2916d12149c185f591872a1bfd2",
+    "pubDate": "Fri, 21 Nov 2025 08:47:33 GMT",
+    "eventUtc": "2025-11-20T21:38:00+00:00",
+    "shipSlug": "disney-fantasy",
+    "shipName": "Disney Fantasy",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Destiny Departed from Port Everglades, United States (USA) at Nov 20, 04:14 PM EST. The local time to the port is Nov 20, 04:14 PM EST",
     "description": "Port Everglades, United States (USA) Departure (UTC) Nov 20, 21:14 — ET: Nov 20, 04:14 PM EST | Local: Nov 20, 04:14 PM EST",
     "link": "https://www.vesselfinder.com/ports/USPEF001",
@@ -52,6 +63,17 @@
     "eventUtc": "2025-11-20T21:14:00+00:00",
     "shipSlug": "disney-destiny",
     "shipName": "Disney Destiny",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Fantasy Arrived at Gorda Cay, Bahamas at Nov 20, 07:56 AM EST. The local time to the port is Nov 20, 07:56 AM EST",
+    "description": "Gorda Cay, Bahamas Arrival (UTC) Nov 20, 12:56 — ET: Nov 20, 07:56 AM EST | Local: Nov 20, 07:56 AM EST",
+    "link": "https://www.vesselfinder.com/ports/BSGOC001",
+    "guid": "81746286fb98f999a98ce553a22b4eee34b23ba3",
+    "pubDate": "Fri, 21 Nov 2025 08:47:32 GMT",
+    "eventUtc": "2025-11-20T12:56:00+00:00",
+    "shipSlug": "disney-fantasy",
+    "shipName": "Disney Fantasy",
     "source": "vf_ship"
   },
   {
