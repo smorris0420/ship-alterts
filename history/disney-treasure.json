@@ -1,5 +1,16 @@
 [
   {
+    "title": "Disney Treasure Departed from Cape Canaveral, United States (USA) at Nov 22, 05:10 PM EST. The local time to the port is Nov 22, 05:10 PM EST",
+    "description": "Cape Canaveral, United States (USA) Departure (UTC) Nov 22, 22:10 — ET: Nov 22, 05:10 PM EST | Local: Nov 22, 05:10 PM EST",
+    "link": "https://www.vesselfinder.com/ports/USPCV001",
+    "guid": "a62665b8faeea000e5f05ba9de5cfbe810763e03",
+    "pubDate": "Sat, 22 Nov 2025 22:35:13 GMT",
+    "eventUtc": "2025-11-22T22:10:00+00:00",
+    "shipSlug": "disney-treasure",
+    "shipName": "Disney Treasure",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Treasure Arrived at Cape Canaveral, United States (USA) at Nov 22, 06:21 AM EST. The local time to the port is Nov 22, 06:21 AM EST",
     "description": "Cape Canaveral, United States (USA) Arrival (UTC) Nov 22, 11:21 — ET: Nov 22, 06:21 AM EST | Local: Nov 22, 06:21 AM EST",
     "link": "https://www.vesselfinder.com/ports/USPCV001",
