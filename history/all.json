@@ -1,5 +1,16 @@
 [
   {
+    "title": "Disney Destiny Departed from Port Everglades, United States (USA) at Nov 24, 04:10 PM EST. The local time to the port is Nov 24, 04:10 PM EST",
+    "description": "Port Everglades, United States (USA) Departure (UTC) Nov 24, 21:10 — ET: Nov 24, 04:10 PM EST | Local: Nov 24, 04:10 PM EST",
+    "link": "https://www.vesselfinder.com/ports/USPEF001",
+    "guid": "e09f5e0035eff19a6dffeda8d10aaafb210769c9",
+    "pubDate": "Mon, 24 Nov 2025 21:27:06 GMT",
+    "eventUtc": "2025-11-24T21:10:00+00:00",
+    "shipSlug": "disney-destiny",
+    "shipName": "Disney Destiny",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Magic Departed from Galveston, United States (USA) at Nov 24, 10:30 AM EST. The local time to the port is Nov 24, 10:30 AM EST",
     "description": "Galveston, United States (USA) Departure (UTC) Nov 24, 15:30 — ET: Nov 24, 10:30 AM EST | Local: Nov 24, 10:30 AM EST",
     "link": "https://www.vesselfinder.com/ports/USGLS001",
@@ -1460,6 +1471,28 @@
     "eventUtc": "2025-11-07T10:08:00+00:00",
     "shipSlug": "disney-magic",
     "shipName": "Disney Magic",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Adventure Departed from Skagen Anch., Denmark at Sep 10, 07:10 PM EDT. The local time to the port is Sep 11, 01:10 AM CEST",
+    "description": "Skagen Anch., Denmark Departure (UTC) Sep 10, 23:10 — ET: Sep 10, 07:10 PM EDT | Local: Sep 11, 01:10 AM CEST",
+    "link": "https://www.vesselfinder.com/ports/DKSKA001",
+    "guid": "29a913d51604c2e95c6b20dca14dbaf09f90bbc8",
+    "pubDate": "Mon, 24 Nov 2025 21:26:31 GMT",
+    "eventUtc": "2025-09-10T23:10:00+00:00",
+    "shipSlug": "disney-adventure",
+    "shipName": "Disney Adventure",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Adventure Arrived at Skagen Anch., Denmark at Sep 09, 06:00 AM EDT. The local time to the port is Sep 09, 12:00 PM CEST",
+    "description": "Skagen Anch., Denmark Arrival (UTC) Sep 9, 10:00 — ET: Sep 09, 06:00 AM EDT | Local: Sep 09, 12:00 PM CEST",
+    "link": "https://www.vesselfinder.com/ports/DKSKA001",
+    "guid": "6f1db333b1cba47f0928515ea6f7db681e50561b",
+    "pubDate": "Mon, 24 Nov 2025 21:26:29 GMT",
+    "eventUtc": "2025-09-09T10:00:00+00:00",
+    "shipSlug": "disney-adventure",
+    "shipName": "Disney Adventure",
     "source": "vf_ship"
   }
 ]
