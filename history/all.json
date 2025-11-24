@@ -1,5 +1,16 @@
 [
   {
+    "title": "Disney Wish Departed from Cape Canaveral, United States (USA) at Nov 24, 04:35 PM EST. The local time to the port is Nov 24, 04:35 PM EST",
+    "description": "Cape Canaveral, United States (USA) Departure (UTC) Nov 24, 21:35 — ET: Nov 24, 04:35 PM EST | Local: Nov 24, 04:35 PM EST",
+    "link": "https://www.vesselfinder.com/ports/USPCV001",
+    "guid": "56b86d011c4c7c1ea03a30a4c671bda6be52237d",
+    "pubDate": "Mon, 24 Nov 2025 21:49:25 GMT",
+    "eventUtc": "2025-11-24T21:35:00+00:00",
+    "shipSlug": "disney-wish",
+    "shipName": "Disney Wish",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Destiny Departed from Port Everglades, United States (USA) at Nov 24, 04:10 PM EST. The local time to the port is Nov 24, 04:10 PM EST",
     "description": "Port Everglades, United States (USA) Departure (UTC) Nov 24, 21:10 — ET: Nov 24, 04:10 PM EST | Local: Nov 24, 04:10 PM EST",
     "link": "https://www.vesselfinder.com/ports/USPEF001",
