@@ -44,6 +44,17 @@
     "source": "vf_port"
   },
   {
+    "title": "Disney Magic Arrived at Galveston, United States (USA) at Nov 28, 08:03 AM EST. The local time to the port is Nov 28, 08:03 AM EST",
+    "description": "Galveston, United States (USA) Arrival (UTC) Nov 28, 13:03 — ET: Nov 28, 08:03 AM EST | Local: Nov 28, 08:03 AM EST",
+    "link": "https://www.vesselfinder.com/ports/USGLS001",
+    "guid": "905f2b9c3befcb93a23e6563cbddf9fb871805df",
+    "pubDate": "Fri, 28 Nov 2025 13:46:34 GMT",
+    "eventUtc": "2025-11-28T13:03:00+00:00",
+    "shipSlug": "disney-magic",
+    "shipName": "Disney Magic",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Wish Arrived at Cape Canaveral, United States (USA) at Nov 28, 05:50 AM EST. The local time to the port is Nov 28, 05:50 AM EST",
     "description": "Cape Canaveral, United States (USA) Arrival (UTC) Nov 28, 10:50 — ET: Nov 28, 05:50 AM EST | Local: Nov 28, 05:50 AM EST",
     "link": "https://www.vesselfinder.com/ports/USPCV001",
