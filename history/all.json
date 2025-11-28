@@ -77,6 +77,17 @@
     "source": "vf_ship"
   },
   {
+    "title": "Disney Magic Departed from Progreso, Mexico at Nov 26, 07:00 PM EST. The local time to the port is Nov 26, 07:00 PM EST",
+    "description": "Progreso, Mexico Departure (UTC) Nov 27, 00:00 — ET: Nov 26, 07:00 PM EST | Local: Nov 26, 07:00 PM EST",
+    "link": "https://www.vesselfinder.com/ports/MXPGO001",
+    "guid": "71b555f592c7f008e80209e9b73ecdf2fe1c7074",
+    "pubDate": "Fri, 28 Nov 2025 02:24:15 GMT",
+    "eventUtc": "2025-11-27T00:00:00+00:00",
+    "shipSlug": "disney-magic",
+    "shipName": "Disney Magic",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Fantasy Departed from Nassau, Bahamas at Nov 26, 06:11 PM EST. The local time to the port is Nov 26, 06:11 PM EST",
     "description": "Nassau, Bahamas Departure (UTC) Nov 26, 23:11 — ET: Nov 26, 06:11 PM EST | Local: Nov 26, 06:11 PM EST",
     "link": "https://www.vesselfinder.com/ports/BSNAS001",
@@ -140,6 +151,17 @@
     "eventUtc": "2025-11-26T13:36:00+00:00",
     "shipSlug": "disney-fantasy",
     "shipName": "Disney Fantasy",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Magic Arrived at Progreso, Mexico at Nov 26, 08:05 AM EST. The local time to the port is Nov 26, 08:05 AM EST",
+    "description": "Progreso, Mexico Arrival (UTC) Nov 26, 13:05 — ET: Nov 26, 08:05 AM EST | Local: Nov 26, 08:05 AM EST",
+    "link": "https://www.vesselfinder.com/ports/MXPGO001",
+    "guid": "692e7b93253a92a8f043527f9c1f222b323d7815",
+    "pubDate": "Fri, 28 Nov 2025 02:24:14 GMT",
+    "eventUtc": "2025-11-26T13:05:00+00:00",
+    "shipSlug": "disney-magic",
+    "shipName": "Disney Magic",
     "source": "vf_ship"
   },
   {
