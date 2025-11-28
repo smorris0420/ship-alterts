@@ -44,6 +44,28 @@
     "source": "vf_port"
   },
   {
+    "title": "Disney Destiny Arrived at Port Everglades, United States (USA) at Nov 28, 05:44 AM EST. The local time to the port is Nov 28, 05:44 AM EST",
+    "description": "Port Everglades, United States (USA) Arrival (UTC) Nov 28, 10:44 — ET: Nov 28, 05:44 AM EST | Local: Nov 28, 05:44 AM EST",
+    "link": "https://www.vesselfinder.com/ports/USPEF001",
+    "guid": "1648c4e2c9f02906af7ef1e5ff93cda1c58d8ce6",
+    "pubDate": "Fri, 28 Nov 2025 11:37:20 GMT",
+    "eventUtc": "2025-11-28T10:44:00+00:00",
+    "shipSlug": "disney-destiny",
+    "shipName": "Disney Destiny",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Wonder Departed from Lyttelton, New Zealand at Nov 28, 12:30 AM EST. The local time to the port is Nov 28, 06:30 PM NZDT",
+    "description": "Lyttelton, New Zealand Departure (UTC) Nov 28, 05:30 — ET: Nov 28, 12:30 AM EST | Local: Nov 28, 06:30 PM NZDT",
+    "link": "https://www.vesselfinder.com/ports/NZLYT001",
+    "guid": "0a99b860b171d4fd5a00e6ad79c18852c15e1715",
+    "pubDate": "Fri, 28 Nov 2025 11:36:20 GMT",
+    "eventUtc": "2025-11-28T05:30:00+00:00",
+    "shipSlug": "disney-wonder",
+    "shipName": "Disney Wonder",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Dream Departed from Gorda Cay, Bahamas at Nov 27, 05:07 PM EST. The local time to the port is Nov 27, 05:07 PM EST",
     "description": "Gorda Cay, Bahamas Departure (UTC) Nov 27, 22:07 — ET: Nov 27, 05:07 PM EST | Local: Nov 27, 05:07 PM EST",
     "link": "https://www.vesselfinder.com/ports/BSGOC001",
@@ -52,6 +74,17 @@
     "eventUtc": "2025-11-27T22:07:00+00:00",
     "shipSlug": "disney-dream",
     "shipName": "Disney Dream",
+    "source": "vf_ship"
+  },
+  {
+    "title": "Disney Wonder Arrived at Lyttelton, New Zealand at Nov 27, 01:18 PM EST. The local time to the port is Nov 28, 07:18 AM NZDT",
+    "description": "Lyttelton, New Zealand Arrival (UTC) Nov 27, 18:18 — ET: Nov 27, 01:18 PM EST | Local: Nov 28, 07:18 AM NZDT",
+    "link": "https://www.vesselfinder.com/ports/NZLYT001",
+    "guid": "8ad802a0e171638629e76da7a7676f88fc7035c1",
+    "pubDate": "Fri, 28 Nov 2025 11:36:19 GMT",
+    "eventUtc": "2025-11-27T18:18:00+00:00",
+    "shipSlug": "disney-wonder",
+    "shipName": "Disney Wonder",
     "source": "vf_ship"
   },
   {
