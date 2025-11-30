@@ -1,5 +1,16 @@
 [
   {
+    "title": "Disney Wonder Departed from Auckland, New Zealand at Nov 30, 03:01 AM EST. The local time to the port is Nov 30, 09:01 PM NZDT",
+    "description": "Auckland, New Zealand Departure (UTC) Nov 30, 08:01 — ET: Nov 30, 03:01 AM EST | Local: Nov 30, 09:01 PM NZDT",
+    "link": "https://www.vesselfinder.com/ports/NZAKL001",
+    "guid": "29c4f63e8793b2f8a21eabb2170d75fb7fae1f54",
+    "pubDate": "Sun, 30 Nov 2025 08:22:44 GMT",
+    "eventUtc": "2025-11-30T08:01:00+00:00",
+    "shipSlug": "disney-wonder",
+    "shipName": "Disney Wonder",
+    "source": "vf_ship"
+  },
+  {
     "title": "Disney Treasure Departed from Cape Canaveral, United States (USA) at Nov 29, 05:16 PM EST. The local time to the port is Nov 29, 05:16 PM EST",
     "description": "Cape Canaveral, United States (USA) Departure (UTC) Nov 29, 22:16 — ET: Nov 29, 05:16 PM EST | Local: Nov 29, 05:16 PM EST",
     "link": "https://www.vesselfinder.com/ports/USPCV001",
